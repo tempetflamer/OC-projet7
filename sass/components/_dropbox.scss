@@ -1,0 +1,24 @@
+/* .hidden {
+    display: none;
+} */
+
+.box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    gap: 1.5rem;
+    border-radius: 5px;
+    color: white;
+
+    cursor: pointer;
+
+    p {
+        margin: 0;
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    //.fa-chevron-up {display: none;} // ajouter le display none de manière js comme ça le css charge avant a cause du display flex je suppose
+}

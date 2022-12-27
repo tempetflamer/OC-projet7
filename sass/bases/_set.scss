@@ -1,0 +1,23 @@
+body {
+    font-family: "Lato", sans-serif;
+    width: 84%;
+    margin-right: 8%;
+    margin-left: 8%;
+    //font-size: 10px;
+    font-size: 1rem; // 1rem = 16px | ? = 10px == (1 * 10) / 16 = 0.625rem ==> j'avais mis à 200% xD
+
+}
+
+h2 {
+    
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visibility {
+    visibility: hidden;
+}
+
+//font familly lato - titre font familly DM sans

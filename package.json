@@ -1,0 +1,24 @@
+{
+  "name": "oc-projet7",
+  "version": "1.0.0",
+  "description": "Projet 7 du parcours \"Développeur d'application - JavaScript React\", qui consiste à créer un site de recettes de cuisine pour l’entreprise “Les petits plats” à l’instar de Marmiton ou 750g.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./styles/style.css -w --style expanded --no-source-map",
+    "prefix": "postcss ./styles/style.min.css --use autoprefixer -d ./css/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tempetflamer/OC-projet7.git"
+  },
+  "author": "Nicolas Lecroq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tempetflamer/OC-projet7/issues"
+  },
+  "homepage": "https://github.com/tempetflamer/OC-projet7#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "sass": "^1.57.1"
+  }
+}

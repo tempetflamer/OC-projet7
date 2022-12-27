@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./assets/favicon32.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
+
+    <link href="./styles/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="./index.html">
+            <img src="./assets/favicon118-min.png" type="image/png" alt="logo de l'entreprise Les petits plats">
+            <h1>Les petits plats</h1>
+        </a>
+    </header>
+
+    <form class="recherche">
+        <!-- form perd de l'interêt sans le bouton submit mais reste utile pour l'accessibilté pour les malvoyant & on a utilisé recherche-poke  -->
+        <div class="recherche__container">
+            <label for="recherche"><h2>Rechercher une recette</h2></label>
+            <input type="text" id="recherche">
+        </div>
+
+        <!-- Loader -->
+        <!--         <div class="loader">
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+        </div> -->
+
+    </form>
+    <p>test de size</p>
+
+    <div class="filterselected"></div>
+
+    <div class="listbox">
+        <div class="listbox__container">
+            <div class="listbox__container__ingredients box">
+                <p>Ingrédients</p>
+                <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
+                <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+            </div>
+            <div class="listbox__container__devices box">
+                <p>Appareils</p>
+                <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
+                <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+            </div>
+            <div class="listbox__container__tools box">
+                <p>Ustensiles</p>
+                <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
+                <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+            </div>
+        </div>
+    </div>
+
+    <section class="recipies"></section>
+    <!-- <script type="module" src="/app.js"></script> -->
+    <script type="module" src="./scripts/app.js"></script>
+</body>
+
+</html>

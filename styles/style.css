@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  width: 84%;
+  margin-right: 8%;
+  margin-left: 8%;
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visibility {
+  visibility: hidden;
+}
+
+/* .hidden {
+    display: none;
+} */
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  gap: 1.5rem;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+.box p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+header {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header img {
+  width: 64px;
+}
+header h1 {
+  margin-top: -0.2rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 2rem;
+  color: #D04F4F;
+  font-weight: 700;
+}
+
+.recherche__container {
+  display: flex;
+  flex-direction: column;
+  /*         input:focus {
+
+          } */
+}
+.recherche__container label {
+  position: relative;
+  color: black;
+  opacity: 0.25;
+  transform: translateY(175%);
+  padding-left: 1rem;
+  transition: all 0.5s ease-in;
+}
+.recherche__container input {
+  background: #E6E6E6;
+  border-radius: 5px;
+  border: none;
+  height: 60px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+.recherche__container.active-input label {
+  transform: translateY(-10%);
+  padding-left: 8px;
+}
+
+.listbox__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.listbox__container__ingredients {
+  background-color: #3282F7;
+}
+.listbox__container__devices {
+  background-color: #68D9A4;
+}
+.listbox__container__tools {
+  background-color: #ED6454;
+}

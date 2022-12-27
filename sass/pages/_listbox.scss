@@ -1,0 +1,18 @@
+
+.listbox {
+    &__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        &__ingredients {
+            background-color: #3282F7;
+        }
+        &__devices {
+            background-color: #68D9A4;
+        }
+        &__tools {
+            background-color: #ED6454;
+        }
+    }
+}
