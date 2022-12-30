@@ -1,0 +1,72 @@
+.recipes {
+    width: 100%;
+    gap: 50px;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+
+    // display: flex;
+    // flex-wrap: wrap;
+    //grid-template-columns: 30% 30% 30%;
+    //grid-template-columns: repeat(auto-fit, 1fr);
+    margin-top: 4rem;
+    overflow: hidden;
+
+
+    &__card {
+        //max-width: 500px;
+        min-width: 300px; // normalement on devrais j'amais l'atteindre
+        background: #E7E7E7;
+
+        &__img {
+            //overflow: hidden;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        &__data {
+            padding: 1.5rem;
+
+            &__content-top {}
+
+            //comme un con j'ai mis le time et titre normalement dans content et pas dans content top
+            &__content {
+                gap: 0 1.5rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                max-height: 18rem;
+
+                ul {
+                    padding: 0;
+                }
+
+                &__time {
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    gap: 0 0.5rem;
+                    font-size: 1.2rem;
+                }
+
+                &__desc {
+                    max-height: 12rem;
+                    //white-space: nowrap;
+                    //display: block;
+                    //overflow: hidden;
+                    //text-overflow: clip ellipsis;
+
+                    display: -webkit-box;
+                    max-width: 200px;
+                    -webkit-line-clamp: 10;
+                    //a laire de amrcher même sans ces deux là sur firefox
+                    box-orient: vertical;
+                    -moz-orient: vertical;
+
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+            }
+        }
+    }
+}

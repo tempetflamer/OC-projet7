@@ -45,24 +45,36 @@ body {
   visibility: hidden;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
 /* .hidden {
     display: none;
 } */
 .box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   padding: 1rem;
   gap: 1.5rem;
   border-radius: 5px;
   color: white;
+  width: 12rem;
   cursor: pointer;
 }
 .box p {
   margin: 0;
   font-weight: 500;
   font-size: 1.2rem;
+}
+
+/* .box--off {
+width: 12rem;
+} */
+.box--on {
+  width: 36rem;
 }
 
 header {
@@ -127,9 +139,83 @@ header h1 {
 .listbox__container__ingredients {
   background-color: #3282F7;
 }
+.listbox__container__ingredients__input {
+  width: 90%;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.listbox__container__ingredients__input::placeholder {
+  color: #fff;
+  opacity: 0.5;
+}
 .listbox__container__devices {
   background-color: #68D9A4;
 }
 .listbox__container__tools {
   background-color: #ED6454;
+}
+.listbox__container__ingredients--swap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.listbox__container__ingredients__list {
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-rows: repeat(10, 1.5rem);
+}
+
+.swap--on {
+  gap: 0;
+  justify-content: center;
+}
+
+.recipes {
+  width: 100%;
+  gap: 50px;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  margin-top: 4rem;
+  overflow: hidden;
+}
+.recipes__card {
+  min-width: 300px;
+  background: #E7E7E7;
+}
+.recipes__card__img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.recipes__card__data {
+  padding: 1.5rem;
+}
+.recipes__card__data__content {
+  gap: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-height: 18rem;
+}
+.recipes__card__data__content ul {
+  padding: 0;
+}
+.recipes__card__data__content__time {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+  font-size: 1.2rem;
+}
+.recipes__card__data__content__desc {
+  max-height: 12rem;
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 10;
+  box-orient: vertical;
+  -moz-orient: vertical;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

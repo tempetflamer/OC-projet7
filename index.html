@@ -9,7 +9,7 @@
 
     <link href="./styles/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer">
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>
@@ -25,7 +25,9 @@
     <form class="recherche">
         <!-- form perd de l'interêt sans le bouton submit mais reste utile pour l'accessibilté pour les malvoyant & on a utilisé recherche-poke  -->
         <div class="recherche__container">
-            <label for="recherche"><h2>Rechercher une recette</h2></label>
+            <label for="recherche">
+                <h2>Rechercher une recette</h2>
+            </label>
             <input type="text" id="recherche">
         </div>
 
@@ -44,9 +46,19 @@
     <div class="listbox">
         <div class="listbox__container">
             <div class="listbox__container__ingredients box">
-                <p>Ingrédients</p>
-                <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
-                <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+                <div class="listbox__container__ingredients--swap">
+                    <p class="listbox__container__ingredients__title">Ingrédients</p>
+                    <label for="ingredient" class="listbox__container__ingredients__label"></label>
+                    <input type="text" class="listbox__container__ingredients__input hidden" placeholder="Rechercher un ingrédient" name="ingredient">
+                    <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
+                    <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+                </div>
+                <ul class="listbox__container__ingredients__list hidden">
+                    
+                </ul>
+                <!-- <p>Ingrédients</p> -->
+                <!-- <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>-->
+                <!--<i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i> -->
             </div>
             <div class="listbox__container__devices box">
                 <p>Appareils</p>
@@ -61,7 +73,7 @@
         </div>
     </div>
 
-    <section class="recipies"></section>
+    <section class="recipes"></section>
     <!-- <script type="module" src="/app.js"></script> -->
     <script type="module" src="./scripts/app.js"></script>
 </body>

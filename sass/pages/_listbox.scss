@@ -7,6 +7,19 @@
         gap: 20px;
         &__ingredients {
             background-color: #3282F7;
+
+            &__input {
+                width: 90%;
+                border: none;
+                background-color: transparent;
+                font-weight: 500;
+                font-size: 1.2rem;
+            }
+
+            &__input::placeholder {
+                color: #fff;
+                opacity: 0.5;
+            }
         }
         &__devices {
             background-color: #68D9A4;
@@ -14,5 +27,32 @@
         &__tools {
             background-color: #ED6454;
         }
+
+        &__ingredients--swap {
+            // faire un bos-item de cette partie
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+
+        }
+
+        &__ingredients__list {
+            grid-template-columns: 1fr 1fr 1fr;
+            display: grid;
+            grid-template-rows: repeat(10, 1.5rem);
+
+        }
+
+    
     }
+
+}
+
+.swap--on {
+    gap: 0;
+    justify-content: center;
+    //margin-left: 1.5rem;
+    //margin-right: -1.5rem;
 }

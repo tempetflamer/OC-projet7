@@ -4,13 +4,14 @@
 
 .box {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     padding: 1rem;
     gap: 1.5rem;
     border-radius: 5px;
     color: white;
+    width: 12rem;
 
     cursor: pointer;
 
@@ -21,4 +22,12 @@
     }
 
     //.fa-chevron-up {display: none;} // ajouter le display none de manière js comme ça le css charge avant a cause du display flex je suppose
+}
+
+/* .box--off {
+width: 12rem;
+} */
+
+.box--on {
+width: 36rem;
 }
