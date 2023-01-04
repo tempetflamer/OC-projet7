@@ -27,7 +27,7 @@
             }
         }
 
-        &__devices {
+        &__appliances {
             background-color: #68D9A4;
 
             &__input {
@@ -94,6 +94,14 @@
             scrollbar-color: #1f66d1 #84aeec;
 
             //question => est-ce que je dois permettre à genre chocolat noir en pépite de passer à la ligne ou faire une rupture
+
+            li {
+                min-width: 8rem; // pourra potentiellement être remplacé par min-width
+            }
+
+            li:hover {
+                background-color: #1f66d1;
+            }
         }
 
         /* WebKit and Chromiums (Safari, chrome, edge)*/
@@ -143,6 +151,13 @@
             overflow-y: scroll;
             scrollbar-width: thin;
             scrollbar-color: #a51f10 #e4a098;
+
+            li {
+                min-width: 8rem;
+            }
+            li:hover {
+                background-color: #a51f10;
+            }            
         }
 
         /* WebKit and Chromiums (Safari, chrome, edge)*/
@@ -163,14 +178,14 @@
             background-color: #a51f10;
         }
 
-        &__devices--swap {
+        &__appliances--swap {
             width: 100%;
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        &__devices__list {
+        &__appliances__list {
             padding: 0;
             margin: 0;
             margin-left: 0.5rem;
@@ -184,21 +199,28 @@
             overflow-y: scroll;
             scrollbar-width: thin;
             scrollbar-color: #0daf64 #acecce;
+
+            li {
+                min-width: 8rem;
+            }
+            li:hover {
+                background-color: #0daf64;
+            }
         }
 
         /* WebKit and Chromiums (Safari, chrome, edge)*/
-        &__devices__list::-webkit-scrollbar {
+        &__appliances__list::-webkit-scrollbar {
             width: 40px;
         }
 
-        &__devices__list::-webkit-scrollbar {
+        &__appliances__list::-webkit-scrollbar {
             width: 8px;
             height: 8px;
             background-color: #acecce;
             border-radius: 5px;
         }
 
-        &__devices__list::-webkit-scrollbar-thumb {
+        &__appliances__list::-webkit-scrollbar-thumb {
             border-radius: 5px;
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
             background-color: #0daf64;

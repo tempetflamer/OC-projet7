@@ -14,13 +14,13 @@ const qsIngredientInput = document.querySelector('.listbox__container__ingredien
 const qsIngredientSwap = document.querySelector('.listbox__container__ingredients--swap');
 const qsIngredientList = document.querySelector('.listbox__container__ingredients__list');
 
-const qsApplianceBoxOff = document.querySelector('.--devices-off'); // rename devices by Appliance
-const qsApplianceBoxOn = document.querySelector('.--devices-on'); // rename devices by Appliance
-const qsApplianceBox = document.querySelector('.listbox__container__devices'); // rename devices by Appliance
-const qsApplianceTitle = document.querySelector('.listbox__container__devices__title');
-const qsApplianceInput = document.querySelector('.listbox__container__devices__input');
-const qsApplianceSwap = document.querySelector('.listbox__container__devices--swap');
-const qsApplianceList = document.querySelector('.listbox__container__devices__list');
+const qsApplianceBoxOff = document.querySelector('.--appliances-off'); // rename appliances by Appliance
+const qsApplianceBoxOn = document.querySelector('.--appliances-on'); // rename appliances by Appliance
+const qsApplianceBox = document.querySelector('.listbox__container__appliances'); // rename appliances by Appliance
+const qsApplianceTitle = document.querySelector('.listbox__container__appliances__title');
+const qsApplianceInput = document.querySelector('.listbox__container__appliances__input');
+const qsApplianceSwap = document.querySelector('.listbox__container__appliances--swap');
+const qsApplianceList = document.querySelector('.listbox__container__appliances__list');
 
 const qsToolBoxOff = document.querySelector('.--tools-off');
 const qsToolBoxOn = document.querySelector('.--tools-on');
@@ -38,8 +38,8 @@ const qsCloseListIngredient = document.querySelector('.listbox__container__ingre
 const qsOpenListIngredient = document.querySelector('.listbox__container__ingredients--swap > .fa-chevron-down');
 const qsCloseListTool = document.querySelector('.listbox__container__tools--swap > .fa-chevron-up');
 const qsOpenListTool = document.querySelector('.listbox__container__tools--swap > .fa-chevron-down');
-const qsCloseListAppliance = document.querySelector('.listbox__container__devices--swap > .fa-chevron-up');
-const qsOpenListAppliance = document.querySelector('.listbox__container__devices--swap > .fa-chevron-down');
+const qsCloseListAppliance = document.querySelector('.listbox__container__appliances--swap > .fa-chevron-up');
+const qsOpenListAppliance = document.querySelector('.listbox__container__appliances--swap > .fa-chevron-down');
 
 const searchHiddenElements = document.querySelectorAll('body');
 console.log(searchInput);
@@ -226,6 +226,55 @@ document.addEventListener("click", (e) => {
         }
 
     }
+    
+
+    // Appliance 
+
+    if (qsApplianceBox.classList.contains("box--on")) {
+        console.log("contains")
+
+        if (e.target.classList.contains("listbox__container__appliances") || e.target.classList.contains("listbox__container__appliances__title") || e.target.classList.contains("listbox__container__appliances--swap") || e.target.classList.contains("listbox__container__appliances__title") || e.target.classList.contains("fa-chevron-down")
+            || e.target.classList.contains("listbox__container__appliances__input") || e.target.classList.contains("listbox__container__appliances__list") || e.target.nodeName == "LI") // j'avais juste oublié de metrte ce puatin de target BORDEL DE MERD3E
+        {
+            console.log("if")
+            return
+        }
+        else {
+            qsApplianceTitle.classList.remove("hidden");
+            qsApplianceInput.classList.add("hidden");
+            qsApplianceList.classList.add("hidden");
+            qsApplianceBox.classList.remove("box--on");
+            qsApplianceSwap.classList.remove("swap--on");
+            qsOpenListAppliance.classList.remove("hidden");
+            qsCloseListAppliance.classList.add("hidden");
+            console.log("else")
+        }
+    }
+
+
+    // Tool
+
+    if (qsToolBox.classList.contains("box--on")) {
+        console.log("contains")
+
+        if (e.target.classList.contains("listbox__container__tools") || e.target.classList.contains("listbox__container__tools__title") || e.target.classList.contains("listbox__container__tools--swap") || e.target.classList.contains("listbox__container__tools__title") || e.target.classList.contains("fa-chevron-down")
+            || e.target.classList.contains("listbox__container__tools__input") || e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") // j'avais juste oublié de metrte ce puatin de target BORDEL DE MERD3E
+        {
+            console.log("if")
+            return
+        }
+        else {
+            qsToolTitle.classList.remove("hidden");
+            qsToolInput.classList.add("hidden");
+            qsToolList.classList.add("hidden");
+            qsToolBox.classList.remove("box--on");
+            qsToolSwap.classList.remove("swap--on");
+            qsOpenListTool.classList.remove("hidden");
+            qsCloseListTool.classList.add("hidden");
+            console.log("else")
+        }
+    }
+
 
 });
 
