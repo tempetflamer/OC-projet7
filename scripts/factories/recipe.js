@@ -1,4 +1,4 @@
-const qsFiltersSelected = document.querySelector('.filterselected'); 
+const qsFiltersSelected = document.querySelector('.filterselected');
 
 export function recipesFactories(data) {
     //id name servings ingredients time description appliance ustensils
@@ -8,8 +8,8 @@ export function recipesFactories(data) {
         article.classList.add('recipes__card');
 
         const img = document.createElement('img');
-        img.setAttribute("src", "../../assets/img/1.jpg") //numero a remplacer par id
-        img.setAttribute("alt", data.name)
+        img.setAttribute("src", "../../assets/img/placeholder.jpg")
+        //img.setAttribute("alt", data.name)
         img.classList.add('recipes__card__img');
         article.appendChild(img);
 
