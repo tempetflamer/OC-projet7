@@ -1,0 +1,30 @@
+.filterselected {
+    margin-top: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        //max-width: 12rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        gap: 0.5rem;
+        p {
+
+        }
+        i {
+            cursor: pointer;
+        }
+    }
+}
+
+.type--ingredient {
+    background-color: #3282F7;
+    border-radius: 5px;
+}

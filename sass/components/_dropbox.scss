@@ -5,13 +5,14 @@
 .box {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    //align-items: center;
     justify-content: space-around;
     padding: 1rem;
     gap: 1.5rem;
     border-radius: 5px;
     color: white;
     width: 12rem;
+    max-height: 3.5rem; // height transformer in max height
 
     cursor: pointer;
 
@@ -29,5 +30,21 @@ width: 12rem;
 } */
 
 .box--on {
-width: 36rem;
+    width: 36rem;
+    max-height: 22.5rem;
+}
+
+.box1--on {
+    width: 12rem;
+    max-height: 7rem;
+    }
+
+.box2--on {
+    width: 24rem;
+    max-height: 12rem;
+}
+
+.box3--on {
+    width: 36rem;
+    max-height: 22.5rem;
 }

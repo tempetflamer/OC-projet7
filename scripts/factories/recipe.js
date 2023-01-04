@@ -1,3 +1,5 @@
+const qsFiltersSelected = document.querySelector('.filterselected'); 
+
 export function recipesFactories(data) {
     //id name servings ingredients time description appliance ustensils
 
@@ -37,7 +39,7 @@ export function recipesFactories(data) {
         iconTime.classList.add('fa-xl')
         time.appendChild(iconTime);
         const textTime = document.createElement('p');
-        textTime.textContent =  data.time + " min"
+        textTime.textContent = data.time + " min"
         time.appendChild(textTime);
 
         const list = document.createElement('ul');
@@ -97,16 +99,58 @@ export function recipesFactories(data) {
     }
 
 
-return { getRecipeCard }
+    return { getRecipeCard }
 }
 
 export function getListIngredients(qsIngredientList, data) {
     data.forEach((el) => {
-        console.log("el",el);
+        console.log("el", el);
         const item = document.createElement('li');
         item.textContent = el;
         qsIngredientList.appendChild(item);
         console.log(qsIngredientList)
+
+        item.addEventListener("click", (e) => {
+            console.log(item.textContent)
+            const filterDiv = document.createElement('div');
+            filterDiv.classList.add("filterselected__item")
+            filterDiv.classList.add("type--ingredient")
+            const filterText = document.createElement('p');
+            filterText.textContent = item.textContent;
+            filterDiv.appendChild(filterText)
+            const filterIcon = document.createElement('i');
+            filterIcon.classList.add("fa-regular");
+            filterIcon.classList.add("fa-circle-xmark");
+            filterIcon.classList.add("fa-lg");
+            filterDiv.appendChild(filterIcon)
+            qsFiltersSelected.appendChild(filterDiv);
+
+        });
+
+    })
+
+}
+
+export function getListAppliances(qsApplianceList, data) {
+    data.forEach((el) => {
+        console.log("el", el);
+        const item = document.createElement('li');
+        item.textContent = el;
+        qsApplianceList.appendChild(item);
+        console.log(qsApplianceList)
+
+    })
+
+}
+
+export function getListTools(qstoolList, data) {
+    data.forEach((el) => {
+        console.log("el", el);
+        const item = document.createElement('li');
+        item.textContent = el;
+        qstoolList.appendChild(item);
+        console.log(qstoolList)
+
     })
 
 }

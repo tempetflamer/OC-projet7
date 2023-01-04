@@ -30,22 +30,14 @@
             </label>
             <input type="text" id="recherche">
         </div>
-
-        <!-- Loader -->
-        <!--         <div class="loader">
-            <div class="point"></div>
-            <div class="point"></div>
-            <div class="point"></div>
-        </div> -->
-
     </form>
-    <p>test de size</p>
+
 
     <div class="filterselected"></div>
 
     <div class="listbox">
         <div class="listbox__container">
-            <div class="listbox__container__ingredients box">
+            <div class="listbox__container__ingredients box --ingredients-off">
                 <div class="listbox__container__ingredients--swap">
                     <p class="listbox__container__ingredients__title">Ingrédients</p>
                     <label for="ingredient" class="listbox__container__ingredients__label"></label>
@@ -54,22 +46,33 @@
                     <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
                 </div>
                 <ul class="listbox__container__ingredients__list hidden">
-                    
                 </ul>
-                <!-- <p>Ingrédients</p> -->
-                <!-- <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>-->
-                <!--<i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i> -->
             </div>
-            <div class="listbox__container__devices box">
-                <p>Appareils</p>
-                <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
-                <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+
+            <div class="listbox__container__devices box --devices-off">
+                <div class="listbox__container__devices--swap">
+                    <p class="listbox__container__devices__title">Appareils</p>
+                    <label for="device" class="listbox__container__devices__label"></label>
+                    <input type="text" class="listbox__container__devices__input hidden" placeholder="Rechercher un appareil" name="device">
+                    <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
+                    <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+                </div>
+                <ul class="listbox__container__devices__list hidden">
+                </ul>
             </div>
-            <div class="listbox__container__tools box">
-                <p>Ustensiles</p>
-                <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
-                <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+
+            <div class="listbox__container__tools box --tools-off">
+                <div class="listbox__container__tools--swap">
+                    <p class="listbox__container__tools__title">Ustensiles</p>
+                    <label for="tool" class="listbox__container__tools__label"></label>
+                    <input type="text" class="listbox__container__tools__input hidden" placeholder="Rechercher un ustensiles" name="tool">
+                    <i class="fa-sharp fa-solid fa-chevron-down fa-lg"></i>
+                    <i class="fa-sharp fa-solid fa-chevron-up fa-lg"></i>
+                </div>
+                <ul class="listbox__container__tools__list hidden">
+                </ul>
             </div>
+
         </div>
     </div>
 
