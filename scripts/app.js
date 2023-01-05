@@ -89,6 +89,147 @@ async function init() {
     //faire un js de trie
     sortArrays();
 
+    console.log("taille du array ingrédient" + arrayIngredients.length)
+    let i = 0;
+    let j = 1;
+    // metrte le width a 100% uniquement si on un un certainn nombr enom plutôt metrte un max-width sur le sli
+    /*     while (i < arrayIngredients.length + 1) { // comme d'hab la boucle if ne passe aps dans la boucle while
+            if ((i + 10) < arrayIngredients.length) {
+                i = i + 10;
+            }
+        } */
+
+    for (let i = 0; i < arrayIngredients.length + 1; i = i + 10, j++) {
+        if ((i + 10) > arrayIngredients.length) {
+            if ((window.matchMedia('(min-width:1081px) and (max-width: 1300px)')).matches) {
+                if (j > 6) {
+                    qsIngredientList.style.gridTemplateColumns = "repeat(" + 6 + ", 1fr)"
+                    qsIngredientBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsIngredientList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsIngredientBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+            else if ((window.matchMedia('(min-width:601px) and (max-width: 1080px)')).matches) {
+                if (j > 3) {
+                    qsIngredientList.style.gridTemplateColumns = "repeat(" + 3 + ", 1fr)"
+                    qsIngredientBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsIngredientList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsIngredientBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+            else if ((window.matchMedia('(max-width: 600px)')).matches) {
+                qsIngredientList.style.gridTemplateColumns = "1fr"
+                qsIngredientBox.style.maxWidth = "12rem"
+            }
+            else {
+                if (j > 9) {
+                    qsIngredientList.style.gridTemplateColumns = "repeat(" + 9 + ", 1fr)"
+                    qsIngredientBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsIngredientList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsIngredientBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+        }
+    }
+    console.log("combien vaut j : " + j)
+
+    console.log("taille du array appliance" + arrayAppliances.length)
+
+    i = 0;
+    j = 1;
+    for (let i = 0; i < arrayAppliances.length + 1; i = i + 10, j++) {
+        if ((i + 10) > arrayAppliances.length) {
+            //qsIngredientList.classList.add() 
+            if ((window.matchMedia('(min-width:1081px) and (max-width: 1300px)')).matches) {
+                if (j > 6) {
+                    qsApplianceList.style.gridTemplateColumns = "repeat(" + 6 + ", 1fr)"
+                    qsApplianceBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsApplianceList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsApplianceBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+            else if ((window.matchMedia('(min-width:601px) and (max-width: 1080px)')).matches) {
+                if (j > 3) {
+                    qsApplianceList.style.gridTemplateColumns = "repeat(" + 3 + ", 1fr)"
+                    qsApplianceBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsApplianceList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsApplianceBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+            else if ((window.matchMedia('(max-width: 600px)')).matches) {
+                qsApplianceList.style.gridTemplateColumns = "1fr"
+                qsApplianceBox.style.maxWidth = "12rem"
+            }
+            else {
+                if (j > 9) {
+                    qsApplianceList.style.gridTemplateColumns = "repeat(" + 9 + ", 1fr)"
+                    qsApplianceBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsApplianceList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsApplianceBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+        }
+    }
+    console.log("combien vaut j : " + j)
+
+    console.log("taille du array tool" + arrayTools.length)
+
+    i = 0;
+    j = 1;
+    for (let i = 0; i < arrayTools.length + 1; i = i + 10, j++) {
+        if ((i + 10) > arrayTools.length) {
+            //qsIngredientList.classList.add() 
+            if ((window.matchMedia('(min-width:1081px) and (max-width: 1300px)')).matches) {
+                if (j > 6) {
+                    qsToolList.style.gridTemplateColumns = "repeat(" + 6 + ", 1fr)"
+                    qsToolBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsToolList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsToolBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+            else if ((window.matchMedia('(min-width:601px) and (max-width: 1080px)')).matches) {
+                if (j > 3) {
+                    qsToolList.style.gridTemplateColumns = "repeat(" + 3 + ", 1fr)"
+                    qsToolBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsToolList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsToolBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+            else if ((window.matchMedia('(max-width: 600px)')).matches) {
+                qsToolList.style.gridTemplateColumns = "1fr"
+                qsToolBox.style.maxWidth = "12rem"
+            }
+            else {
+                if (j > 9) {
+                    qsToolList.style.gridTemplateColumns = "repeat(" + 9 + ", 1fr)"
+                    qsToolBox.style.maxWidth = j * 12 + "rem"
+                }
+                else {
+                    qsToolList.style.gridTemplateColumns = "repeat(" + j + ", 1fr)"
+                    qsToolBox.style.maxWidth = j * 12 + "rem"
+                }
+            }
+        }
+    }
+    console.log("combien vaut j : " + j)
+
+
     //renomer ce get ou les autres éléments qui n'en nont pas avec set, create etc
     //const recipesModel = recipesFactories(recipe); //deja utilsier plus haut a vori plus atrd pour aps faire de doublon
     const createIngredientList = getListIngredients(qsIngredientList, arrayIngredients);
@@ -126,8 +267,8 @@ function searchIngredient() {
         allVisibleIngredients = document.querySelectorAll('.listbox__container__ingredients__list > li:not(.hidden)')
         console.log("element visible : " + allVisibleIngredients.length + allVisibleIngredients[0])
         if (allVisibleIngredients.length < 2) {
-            qsIngredientBox.classList.remove("box--on");
-            qsIngredientBox.classList.add("box1--on");
+            // qsIngredientBox.classList.remove("box--on");
+            // qsIngredientBox.classList.add("box1--on");
 
         }
         else if (allVisibleIngredients.length == 2) {
@@ -204,6 +345,22 @@ document.addEventListener("click", (e) => {
         if (e.target.classList.contains("listbox__container__ingredients") || e.target.classList.contains("listbox__container__ingredients__title") || e.target.classList.contains("listbox__container__ingredients--swap") || e.target.classList.contains("listbox__container__ingredients__title") || e.target.classList.contains("fa-chevron-down")
             || e.target.classList.contains("listbox__container__ingredients__input") || e.target.classList.contains("listbox__container__ingredients__list") || e.target.nodeName == "LI") // j'avais juste oublié de metrte ce puatin de target BORDEL DE MERD3E
         {
+            qsApplianceTitle.classList.remove("hidden");
+            qsApplianceInput.classList.add("hidden");
+            qsApplianceList.classList.add("hidden");
+            qsApplianceBox.classList.remove("box--on");
+            qsApplianceSwap.classList.remove("swap--on");
+            qsOpenListAppliance.classList.remove("hidden");
+            qsCloseListAppliance.classList.add("hidden");
+
+            qsToolTitle.classList.remove("hidden");
+            qsToolInput.classList.add("hidden");
+            qsToolList.classList.add("hidden");
+            qsToolBox.classList.remove("box--on");
+            qsToolSwap.classList.remove("swap--on");
+            qsOpenListTool.classList.remove("hidden");
+            qsCloseListTool.classList.add("hidden");
+
             console.log("if")
             return
         }
@@ -226,7 +383,7 @@ document.addEventListener("click", (e) => {
         }
 
     }
-    
+
 
     // Appliance 
 
@@ -236,6 +393,22 @@ document.addEventListener("click", (e) => {
         if (e.target.classList.contains("listbox__container__appliances") || e.target.classList.contains("listbox__container__appliances__title") || e.target.classList.contains("listbox__container__appliances--swap") || e.target.classList.contains("listbox__container__appliances__title") || e.target.classList.contains("fa-chevron-down")
             || e.target.classList.contains("listbox__container__appliances__input") || e.target.classList.contains("listbox__container__appliances__list") || e.target.nodeName == "LI") // j'avais juste oublié de metrte ce puatin de target BORDEL DE MERD3E
         {
+            // be sure que les deux autres avant se ferme dans ce cas
+            qsIngredientTitle.classList.remove("hidden");
+            qsIngredientInput.classList.add("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
+            qsIngredientList.classList.add("hidden");
+            qsIngredientBox.classList.remove("box--on");
+            qsIngredientSwap.classList.remove("swap--on");
+            qsOpenListIngredient.classList.remove("hidden");
+            qsCloseListIngredient.classList.add("hidden");
+
+            qsToolTitle.classList.remove("hidden");
+            qsToolInput.classList.add("hidden");
+            qsToolList.classList.add("hidden");
+            qsToolBox.classList.remove("box--on");
+            qsToolSwap.classList.remove("swap--on");
+            qsOpenListTool.classList.remove("hidden");
+            qsCloseListTool.classList.add("hidden");
             console.log("if")
             return
         }
@@ -260,6 +433,7 @@ document.addEventListener("click", (e) => {
         if (e.target.classList.contains("listbox__container__tools") || e.target.classList.contains("listbox__container__tools__title") || e.target.classList.contains("listbox__container__tools--swap") || e.target.classList.contains("listbox__container__tools__title") || e.target.classList.contains("fa-chevron-down")
             || e.target.classList.contains("listbox__container__tools__input") || e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") // j'avais juste oublié de metrte ce puatin de target BORDEL DE MERD3E
         {
+            // pas besoin de fermer pour la technière techniquement
             console.log("if")
             return
         }

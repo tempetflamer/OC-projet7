@@ -124,6 +124,11 @@ export function getListIngredients(qsIngredientList, data) {
             filterIcon.classList.add("fa-lg");
             filterDiv.appendChild(filterIcon)
             qsFiltersSelected.appendChild(filterDiv);
+            item.remove();
+
+            filterIcon.addEventListener("click", (e) => {
+                filterDiv.remove()
+            }, {once : true});
 
         });
 
@@ -139,6 +144,24 @@ export function getListAppliances(qsApplianceList, data) {
         qsApplianceList.appendChild(item);
         console.log(qsApplianceList)
 
+        item.addEventListener("click", (e) => {
+            console.log(item.textContent)
+            const filterDiv = document.createElement('div');
+            filterDiv.classList.add("filterselected__item")
+            filterDiv.classList.add("type--appliance")
+            const filterText = document.createElement('p');
+            filterText.textContent = item.textContent;
+            filterDiv.appendChild(filterText)
+            const filterIcon = document.createElement('i');
+            filterIcon.classList.add("fa-regular");
+            filterIcon.classList.add("fa-circle-xmark");
+            filterIcon.classList.add("fa-lg");
+            filterDiv.appendChild(filterIcon)
+            qsFiltersSelected.appendChild(filterDiv);
+            item.remove();
+
+        });
+
     })
 
 }
@@ -150,6 +173,24 @@ export function getListTools(qstoolList, data) {
         item.textContent = el;
         qstoolList.appendChild(item);
         console.log(qstoolList)
+
+        item.addEventListener("click", (e) => {
+            console.log(item.textContent)
+            const filterDiv = document.createElement('div');
+            filterDiv.classList.add("filterselected__item")
+            filterDiv.classList.add("type--tool")
+            const filterText = document.createElement('p');
+            filterText.textContent = item.textContent;
+            filterDiv.appendChild(filterText)
+            const filterIcon = document.createElement('i');
+            filterIcon.classList.add("fa-regular");
+            filterIcon.classList.add("fa-circle-xmark");
+            filterIcon.classList.add("fa-lg");
+            filterDiv.appendChild(filterIcon)
+            qsFiltersSelected.appendChild(filterDiv);
+            item.remove();
+
+        });
 
     })
 

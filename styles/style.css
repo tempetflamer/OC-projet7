@@ -74,23 +74,49 @@ body {
 width: 12rem;
 } */
 .box--on {
-  width: 36rem;
-  max-height: 22.5rem;
+  width: 100%;
+  max-height: 100%;
+  z-index: 2;
 }
 
-.box1--on {
+.box1 {
   width: 12rem;
-  max-height: 7rem;
 }
 
-.box2--on {
+.box2 {
   width: 24rem;
-  max-height: 12rem;
 }
 
-.box3--on {
+.box3 {
   width: 36rem;
-  max-height: 22.5rem;
+}
+
+.box1 {
+  width: 12rem;
+}
+
+.box2 {
+  width: 24rem;
+}
+
+.box4 {
+  width: 48rem;
+}
+
+.box5 {
+  width: 60rem;
+}
+
+.box6 {
+  width: 72rem;
+}
+
+.box7 {
+  width: 84rem;
+}
+
+.box8 {
+  width: 96rem;
 }
 
 .filterselected {
@@ -116,6 +142,16 @@ width: 12rem;
 
 .type--ingredient {
   background-color: #3282F7;
+  border-radius: 5px;
+}
+
+.type--appliance {
+  background-color: #68D9A4;
+  border-radius: 5px;
+}
+
+.type--tool {
+  background-color: #ED6454;
   border-radius: 5px;
 }
 
@@ -257,14 +293,19 @@ header h1 {
   gap: 0 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-height: 18rem;
   line-height: 1.8rem;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #1f66d1 #84aeec;
+  /*             width: 84rem;
+              position: absolute;
+              background-color: $ingredient-color;
+              top: 40%;
+              left: 8%; */
 }
 .listbox__container__ingredients__list li {
-  min-width: 8rem;
+  min-width: 4rem;
+  max-width: 8rem;
 }
 .listbox__container__ingredients__list li:hover {
   background-color: #1f66d1;
@@ -296,14 +337,14 @@ header h1 {
   gap: 0 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-height: 18rem;
   line-height: 1.8rem;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #a51f10 #e4a098;
 }
 .listbox__container__tools__list li {
-  min-width: 8rem;
+  min-width: 4rem;
+  max-width: 8rem;
 }
 .listbox__container__tools__list li:hover {
   background-color: #a51f10;
@@ -335,14 +376,14 @@ header h1 {
   gap: 0 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-height: 18rem;
   line-height: 1.8rem;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #0daf64 #acecce;
 }
 .listbox__container__appliances__list li {
-  min-width: 8rem;
+  min-width: 4rem;
+  max-width: 8rem;
 }
 .listbox__container__appliances__list li:hover {
   background-color: #0daf64;
@@ -367,7 +408,12 @@ header h1 {
   justify-content: center;
 }
 
+.column-list1 {
+  grid-template-columns: 1fr;
+}
+
 .recipes {
+  padding-top: 1rem;
   width: 100%;
   gap: 50px;
   display: grid;
@@ -412,4 +458,13 @@ header h1 {
   -moz-orient: vertical;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@media screen and (max-width: 1530px) {
+  .recipes__card__data__content {
+    font-size: 95%;
+  }
+  .recipes__card__data__content__time {
+    font-size: 1.1rem;
+  }
 }

@@ -8,6 +8,7 @@
 
         &__ingredients {
             background-color: #3282F7;
+            //position: absolute; // si je passe en position absolute y a plus de 100%, faut les mettre en rem (border box)
 
             &__input {
                 width: 90%;
@@ -29,6 +30,8 @@
 
         &__appliances {
             background-color: #68D9A4;
+            //position: absolute;
+            //margin-left: 13rem;
 
             &__input {
                 width: 90%;
@@ -50,6 +53,8 @@
 
         &__tools {
             background-color: #ED6454;
+            //position: absolute;
+            //margin-left: 26rem;
 
             &__input {
                 width: 90%;
@@ -85,7 +90,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             //grid-template-rows: repeat(10, 1.5rem);
-            max-height: 18rem;
+            //max-height: 18rem;
             line-height: 1.8rem;
 
             // firefox scrollbar
@@ -93,10 +98,20 @@
             scrollbar-width: thin;
             scrollbar-color: #1f66d1 #84aeec;
 
+            // position: relative;
+            // z-index: 1;
+/*             width: 84rem;
+            position: absolute;
+            background-color: $ingredient-color;
+            top: 40%;
+            left: 8%; */
+            //left: ;
+
             //question => est-ce que je dois permettre à genre chocolat noir en pépite de passer à la ligne ou faire une rupture
 
             li {
-                min-width: 8rem; // pourra potentiellement être remplacé par min-width
+                min-width: 4rem; // pourra potentiellement être remplacé par min-width
+                max-width: 8rem;
             }
 
             li:hover {
@@ -144,7 +159,7 @@
             gap: 0 1rem;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            max-height: 18rem;
+            //max-height: 18rem;
             line-height: 1.8rem;
 
             // firefox scrollbar
@@ -153,7 +168,8 @@
             scrollbar-color: #a51f10 #e4a098;
 
             li {
-                min-width: 8rem;
+                min-width: 4rem;
+                max-width: 8rem;
             }
             li:hover {
                 background-color: #a51f10;
@@ -192,7 +208,7 @@
             gap: 0 1rem;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            max-height: 18rem;
+            // max-height: 18rem; // avant maintenant soit je mais rien soit je met 100% et je changerais en responsive
             line-height: 1.8rem;
 
             // firefox scrollbar
@@ -201,7 +217,8 @@
             scrollbar-color: #0daf64 #acecce;
 
             li {
-                min-width: 8rem;
+                min-width: 4rem;
+                max-width: 8rem;
             }
             li:hover {
                 background-color: #0daf64;
@@ -237,4 +254,9 @@
     justify-content: center;
     //margin-left: 1.5rem;
     //margin-right: -1.5rem;
+}
+
+//ptetre aps besoin
+.column-list1 {
+    grid-template-columns: 1fr;
 }

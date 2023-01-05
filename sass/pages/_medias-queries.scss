@@ -1,0 +1,11 @@
+// attendre que figma soit de nouveau en ligne pour vérifier l'espace qu'on peux retirer sur els card pour le responsive
+@media screen and (max-width: 1530px) {
+    .recipes__card__data__content {
+        font-size: 95%;
+
+        &__time {
+            font-size: 1.1rem;
+        }
+    
+    }
+}

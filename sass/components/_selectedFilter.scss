@@ -25,6 +25,14 @@
 }
 
 .type--ingredient {
-    background-color: #3282F7;
+    background-color: $ingredient-color;
+    border-radius: 5px;
+}
+.type--appliance {
+    background-color: $appliance-color;
+    border-radius: 5px;
+}
+.type--tool {
+    background-color: $tool-color;
     border-radius: 5px;
 }
