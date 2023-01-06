@@ -218,16 +218,17 @@ header h1 {
   gap: 20px;
   /* WebKit and Chromiums (Safari, chrome, edge)*/
   /*         &__ingredients__list::-webkit-scrollbar-track {
-              -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-              border-radius: 10px;
-              background-color: #F5F5F5;
-              overflow-x: auto;
-          } */
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+      overflow-x: auto;
+  } */
   /* WebKit and Chromiums (Safari, chrome, edge)*/
   /* WebKit and Chromiums (Safari, chrome, edge)*/
 }
 .listbox__container__ingredients {
   background-color: #3282F7;
+  position: relative;
 }
 .listbox__container__ingredients__input {
   width: 90%;
@@ -289,23 +290,19 @@ header h1 {
 .listbox__container__ingredients__list {
   padding: 0;
   margin: 0;
-  margin-left: 0.5rem;
-  gap: 0 1rem;
-  display: grid;
+  padding: 1rem;
+  margin-left: -1rem;
+  gap: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  top: 3.3rem;
   grid-template-columns: 1fr 1fr 1fr;
-  line-height: 1.8rem;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #1f66d1 #84aeec;
-  /*             width: 84rem;
-              position: absolute;
-              background-color: $ingredient-color;
-              top: 40%;
-              left: 8%; */
+  width: 84rem;
+  position: absolute;
+  background-color: #3282F7;
 }
 .listbox__container__ingredients__list li {
-  min-width: 4rem;
-  max-width: 8rem;
+  width: 12rem;
 }
 .listbox__container__ingredients__list li:hover {
   background-color: #1f66d1;
