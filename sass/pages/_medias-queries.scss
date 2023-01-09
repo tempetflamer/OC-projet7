@@ -73,3 +73,28 @@
     }
 
 }
+
+@media screen and (max-width: 520px) {
+    .listbox__container__ingredients__input, .listbox__container__tools__input, .listbox__container__appliances__input {
+        margin-left: 0.1rem;
+    }
+}
+
+// Adapt listbox wrap
+@media screen and (max-width: 733px) {
+    .listbox__container__tools__list {
+        top: 22rem;;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .listbox__container__appliances__list {
+        top: 22rem;;
+    }
+
+    .listbox__container__tools__list {
+        top: 27rem;;
+    }
+
+}

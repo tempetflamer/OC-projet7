@@ -107,7 +107,7 @@ body {
   width: 106rem;
 }
 
-.box-off {
+.box--off {
   width: 12rem;
 }
 
@@ -510,5 +510,23 @@ header h1 {
   }
   .recipes__card__data__content__desc {
     max-width: 100%;
+  }
+}
+@media screen and (max-width: 520px) {
+  .listbox__container__ingredients__input, .listbox__container__tools__input, .listbox__container__appliances__input {
+    margin-left: 0.1rem;
+  }
+}
+@media screen and (max-width: 733px) {
+  .listbox__container__tools__list {
+    top: 22rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .listbox__container__appliances__list {
+    top: 22rem;
+  }
+  .listbox__container__tools__list {
+    top: 27rem;
   }
 }

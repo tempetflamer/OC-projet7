@@ -2,6 +2,7 @@ import { dataFetch } from "./utils/dataReader.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "./factories/recipe.js";
 import { initArrays, sortArrays } from "./utils/initArrays.js";
 import { arrayrecipes, arrayIngredients, arrayAppliances, arrayTools } from "./utils/initArrays.js";
+import { setlistboxSize } from "./utils/resize-listbox.js";
 
 const searchInput = document.querySelector(".recherche__container input");
 const qsBody = document.querySelector("body");
@@ -85,253 +86,13 @@ async function init() {
   //faire un js de trie
   sortArrays();
 
-  // il faut que j'enlève box-on et que je mettre un box off plutôt
-  console.log("taille du array ingrédient" + arrayIngredients.length);
-  let i = 0;
-  let j = 1;
+  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
+  setlistboxSize(arrayTools, qsToolList, qsToolBox)
+  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox)
 
-  for (let i = 0; i < arrayIngredients.length + 1; i = i + 10, j++) {
-    if (i + 10 > arrayIngredients.length) {
-      if (window.matchMedia("(min-width:2050px)").matches) {
-        if (j > 8) {
-          qsIngredientList.classList.add("box" + 8);
-          qsIngredientBox.classList.add("box" + 8);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-
-      }
-      else if (window.matchMedia("(min-width:1800px) and (max-width: 2049px)").matches) {
-        if (j > 7) {
-          qsIngredientList.classList.add("box" + 7);
-          qsIngredientBox.classList.add("box" + 7);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      }
-      else if (window.matchMedia("(min-width:1525px) and (max-width: 1799px)").matches) /*1760 */ {
-        if (j > 6) {
-          qsIngredientList.classList.add("box" + 6);
-          qsIngredientBox.classList.add("box" + 6);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:1280px) and (max-width: 1524px)").matches) {
-        if (j > 5) {
-          qsIngredientList.classList.add("box" + 5);
-          qsIngredientBox.classList.add("box" + 5);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:1025px) and (max-width: 1279px)").matches) {
-        if (j > 4) {
-          qsIngredientList.classList.add("box" + 4);
-          qsIngredientBox.classList.add("box" + 4);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:769px) and (max-width: 1024px)").matches) {
-        if (j > 3) {
-          qsIngredientList.classList.add("box" + 3);
-          qsIngredientBox.classList.add("box" + 3);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:521px) and (max-width: 768px)").matches) {
-        if (j > 2) {
-          qsIngredientList.classList.add("box" + 2);
-          qsIngredientBox.classList.add("box" + 2);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(max-width: 520px)").matches) {
-        qsIngredientList.classList.add("box" + 1);
-        qsIngredientBox.classList.add("box" + 1);
-      } /* else {
-        if (j > 8) {
-          //qsIngredientList.classList.add("box"+7);
-          qsIngredientBox.classList.add("box" + 7);
-        } else {
-          qsIngredientList.classList.add("box" + j);
-          qsIngredientBox.classList.add("box" + j);
-        }
-      } */
-    }
-  }
-  console.log("combien vaut j : " + j);
-
-  console.log("taille du array appliance" + arrayAppliances.length);
-
-  i = 0;
-  j = 1;
-  for (let i = 0; i < arrayAppliances.length + 1; i = i + 10, j++) {
-    if (i + 10 > arrayAppliances.length) {
-      if (window.matchMedia("(min-width:2050px)").matches) {
-        if (j > 8) {
-          qsApplianceList.classList.add("box" + 8);
-          qsApplianceBox.classList.add("box" + 8);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-
-      }
-      else if (window.matchMedia("(min-width:1800px) and (max-width: 2049px)").matches) {
-        if (j > 7) {
-          qsApplianceList.classList.add("box" + 7);
-          qsApplianceBox.classList.add("box" + 7);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      }
-      else if (window.matchMedia("(min-width:1525px) and (max-width: 1799px)").matches) /*1760 */ {
-        if (j > 6) {
-          qsApplianceList.classList.add("box" + 6);
-          qsApplianceBox.classList.add("box" + 6);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:1280px) and (max-width: 1524px)").matches) {
-        if (j > 5) {
-          qsApplianceList.classList.add("box" + 5);
-          qsApplianceBox.classList.add("box" + 5);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:1025px) and (max-width: 1279px)").matches) {
-        if (j > 4) {
-          qsApplianceList.classList.add("box" + 4);
-          qsApplianceBox.classList.add("box" + 4);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:769px) and (max-width: 1024px)").matches) {
-        if (j > 3) {
-          qsApplianceList.classList.add("box" + 3);
-          qsApplianceBox.classList.add("box" + 3);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:521px) and (max-width: 768px)").matches) {
-        if (j > 2) {
-          qsApplianceList.classList.add("box" + 2);
-          qsApplianceBox.classList.add("box" + 2);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(max-width: 520px)").matches) {
-        qsApplianceList.classList.add("box" + 1);
-        qsApplianceBox.classList.add("box" + 1);
-      } /* else {
-        if (j > 8) {
-          //qsApplianceList.classList.add("box"+7);
-          qsApplianceBox.classList.add("box" + 7);
-        } else {
-          qsApplianceList.classList.add("box" + j);
-          qsApplianceBox.classList.add("box" + j);
-        }
-      } */
-    }
-  }
-  console.log("combien vaut j : " + j);
-
-  console.log("taille du array tool" + arrayTools.length);
-
-  i = 0;
-  j = 1;
-  for (let i = 0; i < arrayTools.length + 1; i = i + 10, j++) {
-    if (i + 10 > arrayTools.length) {
-      if (window.matchMedia("(min-width:2050px)").matches) {
-        if (j > 8) {
-          qsToolList.classList.add("box" + 8);
-          qsToolBox.classList.add("box" + 8);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-
-      }
-      else if (window.matchMedia("(min-width:1800px) and (max-width: 2049px)").matches) {
-        if (j > 7) {
-          qsToolList.classList.add("box" + 7);
-          qsToolBox.classList.add("box" + 7);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      }
-      else if (window.matchMedia("(min-width:1525px) and (max-width: 1799px)").matches) /*1760 */ {
-        if (j > 6) {
-          qsToolList.classList.add("box" + 6);
-          qsToolBox.classList.add("box" + 6);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:1280px) and (max-width: 1524px)").matches) { // sur chrome a 1279 on passe a 5 mdr
-        if (j > 5) {
-          qsToolList.classList.add("box" + 5);
-          qsToolBox.classList.add("box" + 5);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:1025px) and (max-width: 1279px)").matches) {
-        if (j > 4) {
-          qsToolList.classList.add("box" + 4);
-          qsToolBox.classList.add("box" + 4);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:769px) and (max-width: 1024px)").matches) {
-        if (j > 3) {
-          qsToolList.classList.add("box" + 3);
-          qsToolBox.classList.add("box" + 3);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(min-width:521px) and (max-width: 768px)").matches) {
-        if (j > 2) {
-          qsToolList.classList.add("box" + 2);
-          qsToolBox.classList.add("box" + 2);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      } else if (window.matchMedia("(max-width: 520px)").matches) {
-        qsToolList.classList.add("box" + 1);
-        qsToolBox.classList.add("box" + 1);
-      } /* else {
-        if (j > 8) {
-          //qsToolList.classList.add("box"+7);
-          qsToolBox.classList.add("box" + 7);
-        } else {
-          qsToolList.classList.add("box" + j);
-          qsToolBox.classList.add("box" + j);
-        }
-      } */
-    }
-  }
-  console.log("combien vaut j : " + j);
-
-  qsIngredientBox.classList.add("box-off");
-  qsApplianceBox.classList.add("box-off");
-  qsToolBox.classList.add("box-off");
+  qsIngredientBox.classList.add("box--off");
+  qsApplianceBox.classList.add("box--off");
+  qsToolBox.classList.add("box--off");
 
   //renomer ce get ou les autres éléments qui n'en nont pas avec set, create etc
   const createIngredientList = getListIngredients(qsIngredientList, arrayIngredients);
@@ -392,7 +153,7 @@ qsIngredientInput.addEventListener("keyup", searchIngredient);
 document.addEventListener("click", (e) => {
   console.log(qsIngredientBox.classList.contains("box--on"));
   if (qsIngredientBox.classList.contains("box--on")) {
-    // normalement ça devrait etre box-on ou box-off devrait être box--off
+    // normalement ça devrait etre box-on ou box-off devrait être box--off // remplacer
     console.log("contains");
 
     if ( e.target.classList.contains("listbox__container__ingredients") || e.target.classList.contains("listbox__container__ingredients__title") ||
@@ -403,7 +164,7 @@ document.addEventListener("click", (e) => {
       qsApplianceInput.classList.add("hidden");
       qsApplianceList.classList.add("hidden");
       qsApplianceBox.classList.remove("box--on"); //
-      qsApplianceBox.classList.add("box-off");
+      qsApplianceBox.classList.add("box--off");
       qsApplianceSwap.classList.remove("swap--on");
       qsOpenListAppliance.classList.remove("hidden");
       qsCloseListAppliance.classList.add("hidden");
@@ -412,7 +173,7 @@ document.addEventListener("click", (e) => {
       qsToolInput.classList.add("hidden");
       qsToolList.classList.add("hidden");
       qsToolBox.classList.remove("box--on"); //
-      qsToolBox.classList.add("box-off");
+      qsToolBox.classList.add("box--off");
       qsToolSwap.classList.remove("swap--on");
       qsOpenListTool.classList.remove("hidden");
       qsCloseListTool.classList.add("hidden");
@@ -424,7 +185,7 @@ document.addEventListener("click", (e) => {
       qsIngredientInput.classList.add("hidden");
       qsIngredientList.classList.add("hidden");
       qsIngredientBox.classList.remove("box--on");
-      qsIngredientBox.classList.add("box-off");
+      qsIngredientBox.classList.add("box--off");
       qsIngredientSwap.classList.remove("swap--on");
       qsOpenListIngredient.classList.remove("hidden");
       qsCloseListIngredient.classList.add("hidden");
@@ -446,7 +207,7 @@ document.addEventListener("click", (e) => {
       qsIngredientInput.classList.add("hidden");
       qsIngredientList.classList.add("hidden");
       qsIngredientBox.classList.remove("box--on");
-      qsIngredientBox.classList.add("box-off");
+      qsIngredientBox.classList.add("box--off");
       qsIngredientSwap.classList.remove("swap--on");
       qsOpenListIngredient.classList.remove("hidden");
       qsCloseListIngredient.classList.add("hidden");
@@ -455,7 +216,7 @@ document.addEventListener("click", (e) => {
       qsToolInput.classList.add("hidden");
       qsToolList.classList.add("hidden");
       qsToolBox.classList.remove("box--on");
-      qsToolBox.classList.add("box-off");
+      qsToolBox.classList.add("box--off");
       qsToolSwap.classList.remove("swap--on");
       qsOpenListTool.classList.remove("hidden");
       qsCloseListTool.classList.add("hidden");
@@ -466,7 +227,7 @@ document.addEventListener("click", (e) => {
       qsApplianceInput.classList.add("hidden");
       qsApplianceList.classList.add("hidden");
       qsApplianceBox.classList.remove("box--on");
-      qsApplianceBoxOff.classList.add("box-off");
+      qsApplianceBoxOff.classList.add("box--off");
       qsApplianceSwap.classList.remove("swap--on");
       qsOpenListAppliance.classList.remove("hidden");
       qsCloseListAppliance.classList.add("hidden");
@@ -491,7 +252,7 @@ document.addEventListener("click", (e) => {
       qsToolInput.classList.add("hidden");
       qsToolList.classList.add("hidden");
       qsToolBox.classList.remove("box--on");
-      qsToolBox.classList.add("box-off");
+      qsToolBox.classList.add("box--off");
       qsToolSwap.classList.remove("swap--on");
       qsOpenListTool.classList.remove("hidden");
       qsCloseListTool.classList.add("hidden");
@@ -508,7 +269,7 @@ qsIngredientBoxOff.addEventListener("click", function (e) {
     qsIngredientList.classList.remove("hidden");
     qsIngredientInput.focus();
     qsIngredientBox.classList.add("box--on");
-    qsIngredientBox.classList.remove("box-off");
+    qsIngredientBox.classList.remove("box--off");
     qsIngredientSwap.classList.add("swap--on");
     qsOpenListIngredient.classList.add("hidden");
     qsCloseListIngredient.classList.remove("hidden");
@@ -525,7 +286,7 @@ qsIngredientBox.addEventListener("keydown", (e) => {
     qsIngredientInput.classList.toggle("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
     qsIngredientList.classList.toggle("hidden");
     qsIngredientBox.classList.toggle("box--on");
-    qsIngredientBox.classList.remove("box-off");
+    qsIngredientBox.classList.remove("box--off");
     qsIngredientSwap.classList.toggle("swap--on");
   }
 });
@@ -538,7 +299,7 @@ qsToolBox.addEventListener("click", function (e) {
     qsToolList.classList.remove("hidden");
     qsToolInput.focus();
     qsToolBox.classList.add("box--on");
-    qsToolBox.classList.remove("box-off");
+    qsToolBox.classList.remove("box--off");
     qsToolSwap.classList.add("swap--on");
     qsOpenListTool.classList.add("hidden");
     qsCloseListTool.classList.remove("hidden");
@@ -551,7 +312,7 @@ qsToolBox.addEventListener("keydown", (e) => {
     qsToolInput.classList.toggle("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
     qsToolList.classList.toggle("hidden");
     qsToolBox.classList.toggle("box--on");
-    qsToolBox.classList.remove("box-off");
+    qsToolBox.classList.remove("box--off");
     qsToolSwap.classList.toggle("swap--on");
   }
 });
@@ -564,7 +325,7 @@ qsApplianceBox.addEventListener("click", function (e) {
     qsApplianceList.classList.remove("hidden");
     qsApplianceInput.focus();
     qsApplianceBox.classList.add("box--on");
-    qsApplianceBox.classList.remove("box-off");
+    qsApplianceBox.classList.remove("box--off");
     qsApplianceSwap.classList.add("swap--on");
     qsOpenListAppliance.classList.add("hidden");
     qsCloseListAppliance.classList.remove("hidden");
@@ -577,7 +338,25 @@ qsApplianceBox.addEventListener("keydown", (e) => {
     qsApplianceInput.classList.toggle("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
     qsApplianceList.classList.toggle("hidden");
     qsApplianceBox.classList.toggle("box--on");
-    qsApplianceBox.classList.remove("box-off");
+    qsApplianceBox.classList.remove("box--off");
     qsApplianceSwap.classList.toggle("swap--on");
+  }
+});
+
+window.addEventListener("resize", (e) => {
+ 
+  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
+  setlistboxSize(arrayTools, qsToolList, qsToolBox)
+  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox)
+
+  if (window.matchMedia("(max-width: 520px)").matches) {
+    qsIngredientInput.placeholder = "Rechercher..."
+    qsApplianceInput.placeholder = "Rechercher..."
+    qsToolInput.placeholder = "Rechercher..."
+  }
+  else {
+    qsIngredientInput.placeholder = "Rechercher un ingrédient"
+    qsApplianceInput.placeholder = "Rechercher un appareil"
+    qsToolInput.placeholder = "Rechercher un ustensiles" 
   }
 });
