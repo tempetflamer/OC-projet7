@@ -4,17 +4,11 @@
     gap: 50px;
     display: grid;
     grid-template-columns: 30% 30% 30%;
-
-    // display: flex;
-    // flex-wrap: wrap;
-    //grid-template-columns: 30% 30% 30%;
-    //grid-template-columns: repeat(auto-fit, 1fr);
     margin-top: 4rem;
     overflow: hidden;
 
 
     &__card {
-        //max-width: 500px;
         min-width: 300px; // normalement on devrais j'amais l'atteindre
         background: #E7E7E7;
 
@@ -26,11 +20,35 @@
         }
 
         &__data {
-            padding: 1.5rem;
+            padding: 0.5rem 1.5rem 1.5rem 1.5rem;
 
-            &__content-top {}
+            &__content-top {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+
+                &__time {
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 0 0.5rem;
+                    font-size: 1.2rem;
+                    width: 10rem; // 10 rem allows to go up to 4 digits, 8 rem is enough for 3 digits, let us leave a little margin, ex: (8 hours * 60 = 480h), 16h20 are necessary to reach 1000
+                    overflow: auto;
+                }
+
+                &__title {
+                    width: 80%;
+                }
+
+                h3 {
+                    margin-bottom: 0;
+                }
+            }
 
             //comme un con j'ai mis le time et titre normalement dans content et pas dans content top
+
             &__content {
                 gap: 0 1.5rem;
                 display: grid;
@@ -41,28 +59,12 @@
                     padding: 0;
                 }
 
-                &__time {
-                    font-weight: 700;
-                    display: flex;
-                    align-items: center;
-                    gap: 0 0.5rem;
-                    font-size: 1.2rem;
-                }
-
                 &__desc {
                     max-height: 12rem;
-                    //white-space: nowrap;
-                    //display: block;
-                    //overflow: hidden;
-                    //text-overflow: clip ellipsis;
-
                     display: -webkit-box;
                     max-width: 200px;
                     -webkit-line-clamp: 10;
-                    //a laire de amrcher même sans ces deux là sur firefox
-                    box-orient: vertical;
                     -moz-orient: vertical;
-
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                 }

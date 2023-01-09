@@ -27,62 +27,45 @@
     //.fa-chevron-up {display: none;} // ajouter le display none de manière js comme ça le css charge avant a cause du display flex je suppose
 }
 
-/* .box--off {
-width: 12rem;
-} */
-
 .box--on {
-    width: 100%;
     max-height: 100%;
     z-index: 2;
 }
 
-// .box1--on {
-//     width: 12rem;
-//     max-height: 7rem;
-//     }
-
-// .box2--on {
-//     width: 24rem;
-//     max-height: 12rem;
-// }
-
-// .box3--on {
-//     width: 36rem;
-//     max-height: 22.5rem;
-// }
-
 .box1 {
     width: 12rem;
     }
 
 .box2 {
-    width: 24rem;
+    //width: 24rem;
+    width: 27rem;
 }
 
 .box3 {
-    width: 36rem;
+    //width: 36rem;
+    width: 40rem;
 }
-.box1 {
-    width: 12rem;
-    }
-
-.box2 {
-    width: 24rem;
-}
-
 .box4 {
-    width: 48rem;
+    //width: 48rem;
+    width: 53rem; //54
 }
 .box5 {
-    width: 60rem;
+    //width: 60rem;
+    width: 66rem;
 }
 .box6 {
-    width: 72rem;
+    //width: 72rem;
+    width: 79rem;
 }
 .box7 {
-    width: 84rem;
+    //width: 84rem;
+    width: 92rem;
 }
 .box8 {
-    width: 96rem;
+    //width: 96rem;
+    width: 106rem;
+}
+
+.box-off {
+    width: 12rem;
 }

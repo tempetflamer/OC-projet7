@@ -27,11 +27,11 @@ export function recipesFactories(data) {
 
         const titleRecipe = document.createElement('h3');
         titleRecipe.textContent = data.name;
-        titleRecipe.classList.add('recipes__card__data__content__title')
-        content.appendChild(titleRecipe);
+        titleRecipe.classList.add('recipes__card__data__content-top__title')
+        contentTop.appendChild(titleRecipe);
         const time = document.createElement('div');
-        time.classList.add('recipes__card__data__content__time')
-        content.appendChild(time);
+        time.classList.add('recipes__card__data__content-top__time')
+        contentTop.appendChild(time);
 
         const iconTime = document.createElement('i');
         iconTime.classList.add('fa-regular')

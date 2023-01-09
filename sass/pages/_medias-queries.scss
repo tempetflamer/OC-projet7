@@ -1,11 +1,75 @@
-// attendre que figma soit de nouveau en ligne pour vérifier l'espace qu'on peux retirer sur els card pour le responsive
 @media screen and (max-width: 1530px) {
-    .recipes__card__data__content {
+    .recipes__card__data {
         font-size: 95%;
-
-        &__time {
-            font-size: 1.1rem;
+        &__content {
+            &__desc {
+                max-height: 11.5rem;
+            }
         }
-    
+
+        &__content-top {
+            &__time, &__title {
+                font-size: 1.1rem;
+            }
+        }
     }
+}
+
+
+@media screen and (max-width: 1300px) {
+    .recipes {
+        grid-template-columns: 47.5% 47.5%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .recipes {
+        grid-template-columns: 45% 45%;
+    }
+
+    .recipes__card__data {
+        font-size: 90%;
+        &__content-top {
+            &__time, &__title {
+                font-size: 1rem;
+            }
+        }
+
+        &__content {
+            &__desc {
+                width: auto;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .recipes__card__data {
+        font-size: 80%;
+
+        &__content-top {
+            &__time, &__title {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recipes {
+        grid-template-columns: 85%;
+    }
+
+    .recipes__card__data {
+        font-size: 90%;
+
+        &__content {
+            &__desc {
+                max-width: 100%;
+            }
+        }
+
+    }
+
 }
