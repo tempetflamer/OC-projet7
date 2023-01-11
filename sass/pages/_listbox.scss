@@ -18,7 +18,6 @@
                 background-color: transparent;
                 font-weight: 500;
                 font-size: 1.2rem;
-                margin-left: -1.5rem;
                 outline: none;
                 caret-color: white; // vertical bar input written
                 color: #fff;
@@ -42,7 +41,6 @@
                 background-color: transparent;
                 font-weight: 500;
                 font-size: 1.2rem;
-                margin-left: -1.5rem;
                 outline: none;
                 caret-color: white; // vertical bar input written
                 color: #fff;
@@ -66,7 +64,6 @@
                 background-color: transparent;
                 font-weight: 500;
                 font-size: 1.2rem;
-                margin-left: -1.5rem;
                 outline: none;
                 caret-color: white; // vertical bar input written
                 color: #fff;
@@ -264,7 +261,7 @@
 
 .swap--on {
     gap: 0;
-    justify-content: center;
+    //justify-content: space-between;
     //margin-left: 1.5rem;
     //margin-right: -1.5rem;
 }
@@ -272,4 +269,19 @@
 //ptetre aps besoin
 .column-list1 {
     grid-template-columns: 1fr;
+}
+
+.listbox-container-start {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+
+
+}
+
+.listbox-container-end {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
 }

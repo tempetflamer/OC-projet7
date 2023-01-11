@@ -35,12 +35,12 @@ const qsToolList = document.querySelector(".listbox__container__tools__list");
 const qsCloseList = document.querySelectorAll(".fa-chevron-up");
 const qsOpenList = document.querySelectorAll(".fa-chevron-down");
 
-const qsCloseListIngredient = document.querySelector(".listbox__container__ingredients--swap > .fa-chevron-up");
-const qsOpenListIngredient = document.querySelector(".listbox__container__ingredients--swap > .fa-chevron-down");
-const qsCloseListTool = document.querySelector(".listbox__container__tools--swap > .fa-chevron-up");
-const qsOpenListTool = document.querySelector(".listbox__container__tools--swap > .fa-chevron-down");
-const qsCloseListAppliance = document.querySelector(".listbox__container__appliances--swap > .fa-chevron-up");
-const qsOpenListAppliance = document.querySelector(".listbox__container__appliances--swap > .fa-chevron-down");
+const qsCloseListIngredient = document.querySelector(".listbox__container__ingredients--swap > div >.fa-chevron-up");
+const qsOpenListIngredient = document.querySelector(".listbox__container__ingredients--swap > div > .fa-chevron-down");
+const qsCloseListTool = document.querySelector(".listbox__container__tools--swap > div > .fa-chevron-up");
+const qsOpenListTool = document.querySelector(".listbox__container__tools--swap > div > .fa-chevron-down");
+const qsCloseListAppliance = document.querySelector(".listbox__container__appliances--swap > div > .fa-chevron-up");
+const qsOpenListAppliance = document.querySelector(".listbox__container__appliances--swap > div > .fa-chevron-down");
 
 const searchHiddenElements = document.querySelectorAll("body");
 console.log(searchInput);

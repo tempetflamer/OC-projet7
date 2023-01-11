@@ -228,7 +228,6 @@ header h1 {
   background-color: transparent;
   font-weight: 500;
   font-size: 1.2rem;
-  margin-left: -1.5rem;
   outline: none;
   caret-color: white;
   color: #fff;
@@ -247,7 +246,6 @@ header h1 {
   background-color: transparent;
   font-weight: 500;
   font-size: 1.2rem;
-  margin-left: -1.5rem;
   outline: none;
   caret-color: white;
   color: #fff;
@@ -266,7 +264,6 @@ header h1 {
   background-color: transparent;
   font-weight: 500;
   font-size: 1.2rem;
-  margin-left: -1.5rem;
   outline: none;
   caret-color: white;
   color: #fff;
@@ -396,11 +393,23 @@ header h1 {
 
 .swap--on {
   gap: 0;
-  justify-content: center;
 }
 
 .column-list1 {
   grid-template-columns: 1fr;
+}
+
+.listbox-container-start {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.listbox-container-end {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1rem;
 }
 
 .recipes {
