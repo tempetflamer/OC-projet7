@@ -1,7 +1,11 @@
 let arrayrecipes = [];
+let arrayrecipesReset = [];
 let arrayIngredients = [];
+let arrayIngredientsReset = [];
 let arrayAppliances = [];
+let arrayAppliancesReset = [];
 let arrayTools = [];
+let arrayToolsReset = [];
 
 export function initArrays(data) {
     const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
@@ -9,7 +13,7 @@ export function initArrays(data) {
     let values;
 
     function initArrayRecipe() {
-        arrayrecipes.push();
+        arrayrecipes.push(data);
     }
 
     function initArrayIngredient() {
@@ -105,6 +109,34 @@ export function sortArrays() {
     console.log("arrayIngredients : " + arrayIngredients.toString());
 }
 
+export function initResetArrays() {
+    arrayrecipesReset = arrayrecipes;
+    arrayIngredientsReset = arrayIngredients;
+    arrayAppliancesReset = arrayAppliances;
+    arrayToolsReset = arrayTools;
+}
+
+export function clearArrays() {
+    arrayrecipes = []
+    arrayIngredients = [];
+    arrayTools = [];
+    arrayAppliances = [];
+}
+
+export function removeElement(type, name) {
+    if (type == "ingredient") {
+        arrayIngredients = arrayIngredients.filter((ingredient) => ingredient !== name)
+    }
+    else if (type == "appliance") {
+        arrayAppliances = arrayAppliances.filter((appliance) => appliance !== name)
+    }
+    else if (type == "tool") {
+        arrayTools = arrayTools.filter((tool) => tool !== name)
+    }
+
+}
+
+
 // exports tab
-export { arrayrecipes, arrayIngredients, arrayAppliances, arrayTools };
+export { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset };
 //exempel export {department, tasks};

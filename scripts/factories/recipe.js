@@ -1,4 +1,11 @@
+import { arrayrecipes, clearArrays } from "../utils/initArrays.js";
+import { searchByTag } from "../utils/search.js"; 
+
 const qsFiltersSelected = document.querySelector('.filterselected');
+const qsIngredientInput = document.querySelector(".listbox__container__ingredients__input");
+const qsApplianceInput = document.querySelector(".listbox__container__appliances__input");
+const qsToolInput = document.querySelector(".listbox__container__tools__input");
+
 
 export function recipesFactories(data) {
     //id name servings ingredients time description appliance ustensils
@@ -126,6 +133,14 @@ export function getListIngredients(qsIngredientList, data) {
             qsFiltersSelected.appendChild(filterDiv);
             item.remove();
 
+            qsIngredientInput.value = "";
+
+            //let arraysFilter = arrayrecipes;
+            //clearArrays();
+            //searchByTag(/* arraysFilter */);
+            console.log("arraysF arraysRecipe : " + arrayrecipes)
+            searchByTag(arrayrecipes);
+
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
             }, {once : true});
@@ -160,6 +175,13 @@ export function getListAppliances(qsApplianceList, data) {
             qsFiltersSelected.appendChild(filterDiv);
             item.remove();
 
+            qsApplianceInput.value = "";
+            searchByTag();
+
+            filterIcon.addEventListener("click", (e) => {
+                filterDiv.remove()
+            }, {once : true});
+
         });
 
     })
@@ -189,6 +211,13 @@ export function getListTools(qstoolList, data) {
             filterDiv.appendChild(filterIcon)
             qsFiltersSelected.appendChild(filterDiv);
             item.remove();
+
+            qsToolInput.value = "";
+            searchByTag();
+
+            filterIcon.addEventListener("click", (e) => {
+                filterDiv.remove()
+            }, {once : true});
 
         });
 

@@ -335,7 +335,7 @@ header h1 {
   border-radius: 0 0 5px 5px;
 }
 .listbox__container__tools__list li {
-  min-width: 12rem;
+  width: 12rem;
 }
 .listbox__container__tools__list li:hover {
   background-color: #a51f10;

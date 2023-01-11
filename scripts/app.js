@@ -1,8 +1,9 @@
 import { dataFetch } from "./utils/dataReader.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "./factories/recipe.js";
-import { initArrays, sortArrays } from "./utils/initArrays.js";
-import { arrayrecipes, arrayIngredients, arrayAppliances, arrayTools } from "./utils/initArrays.js";
+import { initArrays, initResetArrays, sortArrays } from "./utils/initArrays.js";
+import { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset } from "./utils/initArrays.js";
 import { setlistboxSize } from "./utils/resize-listbox.js";
+import { searchByTag } from "./utils/search.js";
 
 const searchInput = document.querySelector(".recherche__container input");
 const qsBody = document.querySelector("body");
@@ -82,9 +83,11 @@ async function init() {
     // photographersSection.appendChild(userCardDOM);
   });
 
-  // Partie test
-  //faire un js de trie
-  sortArrays();
+  initResetArrays(),
+
+    // Partie test
+    //faire un js de trie
+    sortArrays();
 
   setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
   setlistboxSize(arrayTools, qsToolList, qsToolBox)
@@ -156,10 +159,10 @@ document.addEventListener("click", (e) => {
     // normalement ça devrait etre box-on ou box-off devrait être box--off // remplacer
     console.log("contains");
 
-    if ( e.target.classList.contains("listbox__container__ingredients") || e.target.classList.contains("listbox__container__ingredients__title") ||
+    if (e.target.classList.contains("listbox__container__ingredients") || e.target.classList.contains("listbox__container__ingredients__title") ||
       e.target.classList.contains("listbox__container__ingredients--swap") || e.target.classList.contains("listbox__container__ingredients__title") ||
       e.target.classList.contains("fa-chevron-down") || e.target.classList.contains("listbox__container__ingredients__input") ||
-      e.target.classList.contains("listbox__container__ingredients__list") || e.target.nodeName == "LI" ) {
+      e.target.classList.contains("listbox__container__ingredients__list") || e.target.nodeName == "LI") {
       qsApplianceTitle.classList.remove("hidden");
       qsApplianceInput.classList.add("hidden");
       qsApplianceList.classList.add("hidden");
@@ -198,10 +201,10 @@ document.addEventListener("click", (e) => {
   if (qsApplianceBox.classList.contains("box--on")) {
     console.log("contains");
 
-    if ( e.target.classList.contains("listbox__container__appliances") || e.target.classList.contains("listbox__container__appliances__title") ||
+    if (e.target.classList.contains("listbox__container__appliances") || e.target.classList.contains("listbox__container__appliances__title") ||
       e.target.classList.contains("listbox__container__appliances--swap") || e.target.classList.contains("listbox__container__appliances__title") ||
       e.target.classList.contains("fa-chevron-down") || e.target.classList.contains("listbox__container__appliances__input") ||
-      e.target.classList.contains("listbox__container__appliances__list") || e.target.nodeName == "LI" ) {
+      e.target.classList.contains("listbox__container__appliances__list") || e.target.nodeName == "LI") {
       // be sure que les deux autres avant se ferme dans ce cas
       qsIngredientTitle.classList.remove("hidden");
       qsIngredientInput.classList.add("hidden");
@@ -240,10 +243,10 @@ document.addEventListener("click", (e) => {
   if (qsToolBox.classList.contains("box--on")) {
     console.log("contains");
 
-    if ( e.target.classList.contains("listbox__container__tools") || e.target.classList.contains("listbox__container__tools__title") ||
+    if (e.target.classList.contains("listbox__container__tools") || e.target.classList.contains("listbox__container__tools__title") ||
       e.target.classList.contains("listbox__container__tools--swap") || e.target.classList.contains("listbox__container__tools__title") ||
       e.target.classList.contains("fa-chevron-down") || e.target.classList.contains("listbox__container__tools__input") ||
-      e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI" ) {
+      e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") {
       // pas besoin de fermer pour la technière techniquement
       console.log("if");
       return;
@@ -344,7 +347,7 @@ qsApplianceBox.addEventListener("keydown", (e) => {
 });
 
 window.addEventListener("resize", (e) => {
- 
+
   setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
   setlistboxSize(arrayTools, qsToolList, qsToolBox)
   setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox)
@@ -357,6 +360,6 @@ window.addEventListener("resize", (e) => {
   else {
     qsIngredientInput.placeholder = "Rechercher un ingrédient"
     qsApplianceInput.placeholder = "Rechercher un appareil"
-    qsToolInput.placeholder = "Rechercher un ustensiles" 
+    qsToolInput.placeholder = "Rechercher un ustensiles"
   }
 });
