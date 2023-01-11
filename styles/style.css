@@ -523,8 +523,8 @@ header h1 {
     max-width: 100%;
   }
 }
-@media screen and (max-width: 520px) {
-  .listbox__container__ingredients__input, .listbox__container__tools__input, .listbox__container__appliances__input {
-    margin-left: 0.1rem;
-  }
-}
+/* @media screen and (max-width: 520px) {
+    .listbox__container__ingredients__input, .listbox__container__tools__input, .listbox__container__appliances__input {
+        margin-left: 0.1rem;
+    }
+} */

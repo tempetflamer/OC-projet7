@@ -43,7 +43,6 @@ const qsCloseListAppliance = document.querySelector(".listbox__container__applia
 const qsOpenListAppliance = document.querySelector(".listbox__container__appliances--swap > div > .fa-chevron-down");
 
 const searchHiddenElements = document.querySelectorAll("body");
-console.log(searchInput);
 
 let firstDisplayIngredient = false;
 let firstDisplayAppliance = false;
@@ -67,7 +66,6 @@ async function init() {
   const recipesSection = document.querySelector(".recipes");
 
   data.recipes.forEach((recipe) => {
-    console.log(recipe);
     const recipesModel = recipesFactories(recipe);
     const recipeCardDOM = recipesModel.getRecipeCard();
     recipesSection.appendChild(recipeCardDOM);
@@ -108,9 +106,7 @@ init();
 function searchIngredient() {
   console.log("test d'entére");
   let filter = qsIngredientInput.value.toUpperCase();
-  let allIngredients = document.querySelectorAll(
-    ".listbox__container__ingredients__list > li"
-  );
+  let allIngredients = document.querySelectorAll(".listbox__container__ingredients__list > li");
   let value, i, allVisibleIngredients;
 
   console.log("length ingredient list : " + allIngredients);
@@ -119,9 +115,7 @@ function searchIngredient() {
 
   for (i = 0; i < allIngredients.length; i++) {
     value = allIngredients[i].innerText;
-    console.log(
-      "value de search : " + value + " " + allIngredients[i].innerText
-    );
+    console.log("value de search : " + value + " " + allIngredients[i].innerText);
     if (value.toUpperCase().indexOf(filter) > -1) {
       allIngredients[i].classList.remove("hidden");
       //allIngredients[i].style.display = "block";
@@ -134,11 +128,7 @@ function searchIngredient() {
     allVisibleIngredients = document.querySelectorAll(
       ".listbox__container__ingredients__list > li:not(.hidden)"
     );
-    console.log(
-      "element visible : " +
-      allVisibleIngredients.length +
-      allVisibleIngredients[0]
-    );
+    console.log("element visible : " + allVisibleIngredients.length + allVisibleIngredients[0]);
     if (allVisibleIngredients.length < 2) {
       // qsIngredientBox.classList.remove("box--on");
       // qsIngredientBox.classList.add("box1--on");
@@ -151,13 +141,10 @@ function searchIngredient() {
     }
   }
 }
-qsIngredientInput.addEventListener("keyup", searchIngredient);
+qsIngredientInput.addEventListener("keyup", searchIngredient); // je sais plus trop à quoi ca sert mais c'est pas utilisé
 
 document.addEventListener("click", (e) => {
-  console.log(qsIngredientBox.classList.contains("box--on"));
   if (qsIngredientBox.classList.contains("box--on")) {
-    // normalement ça devrait etre box-on ou box-off devrait être box--off // remplacer
-    console.log("contains");
 
     if (e.target.classList.contains("listbox__container__ingredients") || e.target.classList.contains("listbox__container__ingredients__title") ||
       e.target.classList.contains("listbox__container__ingredients--swap") || e.target.classList.contains("listbox__container__ingredients__title") ||
@@ -181,8 +168,6 @@ document.addEventListener("click", (e) => {
       qsOpenListTool.classList.remove("hidden");
       qsCloseListTool.classList.add("hidden");
 
-      console.log("if");
-      return;
     } else {
       qsIngredientTitle.classList.remove("hidden");
       qsIngredientInput.classList.add("hidden");
@@ -192,14 +177,12 @@ document.addEventListener("click", (e) => {
       qsIngredientSwap.classList.remove("swap--on");
       qsOpenListIngredient.classList.remove("hidden");
       qsCloseListIngredient.classList.add("hidden");
-      console.log("else");
     }
   }
 
   // Appliance
 
   if (qsApplianceBox.classList.contains("box--on")) {
-    console.log("contains");
 
     if (e.target.classList.contains("listbox__container__appliances") || e.target.classList.contains("listbox__container__appliances__title") ||
       e.target.classList.contains("listbox__container__appliances--swap") || e.target.classList.contains("listbox__container__appliances__title") ||
@@ -223,8 +206,7 @@ document.addEventListener("click", (e) => {
       qsToolSwap.classList.remove("swap--on");
       qsOpenListTool.classList.remove("hidden");
       qsCloseListTool.classList.add("hidden");
-      console.log("if");
-      return;
+
     } else {
       qsApplianceTitle.classList.remove("hidden");
       qsApplianceInput.classList.add("hidden");
@@ -234,22 +216,19 @@ document.addEventListener("click", (e) => {
       qsApplianceSwap.classList.remove("swap--on");
       qsOpenListAppliance.classList.remove("hidden");
       qsCloseListAppliance.classList.add("hidden");
-      console.log("else");
     }
   }
 
   // Tool
 
   if (qsToolBox.classList.contains("box--on")) {
-    console.log("contains");
 
     if (e.target.classList.contains("listbox__container__tools") || e.target.classList.contains("listbox__container__tools__title") ||
       e.target.classList.contains("listbox__container__tools--swap") || e.target.classList.contains("listbox__container__tools__title") ||
       e.target.classList.contains("fa-chevron-down") || e.target.classList.contains("listbox__container__tools__input") ||
       e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") {
       // pas besoin de fermer pour la technière techniquement
-      console.log("if");
-      return;
+
     } else {
       qsToolTitle.classList.remove("hidden");
       qsToolInput.classList.add("hidden");
@@ -259,14 +238,13 @@ document.addEventListener("click", (e) => {
       qsToolSwap.classList.remove("swap--on");
       qsOpenListTool.classList.remove("hidden");
       qsCloseListTool.classList.add("hidden");
-      console.log("else");
     }
   }
 });
 
 qsIngredientBoxOff.addEventListener("click", function (e) {
   if (qsIngredientInput.classList.contains("hidden")) {
-    //retrait des toggle ar des add et remove pour une meilleur compréhension
+    //retrait des toggle par des add et remove pour une meilleur compréhension
     qsIngredientTitle.classList.add("hidden");
     qsIngredientInput.classList.remove("hidden");
     qsIngredientList.classList.remove("hidden");
@@ -286,7 +264,7 @@ qsIngredientBoxOff.addEventListener("click", function (e) {
 qsIngredientBox.addEventListener("keydown", (e) => {
   if (e.code === "Escape") {
     qsIngredientTitle.classList.toggle("hidden");
-    qsIngredientInput.classList.toggle("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
+    qsIngredientInput.classList.toggle("hidden");
     qsIngredientList.classList.toggle("hidden");
     qsIngredientBox.classList.toggle("box--on");
     qsIngredientBox.classList.remove("box--off");
@@ -296,7 +274,7 @@ qsIngredientBox.addEventListener("keydown", (e) => {
 
 qsToolBox.addEventListener("click", function (e) {
   if (qsToolInput.classList.contains("hidden")) {
-    //retrait des toggle ar des add et remove pour une meilleur compréhension
+    //retrait des toggle par des add et remove pour une meilleur compréhension
     qsToolTitle.classList.add("hidden");
     qsToolInput.classList.remove("hidden");
     qsToolList.classList.remove("hidden");
@@ -312,7 +290,7 @@ qsToolBox.addEventListener("click", function (e) {
 qsToolBox.addEventListener("keydown", (e) => {
   if (e.code === "Escape") {
     qsToolTitle.classList.toggle("hidden");
-    qsToolInput.classList.toggle("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
+    qsToolInput.classList.toggle("hidden");
     qsToolList.classList.toggle("hidden");
     qsToolBox.classList.toggle("box--on");
     qsToolBox.classList.remove("box--off");
@@ -322,7 +300,7 @@ qsToolBox.addEventListener("keydown", (e) => {
 
 qsApplianceBox.addEventListener("click", function (e) {
   if (qsApplianceInput.classList.contains("hidden")) {
-    //retrait des toggle ar des add et remove pour une meilleur compréhension
+    //retrait des toggle par des add et remove pour une meilleur compréhension
     qsApplianceTitle.classList.add("hidden");
     qsApplianceInput.classList.remove("hidden");
     qsApplianceList.classList.remove("hidden");
@@ -338,7 +316,7 @@ qsApplianceBox.addEventListener("click", function (e) {
 qsApplianceBox.addEventListener("keydown", (e) => {
   if (e.code === "Escape") {
     qsApplianceTitle.classList.toggle("hidden");
-    qsApplianceInput.classList.toggle("hidden"); // c'est chiant parceque dès que tu reappuie dessus ca se barre
+    qsApplianceInput.classList.toggle("hidden");
     qsApplianceList.classList.toggle("hidden");
     qsApplianceBox.classList.toggle("box--on");
     qsApplianceBox.classList.remove("box--off");

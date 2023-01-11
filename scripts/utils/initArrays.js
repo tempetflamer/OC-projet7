@@ -18,38 +18,19 @@ export function initArrays(data) {
 
     function initArrayIngredient() {
         ingredients.forEach((el) => {
-            console.log(el);
-            console.log(el.ingredient);
             value = el.ingredient
             value = value.toLowerCase();
             value = value.charAt(0).toUpperCase() + value.slice(1)
             values = value + "s";
-            console.log("value to lower case except first character : " + value);
-            console.log("value to lower case except first characterresultat : " + arrayIngredients.indexOf((value)) === -1);
-            console.log("value to lower case except first character whith s : " + values);
-            console.log("value to lower case except first character whith s resultat : " + arrayIngredients.indexOf((values)) === -1);
+
             // Quand on cherche pomme, on doit chercher à la fois pomme et pommes (value & value + "s"), puis, pour pommes chercher pommes et pomme (value, et value.slice(-last character))
             if (!(arrayIngredients.indexOf(value) === -1) || !(arrayIngredients.indexOf((values)) === -1) || !(arrayIngredients.indexOf((value.slice(0, -1))) === -1)) {
-                // if ((arrayIngredients.indexOf(el.ingredient) == !(el.ingredient).match(/(?<![aei])([ie][d])(?=[^a-zA-Z])|(?<=[ertkgwmnl])s(?=[^a-zA-Z])/gm)))
-                // {console.log("elements qui match le regex : " + el.ingredient)}
-                // arrayIngredients.forEach((el) => {
-                //     console.log("el", el);
-                //     const item = document.createElement('li');
-                //     item.textContent = el;
-                //     qstoolList.appendChild(item);
-                //     console.log(qstoolList)
-                // })
-                //arrayIngredients.push(value);
                 return
-
-
             }
             else {
                 arrayIngredients.push(value);
             }
         });
-        console.log("arrayIngredients : " + arrayIngredients.toString());
-        console.log("arrayIngredients : " + arrayIngredients.length);
     }
 
     function initArrayAppliance() {
@@ -63,20 +44,10 @@ export function initArrays(data) {
         else {
             arrayAppliances.push(appliance);
         }
-        // if (arrayAppliances.indexOf(appliance) === -1) {
-        //     arrayAppliances.push(appliance);
-        // }
-        console.log("arrayAppareils : " + arrayAppliances.toString());
-        console.log("arrayAppareils: " + arrayAppliances.length);
     }
 
     function initArrayTool() {
         ustensils.forEach((el) => {
-            /*             console.log("boucle des tools : " + el);
-                        if (arrayTools.indexOf(el) === -1) {
-                            arrayTools.push(el);
-                            console.log("tool pusher : " + el);
-                        } */
             value = el;
             value = value.toLowerCase();
             value = value.charAt(0).toUpperCase() + value.slice(1);
@@ -88,8 +59,6 @@ export function initArrays(data) {
                 arrayTools.push(value);
             }
         })
-        console.log("arrayTools: " + arrayTools.toString());
-        console.log("arrayTools : " + arrayTools.length);
     }
 
     return { initArrayRecipe, initArrayIngredient, initArrayAppliance, initArrayTool }
@@ -105,8 +74,6 @@ export function sortArrays() {
         }
         return 0;
     });
-
-    console.log("arrayIngredients : " + arrayIngredients.toString());
 }
 
 export function initResetArrays() {
@@ -137,6 +104,5 @@ export function removeElement(type, name) {
 }
 
 
-// exports tab
+// exports arrays
 export { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset };
-//exempel export {department, tasks};

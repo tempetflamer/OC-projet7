@@ -8,7 +8,6 @@ const qsToolInput = document.querySelector(".listbox__container__tools__input");
 
 
 export function recipesFactories(data) {
-    //id name servings ingredients time description appliance ustensils
 
     function getRecipeCard() {
         const article = document.createElement('article');
@@ -111,11 +110,9 @@ export function recipesFactories(data) {
 
 export function getListIngredients(qsIngredientList, data) {
     data.forEach((el) => {
-        console.log("el", el);
         const item = document.createElement('li');
         item.textContent = el;
         qsIngredientList.appendChild(item);
-        console.log(qsIngredientList)
 
         item.addEventListener("click", (e) => {
             console.log(item.textContent)
@@ -153,14 +150,11 @@ export function getListIngredients(qsIngredientList, data) {
 
 export function getListAppliances(qsApplianceList, data) {
     data.forEach((el) => {
-        console.log("el", el);
         const item = document.createElement('li');
         item.textContent = el;
         qsApplianceList.appendChild(item);
-        console.log(qsApplianceList)
 
         item.addEventListener("click", (e) => {
-            console.log(item.textContent)
             const filterDiv = document.createElement('div');
             filterDiv.classList.add("filterselected__item")
             filterDiv.classList.add("type--appliance")
@@ -190,14 +184,11 @@ export function getListAppliances(qsApplianceList, data) {
 
 export function getListTools(qstoolList, data) {
     data.forEach((el) => {
-        console.log("el", el);
         const item = document.createElement('li');
         item.textContent = el;
         qstoolList.appendChild(item);
-        console.log(qstoolList)
 
         item.addEventListener("click", (e) => {
-            console.log(item.textContent)
             const filterDiv = document.createElement('div');
             filterDiv.classList.add("filterselected__item")
             filterDiv.classList.add("type--tool")

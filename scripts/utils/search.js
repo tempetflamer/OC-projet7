@@ -13,7 +13,7 @@ const qsToolList = document.querySelector(".listbox__container__tools__list");
 const qsToolBox = document.querySelector(".listbox__container__tools");
 const qsSectionRecipe = document.querySelector('.recipes');
 
-let arraysFilter;
+// let arraysFilter;
 let arrayInProgress;
 
 export function searchByTag(/* arraysFilter */ recipes) {
@@ -25,8 +25,9 @@ export function searchByTag(/* arraysFilter */ recipes) {
         console.log ("arrayF reset")
         //arraysFilter = arrayrecipes;
         //clearArrays();
-        arraysFilter = recipes
-
+        //arraysFilter = arrayrecipesReset;
+        let arraysFilter;
+        arraysFilter = arrayrecipesReset;
 
 
         console.log("arrayIngredients : " + arrayIngredients.length);
@@ -53,7 +54,7 @@ export function searchByTag(/* arraysFilter */ recipes) {
             arraysFilter = updateRecipesByTag(children, type, arraysFilter)
             //updateRecipesByTag(children, type, arraysFilter)
 
-            console.log("arrayF after updateRecipet" + arraysFilter)
+            console.log("arrayF after update Filter" + arraysFilter)
 
         }
 

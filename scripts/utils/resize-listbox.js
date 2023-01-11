@@ -1,7 +1,5 @@
 export function setlistboxSize(array, qsList, qsBox) {
 
-  console.log("taille du array" + array.length);
-  //let i = 0;
    let j = 1;
 
   for (let i = 1; i < 9; i++ ) {
@@ -73,17 +71,8 @@ export function setlistboxSize(array, qsList, qsBox) {
       } else if (window.matchMedia("(max-width: 520px)").matches) {
         qsList.classList.add("box" + 1);
         qsBox.classList.add("box" + 1);
-      } /* else {
-        if (j > 8) {
-          //qsList.classList.add("box"+7);
-          qsBox.classList.add("box" + 7);
-        } else {
-          qsList.classList.add("box" + j);
-          qsBox.classList.add("box" + j);
-        }
-      } */
+      } 
     }
   }
-  console.log("combien vaut j : " + j);
 
 }

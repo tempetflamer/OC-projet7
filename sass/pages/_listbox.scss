@@ -9,7 +9,6 @@
 
         &__ingredients {
             background-color: #3282f7;
-            //position: absolute; // si je passe en position absolute y a plus de 100%, faut les mettre en rem (border box)
             position: relative;
 
             &__input {
@@ -32,8 +31,6 @@
         &__appliances {
             background-color: #68d9a4;
             position: relative;
-            //position: absolute;
-            //margin-left: 13rem;
 
             &__input {
                 width: 90%;
@@ -55,8 +52,6 @@
         &__tools {
             background-color: #ed6454;
             position: relative;
-            //position: absolute;
-            //margin-left: 26rem;
 
             &__input {
                 width: 90%;
@@ -76,7 +71,6 @@
         }
 
         &__ingredients--swap {
-            // faire un bos-item de cette partie
             width: 100%;
             display: flex;
             align-items: center;
@@ -92,30 +86,15 @@
             display: flex;
             flex-wrap: wrap;
             top: 3.3rem;
-
             overflow-y: hidden;
-
-            //grid-template-columns: 1fr 1fr 1fr;
-            //grid-template-rows: repeat(10, 1.5rem);
-            //max-height: 18rem;
-            //line-height: 1.8rem;
-
+            position: absolute;
+            background-color: $ingredient-color;
+            border-radius: 0 0 5px 5px;
+            
             // firefox scrollbar
             // overflow-y: scroll;
             // scrollbar-width: thin;
             // scrollbar-color: #1f66d1 #84aeec;
-
-            // position: relative;
-            // z-index: 1;
-            //width: 84rem;
-            position: absolute;
-            background-color: $ingredient-color;
-            //top: 40%;
-            //top: 15.5rem;
-            //left: 8%;
-            //left: ;
-            border-radius: 0 0 5px 5px;
-
             li {
                 // min-width: 6rem; // pourra potentiellement être remplacé par min-width
                 // max-width: 8rem;
@@ -153,7 +132,6 @@
         }
 
         &__tools--swap {
-            // faire un bos-item de cette partie
             width: 100%;
             display: flex;
             align-items: center;
@@ -262,8 +240,6 @@
 .swap--on {
     gap: 0;
     //justify-content: space-between;
-    //margin-left: 1.5rem;
-    //margin-right: -1.5rem;
 }
 
 //ptetre aps besoin
@@ -275,8 +251,6 @@
     width: 80%;
     display: flex;
     justify-content: flex-start;
-
-
 }
 
 .listbox-container-end {
