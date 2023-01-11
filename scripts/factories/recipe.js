@@ -115,7 +115,6 @@ export function getListIngredients(qsIngredientList, data) {
         qsIngredientList.appendChild(item);
 
         item.addEventListener("click", (e) => {
-            console.log(item.textContent)
             const filterDiv = document.createElement('div');
             filterDiv.classList.add("filterselected__item")
             filterDiv.classList.add("type--ingredient")
@@ -132,11 +131,7 @@ export function getListIngredients(qsIngredientList, data) {
 
             qsIngredientInput.value = "";
 
-            //let arraysFilter = arrayrecipes;
-            //clearArrays();
-            //searchByTag(/* arraysFilter */);
-            console.log("arraysF arraysRecipe : " + arrayrecipes)
-            searchByTag(arrayrecipes);
+            searchByTag();
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()

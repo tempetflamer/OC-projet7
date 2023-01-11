@@ -13,53 +13,27 @@ const qsToolList = document.querySelector(".listbox__container__tools__list");
 const qsToolBox = document.querySelector(".listbox__container__tools");
 const qsSectionRecipe = document.querySelector('.recipes');
 
-// let arraysFilter;
-let arrayInProgress;
-
-export function searchByTag(/* arraysFilter */ recipes) {
+export function searchByTag() {
     if (qsIngredientSelected.hasChildNodes()) {
         // Delete all childrens of Recipe Section
         while (qsSectionRecipe.firstChild) {
             qsSectionRecipe.removeChild(qsSectionRecipe.lastChild);
         }
-        console.log ("arrayF reset")
-        //arraysFilter = arrayrecipes;
-        //clearArrays();
-        //arraysFilter = arrayrecipesReset;
+
         let arraysFilter;
         arraysFilter = arrayrecipesReset;
-
-
-        console.log("arrayIngredients : " + arrayIngredients.length);
-
         let childrens = qsIngredientSelected.childNodes;
         let children;
         let type;
         for (let i = 0; i < childrens.length; i++) {
-            //if (arrayrecipes != "") { arraysFilter = arrayrecipes; }            
             children = childrens[i].children[0].textContent
             if (childrens[i].classList.contains("type--ingredient")) { type = "ingredient" }
             if (childrens[i].classList.contains("type--appliance")) { type = "appliance" }
             if (childrens[i].classList.contains("type--tool")) { type = "tool" }
-            console.log("text de l'ingredient choisit : " + children)
-            console.log("arrayF recipe before reset" + arrayrecipes)
-            console.log("arrayF filter before reset" + arraysFilter)
-            //arraysFilter = "";
-            //arraysFilter = arrayrecipes;
             clearArrays();
-            console.log("arrayF recipe after reset" + arrayrecipes)
-
-            //arrayInProgress = "";
-
             arraysFilter = updateRecipesByTag(children, type, arraysFilter)
-            //updateRecipesByTag(children, type, arraysFilter)
-
-            console.log("arrayF after update Filter" + arraysFilter)
-
         }
-
         createRecipe(arraysFilter);
-
         updateFilterByTag(type)
     }
 }
@@ -68,31 +42,12 @@ export function searchByWord() {
 
 }
 
-export function updateRecipesByTag(el, type, arraysFilter) {
-    console.log("on entre dedans")
-    console.log("arrayF Recipe debut : " + arrayrecipes)
-    console.log("arrayFilter debut : " + arraysFilter)
-
-    let array;
-    //clearArrays();
-    // C'est presque bon, il faut jsute que je deplace la création des éléments apprès tous les passage
+export function updateRecipesByTag(el, type, arraysFilter) {e
 
     arraysFilter.forEach((recipe) => {
-        console.log(recipe.name + "   " + recipe.description)
-
-        // const recipesModel = recipesFactories(recipe);
-        // const recipeCardDOM = recipesModel.getRecipeCard();
-        // qsSectionRecipe.appendChild(recipeCardDOM);
-
         if (((recipe.name).toLowerCase()).includes(el.toLowerCase()) || ((recipe.description).toLowerCase()).includes(el.toLowerCase())) {
-            console.log(el + " est bien dans soit " + recipe.name + " ou soit " + recipe.description)
-
             let initArray = initArrays(recipe);
             initArray.initArrayRecipe();
-
-            // const recipesModel = recipesFactories(recipe);
-            // const recipeCardDOM = recipesModel.getRecipeCard();
-            // qsSectionRecipe.appendChild(recipeCardDOM);
         }
         else {
             if (type == "ingredient") {
@@ -100,11 +55,6 @@ export function updateRecipesByTag(el, type, arraysFilter) {
                     if (((ingredient.ingredient).toLowerCase()).includes(el.toLowerCase())) {
                         let initArray = initArrays(recipe);
                         initArray.initArrayRecipe();
-
-                        // const recipesModel = recipesFactories(recipe);
-                        // const recipeCardDOM = recipesModel.getRecipeCard();
-                        // qsSectionRecipe.appendChild(recipeCardDOM);
-                        return
                     }
                 })
             }
@@ -113,10 +63,6 @@ export function updateRecipesByTag(el, type, arraysFilter) {
                 if (((recipe.appliance).toLowerCase()).includes(el.toLowerCase())) {
                     let initArray = initArrays(recipe);
                     initArray.initArrayRecipe();
-
-                    // const recipesModel = recipesFactories(recipe);
-                    // const recipeCardDOM = recipesModel.getRecipeCard();
-                    // qsSectionRecipe.appendChild(recipeCardDOM);
                 }
             }
 
@@ -125,25 +71,13 @@ export function updateRecipesByTag(el, type, arraysFilter) {
                     if (((ustensil).toLowerCase()).includes(el.toLowerCase())) {
                         let initArray = initArrays(recipe);
                         initArray.initArrayRecipe();
-
-                        // const recipesModel = recipesFactories(recipe);
-                        // const recipeCardDOM = recipesModel.getRecipeCard();
-                        // qsSectionRecipe.appendChild(recipeCardDOM);
-                        return
                     }
                 })
             }
         }
     })
-
-    //updateFilterByTag()
-
     arraysFilter = arrayrecipes;
-    console.log("arrayFilter fin : " + arraysFilter)
-    console.log("arrayF Recipe fin : " + arrayrecipes)
-
     return arraysFilter;
-
 }
 
 function createRecipe(arraysFilter) {
