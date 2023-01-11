@@ -92,9 +92,7 @@ function createRecipe(arraysFilter) {
 function updateFilterByTag() {
     const qsSectionRecipe = document.querySelector(".recipes");
 
-    // faut aussi supprimer l'intérieur des tableaux
-    //clearArrays();
-
+    // Delete Lists Filters
     while (qsIngredientList.firstChild) {
         qsIngredientList.removeChild(qsIngredientList.lastChild);
     }
