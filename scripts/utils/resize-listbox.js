@@ -1,4 +1,4 @@
-export function setlistboxSize(array, qsList, qsBox) {
+export function setlistboxSize(array, qsList, qsBox, qsIngredientInput, qsApplianceInput, qsToolInput) {
 
    let j = 1;
 
@@ -73,6 +73,17 @@ export function setlistboxSize(array, qsList, qsBox) {
         qsBox.classList.add("box" + 1);
       } 
     }
+  }
+
+  if (qsList.classList.contains("box1")) {
+    qsIngredientInput.placeholder = "Rechercher..."
+    qsApplianceInput.placeholder = "Rechercher..."
+    qsToolInput.placeholder = "Rechercher..."
+  }
+  else {
+    qsIngredientInput.placeholder = "Rechercher un ingrédient"
+    qsApplianceInput.placeholder = "Rechercher un appareil"
+    qsToolInput.placeholder = "Rechercher un ustensiles"
   }
 
 }

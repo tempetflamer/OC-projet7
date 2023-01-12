@@ -87,9 +87,9 @@ async function init() {
     //faire un js de trie
     sortArrays();
 
-  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
-  setlistboxSize(arrayTools, qsToolList, qsToolBox)
-  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox)
+    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsIngredientInput, qsApplianceInput, qsToolInput)
 
   qsIngredientBox.classList.add("box--off");
   qsApplianceBox.classList.add("box--off");
@@ -104,40 +104,16 @@ async function init() {
 init();
 
 function searchIngredient() {
-  console.log("test d'entére");
   let filter = qsIngredientInput.value.toUpperCase();
   let allIngredients = document.querySelectorAll(".listbox__container__ingredients__list > li");
   let value, i, allVisibleIngredients;
 
-  console.log("length ingredient list : " + allIngredients);
-
-  console.log("length ingredient list : " + allIngredients.length);
-
   for (i = 0; i < allIngredients.length; i++) {
     value = allIngredients[i].innerText;
-    console.log("value de search : " + value + " " + allIngredients[i].innerText);
     if (value.toUpperCase().indexOf(filter) > -1) {
       allIngredients[i].classList.remove("hidden");
-      //allIngredients[i].style.display = "block";
     } else {
       allIngredients[i].classList.add("hidden");
-      //allIngredients[i].style.display = "none";
-    }
-    //allVisibleIngredients = document.querySelectorAll('.listbox__container__ingredients__list > li:visible') // c'est avec jquery, pas natif
-    //allVisibleIngredients = document.querySelectorAll('.listbox__container__ingredients__list > li:not([hidden])') // marche pas
-    allVisibleIngredients = document.querySelectorAll(
-      ".listbox__container__ingredients__list > li:not(.hidden)"
-    );
-    console.log("element visible : " + allVisibleIngredients.length + allVisibleIngredients[0]);
-    if (allVisibleIngredients.length < 2) {
-      // qsIngredientBox.classList.remove("box--on");
-      // qsIngredientBox.classList.add("box1--on");
-    } else if (allVisibleIngredients.length == 2) {
-      // qsIngredientBox.classList.remove("box--on");
-      // qsIngredientBox.classList.add("box1--on");
-    } else {
-      // qsIngredientBox.classList.remove("box--on");
-      // qsIngredientBox.classList.add("box1--on");
     }
   }
 }
@@ -326,18 +302,8 @@ qsApplianceBox.addEventListener("keydown", (e) => {
 
 window.addEventListener("resize", (e) => {
 
-  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
-  setlistboxSize(arrayTools, qsToolList, qsToolBox)
-  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox)
+  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+  setlistboxSize(arrayTools, qsToolList, qsToolBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsIngredientInput, qsApplianceInput, qsToolInput)
 
-  if (window.matchMedia("(max-width: 520px)").matches) {
-    qsIngredientInput.placeholder = "Rechercher..."
-    qsApplianceInput.placeholder = "Rechercher..."
-    qsToolInput.placeholder = "Rechercher..."
-  }
-  else {
-    qsIngredientInput.placeholder = "Rechercher un ingrédient"
-    qsApplianceInput.placeholder = "Rechercher un appareil"
-    qsToolInput.placeholder = "Rechercher un ustensiles"
-  }
 });

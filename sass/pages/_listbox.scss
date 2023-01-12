@@ -91,44 +91,13 @@
             background-color: $ingredient-color;
             border-radius: 0 0 5px 5px;
             
-            // firefox scrollbar
-            // overflow-y: scroll;
-            // scrollbar-width: thin;
-            // scrollbar-color: #1f66d1 #84aeec;
             li {
-                // min-width: 6rem; // pourra potentiellement être remplacé par min-width
-                // max-width: 8rem;
                 width: 12rem;
             }
 
             li:hover {
                 background-color: #1f66d1;
             }
-        }
-
-        /* WebKit and Chromiums (Safari, chrome, edge)*/
-        &__ingredients__list::-webkit-scrollbar {
-            width: 40px;
-        }
-
-        /*         &__ingredients__list::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            background-color: #F5F5F5;
-            overflow-x: auto;
-        } */
-
-        &__ingredients__list::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-            background-color: #84aeec;
-            border-radius: 5px;
-        }
-
-        &__ingredients__list::-webkit-scrollbar-thumb {
-            border-radius: 5px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            background-color: #1f66d1;
         }
 
         &__tools--swap {
@@ -151,11 +120,6 @@
             background-color: $tool-color;
             border-radius: 0 0 5px 5px;
 
-            // firefox scrollbar
-            // overflow-y: scroll;
-            // scrollbar-width: thin;
-            // scrollbar-color: #a51f10 #e4a098;
-
             li {
                 width: 12rem;
             }
@@ -163,24 +127,6 @@
             li:hover {
                 background-color: #a51f10;
             }
-        }
-
-        /* WebKit and Chromiums (Safari, chrome, edge)*/
-        &__tools__list::-webkit-scrollbar {
-            width: 40px;
-        }
-
-        &__tools__list::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-            background-color: #e4a098;
-            border-radius: 5px;
-        }
-
-        &__tools__list::-webkit-scrollbar-thumb {
-            border-radius: 5px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            background-color: #a51f10;
         }
 
         &__appliances--swap {
@@ -203,11 +149,6 @@
             background-color: $appliance-color;
             border-radius: 0 0 5px 5px;
 
-            // firefox scrollbar
-            // overflow-y: scroll;
-            // scrollbar-width: thin;
-            // scrollbar-color: #0daf64 #acecce;
-
             li {
                 width: 12rem;
             }
@@ -217,23 +158,6 @@
             }
         }
 
-        /* WebKit and Chromiums (Safari, chrome, edge)*/
-        &__appliances__list::-webkit-scrollbar {
-            width: 40px;
-        }
-
-        &__appliances__list::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-            background-color: #acecce;
-            border-radius: 5px;
-        }
-
-        &__appliances__list::-webkit-scrollbar-thumb {
-            border-radius: 5px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            background-color: #0daf64;
-        }
     }
 }
 

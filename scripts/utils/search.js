@@ -12,6 +12,9 @@ const qsApplianceBox = document.querySelector(".listbox__container__appliances")
 const qsToolList = document.querySelector(".listbox__container__tools__list");
 const qsToolBox = document.querySelector(".listbox__container__tools");
 const qsSectionRecipe = document.querySelector('.recipes');
+const qsIngredientInput = document.querySelector(".listbox__container__ingredients__input");
+const qsApplianceInput = document.querySelector(".listbox__container__appliances__input");
+const qsToolInput = document.querySelector(".listbox__container__tools__input");
 
 export function searchByTag() {
     if (qsIngredientSelected.hasChildNodes()) {
@@ -42,7 +45,7 @@ export function searchByWord() {
 
 }
 
-export function updateRecipesByTag(el, type, arraysFilter) {e
+export function updateRecipesByTag(el, type, arraysFilter) {
 
     arraysFilter.forEach((recipe) => {
         if (((recipe.name).toLowerCase()).includes(el.toLowerCase()) || ((recipe.description).toLowerCase()).includes(el.toLowerCase())) {
@@ -173,19 +176,20 @@ function updateFilterByTag() {
 
     //sortArrays();
 
-    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox)
-    setlistboxSize(arrayTools, qsToolList, qsToolBox)
-    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox)
+
 
     // qsIngredientBox.classList.add("box--off");
     // qsApplianceBox.classList.add("box--off");
     // qsToolBox.classList.add("box--off");
 
     //renomer ce get ou les autres éléments qui n'en nont pas avec set, create etc
-    const createIngredientList = getListIngredients(qsIngredientList, arrayIngredients);
-    const createAppliancetList = getListAppliances(qsApplianceList, arrayAppliances);
-    const createTooltList = getListTools(qsToolList, arrayTools);
+    getListIngredients(qsIngredientList, arrayIngredients);
+    getListAppliances(qsApplianceList, arrayAppliances);
+    getListTools(qsToolList, arrayTools);
 
+    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsIngredientInput, qsApplianceInput, qsToolInput)
 
 }
 
