@@ -1,5 +1,5 @@
 import { arrayrecipes, clearArrays } from "../utils/initArrays.js";
-import { searchByTag } from "../utils/search.js"; 
+import { searchByTag, searchByTag2 } from "../utils/search.js"; 
 
 const qsFiltersSelected = document.querySelector('.filterselected');
 const qsIngredientInput = document.querySelector(".listbox__container__ingredients__input");
@@ -131,7 +131,7 @@ export function getListIngredients(qsIngredientList, data) {
 
             qsIngredientInput.value = "";
 
-            searchByTag();
+            searchByTag2();
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()

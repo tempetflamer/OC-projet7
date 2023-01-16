@@ -17,25 +17,29 @@ const qsApplianceInput = document.querySelector(".listbox__container__appliances
 const qsToolInput = document.querySelector(".listbox__container__tools__input");
 
 export function searchByTag() {
-    if (qsIngredientSelected.hasChildNodes()) {
+    if (qsIngredientSelected.hasChildNodes()) { //theoriquement cette fonction n'est pas lancé si on ne clique pas sur au moins un
         // Delete all childrens of Recipe Section
-        while (qsSectionRecipe.firstChild) {
-            qsSectionRecipe.removeChild(qsSectionRecipe.lastChild);
-        }
 
         let arraysFilter;
         arraysFilter = arrayrecipesReset;
+        console.log(JSON.stringify(arraysFilter))
         let childrens = qsIngredientSelected.childNodes;
         let children;
         let type;
-        for (let i = 0; i < childrens.length; i++) {
+        let i = 0;
+
+        qsSectionRecipe.innerHTML = "";
+
+        childrens.forEach(el => {
             children = childrens[i].children[0].textContent
             if (childrens[i].classList.contains("type--ingredient")) { type = "ingredient" }
             if (childrens[i].classList.contains("type--appliance")) { type = "appliance" }
             if (childrens[i].classList.contains("type--tool")) { type = "tool" }
             clearArrays();
             arraysFilter = updateRecipesByTag(children, type, arraysFilter)
-        }
+            i++;
+        });
+
         createRecipe(arraysFilter);
         updateFilterByTag(type)
     }
@@ -86,9 +90,9 @@ export function updateRecipesByTag(el, type, arraysFilter) {
 function createRecipe(arraysFilter) {
     const qsSectionRecipe = document.querySelector(".recipes");
     arrayrecipes.forEach((recipe) => {
-            const recipesModel = recipesFactories(recipe);
-            const recipeCardDOM = recipesModel.getRecipeCard();
-            qsSectionRecipe.appendChild(recipeCardDOM);
+        const recipesModel = recipesFactories(recipe);
+        const recipeCardDOM = recipesModel.getRecipeCard();
+        qsSectionRecipe.appendChild(recipeCardDOM);
     })
 }
 
@@ -113,7 +117,7 @@ function updateFilterByTag() {
         initArray.initArrayAppliance();
         initArray.initArrayTool();
     });
-    
+
     // Faire un script de recherche directement dans le tableau
     let filtersSelected = qsIngredientSelected.childNodes;
     let filterSelected;
@@ -194,3 +198,208 @@ function updateFilterByTag() {
 }
 
 
+export function searchByTag2() {
+    if (qsIngredientSelected.hasChildNodes()) {
+        // Delete all childrens of Recipe Section
+        while (qsSectionRecipe.firstChild) {
+            qsSectionRecipe.removeChild(qsSectionRecipe.lastChild);
+        }
+
+        let selectedIngredients = [];
+        let selectedTools = [];
+        let selectedAppliances = [];
+
+        //forEach
+        let arraysFilter;
+        arraysFilter = arrayrecipesReset;
+        let childrens = qsIngredientSelected.childNodes;
+        let children;
+        let type;
+        for (let i = 0; i < childrens.length; i++) {
+            children = childrens[i].children[0].textContent
+            children = children.toLowerCase()
+            if (childrens[i].classList.contains("type--ingredient")) { selectedIngredients.push(children); }
+            if (childrens[i].classList.contains("type--appliance")) { selectedAppliances.push(children); }
+            if (childrens[i].classList.contains("type--tool")) { selectedTools.push(children); }
+        }
+
+        clearArrays();
+        arraysFilter.forEach((recipe) => {
+
+            let oldValue = "";
+            let newValue = "";
+            let bool = true;
+            let pass = false;
+            let success = true; 
+
+            // La boucle repart toujours à 0
+            selectedIngredients.forEach(el => {
+                if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool == true) {
+                    pass = true;
+                    oldValue = newValue;
+                    newValue = recipe;
+                    console.log("oldValue : ", oldValue, "newvalue : ", newValue)
+                    if ((oldValue == newValue || (oldValue == "" && newValue != ""))) {
+                        bool = true;
+                    }
+                    else {
+                        console.log("value false")
+                        bool = false;
+
+                    }
+
+                }
+
+            });
+
+            console.log(bool)
+
+                oldValue = "";
+                newValue = "";
+                bool = true;
+                pass = false;
+                recipe.ingredients.forEach((ingredient) => {
+                    selectedIngredients.forEach(el => {
+                        if (((el) == ((ingredient.ingredient).toLowerCase())) && bool == true) {
+                            pass = true;
+                            oldValue = newValue;
+                            newValue = recipe;
+                            if (oldValue == newValue || (oldValue == "" && newValue != "")) {
+                                bool = true;
+                            }
+                            else {
+                                bool = false;
+                            }
+        
+                        }
+        
+                    });
+                })
+
+
+                if (bool == true && pass == true) {
+                    let initArray = initArrays(recipe);
+                    initArray.initArrayRecipe();
+                }
+
+            // third try // le problème c'est include ne permet pas de rentrer dans false mdr et le false dans le 1er else ne permettra pas de faire toutes les vérifications
+           /*  selectedIngredients.forEach(el => {
+                if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool == true) {
+                    pass = true;
+                    oldValue = newValue;
+                    newValue = recipe;
+                    if ((oldValue == newValue || (oldValue == "" && newValue != ""))) {
+                        bool = true;
+                    }
+                    else {
+                        bool = false;
+                        console.log(bool)
+                        success = false;
+                        return success; // peu être que si je créer une fonction de cette pute
+                    }
+
+                }
+                else {
+                    console.log("ceci est un test, esque al valeur de olvalue est conservé" + oldValue)
+                    bool = false;
+                }
+
+            });
+
+            console.log("bool value : " + bool)
+            console.log(success, oldValue)
+            if (success == false) {
+                oldValue = "";
+                newValue = "";
+                bool = true;
+                pass = false;
+                recipe.ingredients.forEach((ingredient) => {
+                    console.log("un ingredient des ingredients de la recette : " + (ingredient.ingredient).toLowerCase() + " == ingredient selectionné : " )
+                    selectedIngredients.forEach(el => {
+                        if (((el) == ((ingredient.ingredient).toLowerCase())) && bool == true) {
+                            pass = true;
+                            oldValue = newValue;
+                            newValue = recipe;
+                            if (oldValue == newValue || (oldValue == "" && newValue != "")) {
+                                bool = true;
+                            }
+                            else {
+                                bool = false;
+                                return;
+                            }
+        
+                        }
+        
+                    });
+                })
+            }
+
+                if (bool == true && pass == true) {
+                    let initArray = initArrays(recipe);
+                    initArray.initArrayRecipe();
+                } */
+
+                oldValue = "";
+                newValue = "";
+                bool = true;
+                pass = false;
+                if (((selectedAppliances)).includes((recipe.appliance))) {
+                    pass = true;
+                    oldValue = newValue;
+                    newValue = recipe;
+                    if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
+                        bool = true;
+                    }
+                    else {
+                        bool = false;
+                    }
+                }
+
+                if (bool == true && pass == true) {
+                    let initArray = initArrays(recipe);
+                    initArray.initArrayRecipe();
+                }
+
+
+                oldValue = "";
+                newValue = "";
+                bool = true;
+                pass = false;
+                recipe.ustensils.forEach((ustensil) => {
+                    if (((selectedTools)).includes(ustensil)) {
+                        pass = true;
+                        oldValue = newValue;
+                        newValue = recipe;
+                        if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
+                            bool = true;
+                        }
+                        else {
+                            bool = false;
+                        }
+                    }
+                })
+
+                if (bool == true && pass == true) {
+                    let initArray = initArrays(recipe);
+                    initArray.initArrayRecipe();
+                }
+
+                //j'ai besoin de le remettre a 0 en resortant, du coup faire qu'un seul tableau
+
+                //}
+                //arraysFilter = arrayrecipes;
+
+            })
+        //arraysFilter = arrayrecipes;
+        //return arraysFilter;
+
+        // clearArrays();
+        // arraysFilter = updateRecipesByTag(children, type, arraysFilter)
+
+        // console.log("arrayFilter : " + JSON.stringify(arraysFilter))
+        // console.log("arrayRecipes : " + JSON.stringify(arrayrecipes))
+
+        createRecipe(arraysFilter);
+        updateFilterByTag(type)
+    }
+}
