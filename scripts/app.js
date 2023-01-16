@@ -87,9 +87,9 @@ async function init() {
     //faire un js de trie
     sortArrays();
 
-    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput, qsApplianceInput, qsToolInput)
-    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsIngredientInput, qsApplianceInput, qsToolInput)
-    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput)
+    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsToolInput)
+    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsApplianceInput)
 
   qsIngredientBox.classList.add("box--off");
   qsApplianceBox.classList.add("box--off");
@@ -302,8 +302,8 @@ qsApplianceBox.addEventListener("keydown", (e) => {
 
 window.addEventListener("resize", (e) => {
 
-  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput, qsApplianceInput, qsToolInput)
-  setlistboxSize(arrayTools, qsToolList, qsToolBox, qsIngredientInput, qsApplianceInput, qsToolInput)
-  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput)
+  setlistboxSize(arrayTools, qsToolList, qsToolBox, qsToolInput)
+  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsApplianceInput)
 
 });

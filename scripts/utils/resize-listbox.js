@@ -1,4 +1,4 @@
-export function setlistboxSize(array, qsList, qsBox, qsIngredientInput, qsApplianceInput, qsToolInput) {
+export function setlistboxSize(array, qsList, qsBox, qsInput) {
 
    let j = 1;
 
@@ -76,14 +76,13 @@ export function setlistboxSize(array, qsList, qsBox, qsIngredientInput, qsApplia
   }
 
   if (qsList.classList.contains("box1")) {
-    qsIngredientInput.placeholder = "Rechercher..."
-    qsApplianceInput.placeholder = "Rechercher..."
-    qsToolInput.placeholder = "Rechercher..."
+    qsInput.placeholder = "Rechercher..."
   }
   else {
-    qsIngredientInput.placeholder = "Rechercher un ingrédient"
-    qsApplianceInput.placeholder = "Rechercher un appareil"
-    qsToolInput.placeholder = "Rechercher un ustensiles"
+    if (qsBox.classList.contains("listbox__container__ingredients")) {qsInput.placeholder = "Rechercher un ingrédient";}
+    if (qsBox.classList.contains("listbox__container__appliances")) {qsInput.placeholder = "Rechercher un appareil";}
+    if (qsBox.classList.contains("listbox__container__tools")) {qsInput.placeholder = "Rechercher un ustensiles";}  
   }
+
 
 }

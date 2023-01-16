@@ -187,9 +187,9 @@ function updateFilterByTag() {
     getListAppliances(qsApplianceList, arrayAppliances);
     getListTools(qsToolList, arrayTools);
 
-    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput, qsApplianceInput, qsToolInput)
-    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsIngredientInput, qsApplianceInput, qsToolInput)
-    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsIngredientInput, qsApplianceInput, qsToolInput)
+    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput)
+    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsToolInput)
+    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsApplianceInput)
 
 }
 
