@@ -225,125 +225,233 @@ export function searchByTag2() {
 
         clearArrays();
         arraysFilter.forEach((recipe) => {
-
+            console.log("nouvelle entrée recipe")
             let oldValue = "";
             let newValue = "";
             let bool = true;
             let pass = false;
-            let success = true; 
+            let success = true;
+            let i = 0;
 
-            // La boucle repart toujours à 0
-            selectedIngredients.forEach(el => {
-                if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool == true) {
-                    pass = true;
-                    oldValue = newValue;
-                    newValue = recipe;
-                    console.log("oldValue : ", oldValue, "newvalue : ", newValue)
-                    if ((oldValue == newValue || (oldValue == "" && newValue != ""))) {
-                        bool = true;
+            // La boucle repart toujours à 0 // make a every value, it's also an array element // else i can make an incrementation i et quand i == lenght je push dans le tableau
+            // selectedIngredients.forEach(el => {
+            //     console.log("nouvelle entrée selected ingrédient")
+            //     if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool === true) {
+            //         i++;
+            //         pass = true;
+            //         oldValue = newValue;
+            //         newValue = recipe;
+            //         console.log("oldValue : ", oldValue, "newvalue : ", newValue)
+            //         console.log("i : " + i)
+            //         if ((oldValue === newValue || (oldValue === "" && newValue === ""))) {
+            //             bool = true;
+            //         }
+            //         else {
+            //             console.log("value false")
+            //             bool = false;
+            //         }
+
+            //     }
+
+            // });
+
+            // console.log(bool)
+
+            //test every
+            let x = 1;
+            success = false;
+            selectedIngredients.every(el => {
+                console.log("entrée every", recipe.name, el)
+                if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el))) {
+                    console.log("entrée passé every", recipe.name, el)
+                    if (x == selectedIngredients.length) {
+                        console.log("arrivée")
+                        let initArray = initArrays(recipe);
+                        initArray.initArrayRecipe();
+                        success = true;
+                        return true;
                     }
                     else {
-                        console.log("value false")
-                        bool = false;
-
+                        x++;
+                        console.log("incrémentation de x : " + x)
+                        return true;
                     }
-
                 }
-
+                else { return false; }
             });
 
-            console.log(bool)
+            console.warn("success : " + success)
 
-                oldValue = "";
-                newValue = "";
-                bool = true;
-                pass = false;
-                recipe.ingredients.forEach((ingredient) => {
-                    selectedIngredients.forEach(el => {
-                        if (((el) == ((ingredient.ingredient).toLowerCase())) && bool == true) {
+            // Pour raccourcir, il faudrais refaire un tableau avec une colonne validée pour les valeurs par exemple, et on affiche seulment si elles sont toutes validées 
+            if (success === false) {
+                pass = true;
+                selectedIngredients.every(el => {
+                    recipe.ingredients.every((ingredient) => {
+                        if (((el) == ((ingredient.ingredient).toLowerCase()))) {
                             pass = true;
-                            oldValue = newValue;
-                            newValue = recipe;
-                            if (oldValue == newValue || (oldValue == "" && newValue != "")) {
-                                bool = true;
-                            }
-                            else {
-                                bool = false;
-                            }
-        
+                            return false;
                         }
-        
-                    });
+                        else {
+                            pass = false;
+                            return true;
+                        }
+                    })
+                    if (pass === true) { return true;}
+                    if (pass === false) { return false;}
                 })
 
 
-                if (bool == true && pass == true) {
+                if (pass === true) {
                     let initArray = initArrays(recipe);
                     initArray.initArrayRecipe();
                 }
-
-            // third try // le problème c'est include ne permet pas de rentrer dans false mdr et le false dans le 1er else ne permettra pas de faire toutes les vérifications
-           /*  selectedIngredients.forEach(el => {
-                if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool == true) {
-                    pass = true;
-                    oldValue = newValue;
-                    newValue = recipe;
-                    if ((oldValue == newValue || (oldValue == "" && newValue != ""))) {
-                        bool = true;
-                    }
-                    else {
-                        bool = false;
-                        console.log(bool)
-                        success = false;
-                        return success; // peu être que si je créer une fonction de cette pute
-                    }
-
-                }
-                else {
-                    console.log("ceci est un test, esque al valeur de olvalue est conservé" + oldValue)
-                    bool = false;
-                }
-
-            });
-
-            console.log("bool value : " + bool)
-            console.log(success, oldValue)
-            if (success == false) {
-                oldValue = "";
-                newValue = "";
-                bool = true;
-                pass = false;
-                recipe.ingredients.forEach((ingredient) => {
-                    console.log("un ingredient des ingredients de la recette : " + (ingredient.ingredient).toLowerCase() + " == ingredient selectionné : " )
-                    selectedIngredients.forEach(el => {
-                        if (((el) == ((ingredient.ingredient).toLowerCase())) && bool == true) {
-                            pass = true;
-                            oldValue = newValue;
-                            newValue = recipe;
-                            if (oldValue == newValue || (oldValue == "" && newValue != "")) {
-                                bool = true;
-                            }
-                            else {
-                                bool = false;
-                                return;
-                            }
-        
-                        }
-        
-                    });
-                })
             }
 
-                if (bool == true && pass == true) {
-                    let initArray = initArrays(recipe);
-                    initArray.initArrayRecipe();
-                } */
 
-                oldValue = "";
-                newValue = "";
-                bool = true;
-                pass = false;
-                if (((selectedAppliances)).includes((recipe.appliance))) {
+            console.log ("value pass : " + pass)
+
+            // mix beetween every and foreach to try
+            //  if (success === false) {
+            //     let y = 1;
+            //     recipe.ingredients.forEach((ingredient) => {
+            //         selectedIngredients.every(el => {
+            //             if (((el) == ((ingredient.ingredient).toLowerCase()))) {
+            //                 pass = true;
+            //                 oldValue = newValue;
+            //                 newValue = recipe;
+            //                 if (oldValue === newValue || (oldValue === "" && newValue !== "")) {
+            //                     bool = true;
+            //                 }
+            //                 else {
+            //                     bool = false;
+            //                 }
+
+            //             }
+
+            //         });
+            //     })
+            //  }
+
+            // console.log("true")
+
+            // just add success to old try
+            // if (success === false) {
+            //     oldValue = "";
+            //     newValue = "";
+            //     bool = true;
+            //     pass = false;
+            //     recipe.ingredients.forEach((ingredient) => {
+            //         selectedIngredients.forEach(el => {
+            //             if (((el) == ((ingredient.ingredient).toLowerCase())) && bool === true) {
+            //                 pass = true;
+            //                 oldValue = newValue;
+            //                 newValue = recipe;
+            //                 if (oldValue === newValue || (oldValue === "" && newValue !== "")) {
+            //                     bool = true;
+            //                 }
+            //                 else {
+            //                     bool = false;
+            //                 }
+
+            //             }
+
+            //         });
+            //     })
+
+            //     console.log("état de bool pour chaque ingrédient", bool)
+
+            //     if (bool == true && pass == true) {
+            //         let initArray = initArrays(recipe);
+            //         initArray.initArrayRecipe();
+            //     }
+
+            // }
+
+            // third try // le problème c'est include ne permet pas de rentrer dans false mdr et le false dans le 1er else ne permettra pas de faire toutes les vérifications
+            /*  selectedIngredients.forEach(el => {
+                 if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool == true) {
+                     pass = true;
+                     oldValue = newValue;
+                     newValue = recipe;
+                     if ((oldValue == newValue || (oldValue == "" && newValue != ""))) {
+                         bool = true;
+                     }
+                     else {
+                         bool = false;
+                         console.log(bool)
+                         success = false;
+                         return success; // peu être que si je créer une fonction de cette pute
+                     }
+ 
+                 }
+                 else {
+                     console.log("ceci est un test, esque al valeur de olvalue est conservé" + oldValue)
+                     bool = false;
+                 }
+ 
+             });
+ 
+             console.log("bool value : " + bool)
+             console.log(success, oldValue)
+             if (success == false) {
+                 oldValue = "";
+                 newValue = "";
+                 bool = true;
+                 pass = false;
+                 recipe.ingredients.forEach((ingredient) => {
+                     console.log("un ingredient des ingredients de la recette : " + (ingredient.ingredient).toLowerCase() + " == ingredient selectionné : " )
+                     selectedIngredients.forEach(el => {
+                         if (((el) == ((ingredient.ingredient).toLowerCase())) && bool == true) {
+                             pass = true;
+                             oldValue = newValue;
+                             newValue = recipe;
+                             if (oldValue == newValue || (oldValue == "" && newValue != "")) {
+                                 bool = true;
+                             }
+                             else {
+                                 bool = false;
+                                 return;
+                             }
+         
+                         }
+         
+                     });
+                 })
+             }
+ 
+                 if (bool == true && pass == true) {
+                     let initArray = initArrays(recipe);
+                     initArray.initArrayRecipe();
+                 } */
+
+            oldValue = "";
+            newValue = "";
+            bool = true;
+            pass = false;
+            if (((selectedAppliances)).includes((recipe.appliance))) {
+                pass = true;
+                oldValue = newValue;
+                newValue = recipe;
+                if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
+                    bool = true;
+                }
+                else {
+                    bool = false;
+                }
+            }
+
+            if (bool == true && pass == true) {
+                let initArray = initArrays(recipe);
+                initArray.initArrayRecipe();
+            }
+
+
+            oldValue = "";
+            newValue = "";
+            bool = true;
+            pass = false;
+            recipe.ustensils.forEach((ustensil) => {
+                if (((selectedTools)).includes(ustensil)) {
                     pass = true;
                     oldValue = newValue;
                     newValue = recipe;
@@ -354,42 +462,19 @@ export function searchByTag2() {
                         bool = false;
                     }
                 }
-
-                if (bool == true && pass == true) {
-                    let initArray = initArrays(recipe);
-                    initArray.initArrayRecipe();
-                }
-
-
-                oldValue = "";
-                newValue = "";
-                bool = true;
-                pass = false;
-                recipe.ustensils.forEach((ustensil) => {
-                    if (((selectedTools)).includes(ustensil)) {
-                        pass = true;
-                        oldValue = newValue;
-                        newValue = recipe;
-                        if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
-                            bool = true;
-                        }
-                        else {
-                            bool = false;
-                        }
-                    }
-                })
-
-                if (bool == true && pass == true) {
-                    let initArray = initArrays(recipe);
-                    initArray.initArrayRecipe();
-                }
-
-                //j'ai besoin de le remettre a 0 en resortant, du coup faire qu'un seul tableau
-
-                //}
-                //arraysFilter = arrayrecipes;
-
             })
+
+            if (bool == true && pass == true) {
+                let initArray = initArrays(recipe);
+                initArray.initArrayRecipe();
+            }
+
+            //j'ai besoin de le remettre a 0 en resortant, du coup faire qu'un seul tableau
+
+            //}
+            //arraysFilter = arrayrecipes;
+
+        })
         //arraysFilter = arrayrecipes;
         //return arraysFilter;
 
