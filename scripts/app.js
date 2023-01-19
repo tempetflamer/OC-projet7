@@ -44,10 +44,6 @@ const qsOpenListAppliance = document.querySelector(".listbox__container__applian
 
 const searchHiddenElements = document.querySelectorAll("body");
 
-let firstDisplayIngredient = false;
-let firstDisplayAppliance = false;
-let firstDisplayTool = false;
-
 // Animation Input
 searchInput.addEventListener("input", function (e) {
   if (e.target.value !== "") {
@@ -58,7 +54,6 @@ searchInput.addEventListener("input", function (e) {
 });
 
 let hiddenElement = document.querySelectorAll(".fa-chevron-up");
-//hiddenElement.forEach((element) => element.style.display = "none");
 hiddenElement.forEach((element) => element.classList.add("hidden"));
 
 async function init() {
@@ -76,9 +71,6 @@ async function init() {
     initArray.initArrayAppliance();
     initArray.initArrayTool();
 
-    // const photographerModel = photographerFactory(photographer);
-    // const userCardDOM = photographerModel.getUserCardDOM();
-    // photographersSection.appendChild(userCardDOM);
   });
 
   initResetArrays(),

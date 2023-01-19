@@ -131,9 +131,6 @@ export function getListIngredients(qsIngredientList, data) {
             item.remove();
 
             qsIngredientInput.value = "";
-
-            // initSearch();
-            // searchByTag2(arrayrecipesReset);
             let search = searchInput.value;
             if (searchInput.textLength > 2) {
                 initSearch();

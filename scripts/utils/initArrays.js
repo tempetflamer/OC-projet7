@@ -105,7 +105,6 @@ export function removeElement(type, name) {
 
 export function resetRecipe() {
     arrayrecipes = arrayrecipesReset;
-    console.log(arrayrecipesReset)
 }
 
 

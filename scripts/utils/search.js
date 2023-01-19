@@ -18,11 +18,9 @@ const qsToolInput = document.querySelector(".listbox__container__tools__input");
 
 export function searchByTag() {
     if (qsIngredientSelected.hasChildNodes()) { //theoriquement cette fonction n'est pas lancé si on ne clique pas sur au moins un
-        // Delete all childrens of Recipe Section
 
         let arraysFilter;
         arraysFilter = arrayrecipesReset;
-        console.log(JSON.stringify(arraysFilter))
         let childrens = qsIngredientSelected.childNodes;
         let children;
         let type;
@@ -102,7 +100,6 @@ function updateFilterByTag() {
 
     arrayrecipes.forEach((recipe) => {
         const initArray = initArrays(recipe);
-        //initArray.initArrayRecipe(); //doublon
         initArray.initArrayIngredient();
         initArray.initArrayAppliance();
         initArray.initArrayTool();
@@ -170,39 +167,25 @@ export function searchByTag2(filter) {
         }
 
         arraysFilter.forEach((recipe) => {
-            console.log("nouvelle entrée recipe")
-            let oldValue = "";
-            let newValue = "";
-            let bool = true;
             let pass = false;
             let success = true;
             let i = 0;
 
             //test every
             let x = 1;
-            //success = false;
             selectedIngredients.every(el => {
-                console.log("entrée every", recipe.name, el)
                 if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el))) {
-                    console.log("entrée passé every", recipe.name, el)
                     if (x == selectedIngredients.length) {
-                        console.log("arrivée")
-                        // let initArray = initArrays(recipe);
-                        // console.log("ajoute " + recipe + "au tableau")
-                        // initArray.initArrayRecipe();
                         success = true;
                         return true;
                     }
                     else {
                         x++;
-                        console.log("incrémentation de x : " + x)
                         return true;
                     }
                 }
                 else { success = false; return false; }
             });
-
-            console.warn("success : " + success + " pass : " + pass)
 
             // Pour raccourcir, il faudrais refaire un tableau avec une colonne validée pour les valeurs par exemple, et on affiche seulment si elles sont toutes validées 
             if (success === false) {
@@ -222,57 +205,6 @@ export function searchByTag2(filter) {
                     if (pass === false) { return false; }
                 })
 
-                console.log("pass : ", pass)
-
-                /* selectedAppliances.every(el => {
-                    if (((el) == ((recipe.appliance).toLowerCase()))) {
-                        pass = true;
-                        return false;
-                    }
-                    else {
-                        pass = false;
-                        return true;
-                    }
-                })
-
-                selectedTools.every(el => {
-                    recipe.ustensils.every((ustensil) => {
-                        if (((el) == ((ustensil).toLowerCase()))) {
-                            pass = true;
-                            return false;
-                        }
-                        else {
-                            pass = false;
-                            return true;
-                        }
-                    })
-                    if (pass === true) { return true; }
-                    if (pass === false) { return false; }
-                }) */
-
-                // recipe.ustensils.forEach((ustensil) => {
-                //     if (((selectedTools)).includes(ustensil)) {
-                //         pass = true;
-                //         oldValue = newValue;
-                //         newValue = recipe;
-                //         if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
-                //             bool = true;
-                //         }
-                //         else {
-                //             bool = false;
-                //         }
-                //     }
-                // })
-
-
-                /*                 if (pass === true) {
-                                    let initArray = initArrays(recipe);
-                                    console.log("ajoute " + recipe + "au tableau")
-                                    initArray.initArrayRecipe();
-                                }
-                                else {
-                                    console.info("ceci est un test de passage")
-                                } */
             }
 
             // mettre passe dans la première vérifi pour se passer de cette vérification là ?
@@ -311,208 +243,6 @@ export function searchByTag2(filter) {
             //if (pass === true || success === true) {
             if (pass === true) {
                 let initArray = initArrays(recipe);
-                console.log("ajoute " + recipe + "au tableau")
-                initArray.initArrayRecipe();
-            }
-            else {
-                console.info("ceci est un test de passage")
-            }
-
-
-            console.log("value pass : " + pass)
-
-            // oldValue = "";
-            // newValue = "";
-            // bool = true;
-            // pass = false;
-            // if (((selectedAppliances)).includes((recipe.appliance))) {
-            //     pass = true;
-            //     oldValue = newValue;
-            //     newValue = recipe;
-            //     if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
-            //         bool = true;
-            //     }
-            //     else {
-            //         bool = false;
-            //     }
-            // }
-
-            // if (bool == true && pass == true) {
-            //     let initArray = initArrays(recipe);
-            //     initArray.initArrayRecipe();
-            // }
-
-
-            // oldValue = "";
-            // newValue = "";
-            // bool = true;
-            // pass = false;
-            // recipe.ustensils.forEach((ustensil) => {
-            //     if (((selectedTools)).includes(ustensil)) {
-            //         pass = true;
-            //         oldValue = newValue;
-            //         newValue = recipe;
-            //         if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
-            //             bool = true;
-            //         }
-            //         else {
-            //             bool = false;
-            //         }
-            //     }
-            // })
-            // console.log(bool)
-
-            // if (bool == true && pass == true) {
-            //     let initArray = initArrays(recipe);
-            //     initArray.initArrayRecipe();
-            // }
-
-        })
-
-        createRecipe(arraysFilter);
-        updateFilterByTag(type)
-    }
-    else {
-        resetSearch();
-    }
-}
-
-/*
-export function searchByTag2(filter) {
-    console.log("arrayfilter => filter : " + filter)
-    console.log("arrayfilter => arrayrecipes : " + arrayrecipes)
-
-    if (qsIngredientSelected.hasChildNodes()) { // techniquement il en a forcément
-
-        let selectedIngredients = [];
-        let selectedTools = [];
-        let selectedAppliances = [];
-
-        //forEach
-        let arraysFilter;
-        arraysFilter = filter;
-        console.log("arrayfilter => filter : " + filter)
-        let childrens = qsIngredientSelected.childNodes;
-        let children;
-        let type;
-        for (let i = 0; i < childrens.length; i++) {
-            children = childrens[i].children[0].textContent
-            children = children.toLowerCase()
-            if (childrens[i].classList.contains("type--ingredient")) { selectedIngredients.push(children); }
-            if (childrens[i].classList.contains("type--appliance")) { selectedAppliances.push(children); }
-            if (childrens[i].classList.contains("type--tool")) { selectedTools.push(children); }
-        }
-
-        arraysFilter.forEach((recipe) => {
-            console.log("nouvelle entrée recipe")
-            let oldValue = "";
-            let newValue = "";
-            let bool = true;
-            let pass = false;
-            let success = true;
-            let i = 0;
-
-            //test every
-            let x = 1;
-            success = false;
-            selectedIngredients.every(el => {
-                console.log("entrée every", recipe.name, el)
-                if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el))) {
-                    console.log("entrée passé every", recipe.name, el)
-                    if (x == selectedIngredients.length) {
-                        console.log("arrivée")
-                        let initArray = initArrays(recipe);
-                        console.log("ajoute " + recipe + "au tableau")
-                        initArray.initArrayRecipe();
-                        success = true;
-                        return true;
-                    }
-                    else {
-                        x++;
-                        console.log("incrémentation de x : " + x)
-                        return true;
-                    }
-                }
-                else { success = false; return false; }
-            });
-
-            console.warn("success : " + success)
-
-            // Pour raccourcir, il faudrais refaire un tableau avec une colonne validée pour les valeurs par exemple, et on affiche seulment si elles sont toutes validées 
-            if (success === false) {
-                pass = false;
-                selectedIngredients.every(el => {
-                    recipe.ingredients.every((ingredient) => {
-                        if (((el) == ((ingredient.ingredient).toLowerCase()))) {
-                            pass = true;
-                            return false;
-                        }
-                        else {
-                            pass = false;
-                            return true;
-                        }
-                    })
-                    if (pass === true) { return true; }
-                    if (pass === false) { return false; }
-                })
-
-
-                if (pass === true) {
-                    let initArray = initArrays(recipe);
-                    console.log("ajoute " + recipe + "au tableau")
-                    initArray.initArrayRecipe();
-                }
-                else { 
-                    console.info("ceci est un test de passage")
-                }
-            }
-
-
-            console.log("value pass : " + pass)
-
-            oldValue = "";
-            newValue = "";
-            bool = true;
-            pass = false;
-            if (((selectedAppliances)).includes((recipe.appliance))) {
-                pass = true;
-                oldValue = newValue;
-                newValue = recipe;
-                if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
-                    bool = true;
-                }
-                else {
-                    bool = false;
-                }
-            }
-
-            if (bool == true && pass == true) {
-                let initArray = initArrays(recipe);
-                initArray.initArrayRecipe();
-            }
-
-
-            oldValue = "";
-            newValue = "";
-            bool = true;
-            pass = false;
-            recipe.ustensils.forEach((ustensil) => {
-                if (((selectedTools)).includes(ustensil)) {
-                    pass = true;
-                    oldValue = newValue;
-                    newValue = recipe;
-                    if ((oldValue == newValue || (oldValue == "" && newValue != "")) && bool == true) {
-                        bool = true;
-                    }
-                    else {
-                        bool = false;
-                    }
-                }
-            })
-            console.log(bool)
-
-            if (bool == true && pass == true) {
-                let initArray = initArrays(recipe);
                 initArray.initArrayRecipe();
             }
 
@@ -525,16 +255,12 @@ export function searchByTag2(filter) {
         resetSearch();
     }
 }
-*/
-
 
 export function searchByWord(el) {
 
     let arraysFilter;
     arraysFilter = arrayrecipesReset;
     arraysFilter = updateRecipesByWord(el, arraysFilter)
-    console.log("arrayFilter apres seachWord : " + arraysFilter)
-    console.log("arrayFilter => arrayRecipes apres seachWord : " + arrayrecipes)
 
     if (qsIngredientSelected.hasChildNodes()) {
         console.log("arrayFilter apres seachWord : " + arraysFilter)
@@ -571,10 +297,7 @@ export function updateRecipesByWord(el, arraysFilter) {
 export function resetSearch() {
     initSearch();
     resetRecipe();
-    console.log(arrayrecipes)
     createRecipe(arrayrecipes);
-    console.log(arrayrecipes)
     updateFilterByTag()
-    console.log(arrayrecipes) // c'est ici que c'est doublé
 
 }
