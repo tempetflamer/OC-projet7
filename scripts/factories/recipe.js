@@ -1,10 +1,11 @@
-import { arrayrecipes, clearArrays } from "../utils/initArrays.js";
-import { searchByTag, searchByTag2 } from "../utils/search.js"; 
+import { arrayrecipes, clearArrays, arrayrecipesReset } from "../utils/initArrays.js";
+import { searchByTag, searchByTag2, searchByWord } from "../utils/search.js";
 
 const qsFiltersSelected = document.querySelector('.filterselected');
 const qsIngredientInput = document.querySelector(".listbox__container__ingredients__input");
 const qsApplianceInput = document.querySelector(".listbox__container__appliances__input");
 const qsToolInput = document.querySelector(".listbox__container__tools__input");
+const searchInput = document.querySelector(".recherche__container input");
 
 
 export function recipesFactories(data) {
@@ -135,7 +136,17 @@ export function getListIngredients(qsIngredientList, data) {
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
-            }, {once : true});
+                let search = searchInput.value;
+                console.log("test0")
+                if (searchInput.textLength > 2) {
+                    console.log("test")
+                    searchByWord(search)
+                }
+                else {
+                    searchByTag2();
+                }
+
+            }, { once: true });
 
         });
 
@@ -165,11 +176,12 @@ export function getListAppliances(qsApplianceList, data) {
             item.remove();
 
             qsApplianceInput.value = "";
-            searchByTag();
+            searchByTag(arrayrecipesReset);
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
-            }, {once : true});
+
+            }, { once: true });
 
         });
 
@@ -203,7 +215,7 @@ export function getListTools(qstoolList, data) {
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
-            }, {once : true});
+            }, { once: true });
 
         });
 

@@ -45,10 +45,6 @@ export function searchByTag() {
     }
 }
 
-export function searchByWord() {
-
-}
-
 export function updateRecipesByTag(el, type, arraysFilter) {
 
     arraysFilter.forEach((recipe) => {
@@ -287,4 +283,40 @@ export function searchByTag2() {
         createRecipe(arraysFilter);
         updateFilterByTag(type)
     }
+}
+
+
+export function searchByWord(el) {
+
+    let arraysFilter;
+    arraysFilter = arrayrecipesReset;
+
+    // Delete all childrens of Recipe Section => init section to empty
+    qsSectionRecipe.innerHTML = "";
+
+        clearArrays();
+        arraysFilter = updateRecipesByWord(el, arraysFilter)
+
+    createRecipe(arraysFilter);
+    updateFilterByTag()
+}
+
+export function updateRecipesByWord(el, arraysFilter) {
+
+    arraysFilter.forEach((recipe) => {
+        if (((recipe.name).toLowerCase()).includes(el.toLowerCase()) || ((recipe.description).toLowerCase()).includes(el.toLowerCase())) {
+            let initArray = initArrays(recipe);
+            initArray.initArrayRecipe();
+        }
+        else {
+                recipe.ingredients.forEach((ingredient) => {
+                    if (((ingredient.ingredient).toLowerCase()).includes(el.toLowerCase())) {
+                        let initArray = initArrays(recipe);
+                        initArray.initArrayRecipe();
+                    }
+                })
+        }
+    })
+    arraysFilter = arrayrecipes;
+    return arraysFilter;
 }
