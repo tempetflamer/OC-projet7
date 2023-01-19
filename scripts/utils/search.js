@@ -166,11 +166,12 @@ export function searchByTag2(filter) {
             if (childrens[i].classList.contains("type--tool")) { selectedTools.push(children); }
         }
 
-        arraysFilter.forEach((recipe) => {
+        /*arraysFilter.forEach((recipe) => {
             let pass = false;
             let success = true;
             let i = 0;
 
+            // pas besoin du au fait que les ingrédients sélectionnés ne sont pas à chercher dans le nom et la description mais ça fait quand tu met glaçons y'a des recettes qui n'apparaitrons aps pusique c'est dans la description
             //test every
             let x = 1;
             selectedIngredients.every(el => {
@@ -188,30 +189,44 @@ export function searchByTag2(filter) {
             });
 
             // Pour raccourcir, il faudrais refaire un tableau avec une colonne validée pour les valeurs par exemple, et on affiche seulment si elles sont toutes validées 
+            // if (success === false) {
+            //     pass = false;
+            //     selectedIngredients.every(el => {
+            //         recipe.ingredients.every((ingredient) => {
+            //             if (((el) == ((ingredient.ingredient).toLowerCase()))) {
+            //                 pass = true;
+            //                 return false;
+            //             }
+            //             else {
+            //                 pass = false;
+            //                 return true;
+            //             }
+            //         })
+            //         if (pass === true) { return true; }
+            //         if (pass === false) { return false; }
+            //     })
+
+            // }
+            // == identique à la fonction au dessus normalement
             if (success === false) {
-                pass = false;
-                selectedIngredients.every(el => {
+                let findIngredient = selectedIngredients.every(el => {
                     recipe.ingredients.every((ingredient) => {
                         if (((el) == ((ingredient.ingredient).toLowerCase()))) {
-                            pass = true;
                             return false;
                         }
                         else {
-                            pass = false;
                             return true;
                         }
                     })
-                    if (pass === true) { return true; }
-                    if (pass === false) { return false; }
                 })
-
+                console.log(findIngredient)
             }
 
             // mettre passe dans la première vérifi pour se passer de cette vérification là ?
             // Si le(s) ingrédient(s) sélectionné(s) se trouvent dans la description, nom de la recette, les ingrédients de la recette ou qu'il n'y a pas d'ingrédient(s) sélectionné(s)
             if (pass === true || success === true) {
                 pass = true;
-                selectedAppliances.every(el => {
+                let findAppliance = selectedAppliances.every(el => {
                     if (((el) == ((recipe.appliance).toLowerCase()))) {
                         pass = true;
                         return false;
@@ -223,20 +238,38 @@ export function searchByTag2(filter) {
                 })
 
                 if (pass === true) {
-                    selectedTools.every(el => {
-                        recipe.ustensils.every((ustensil) => {
+                    // let findTools = selectedTools.every(el => {
+                    //     recipe.ustensils.every((ustensil) => {
+                    //         if (((el) == ((ustensil).toLowerCase()))) {
+                    //             pass = true;
+                    //             return false;
+                    //         }
+                    //         else {
+                    //             pass = false;
+                    //             return true;
+                    //         }
+                    //     })
+                    //     if (pass === true) { return true; }
+                    //     if (pass === false) { return false; }
+                    // })
+
+                    // let findTools = selectedTools.every(el => {
+                    //     return recipe.ustensils.every((ustensil) => {
+                    //         return ((el) == ((ustensil).toLowerCase()));
+                    //     });
+                    // });
+
+                    let findTools = selectedTools.every(el => {
+                        return recipe.ustensils.every((ustensil) => {
                             if (((el) == ((ustensil).toLowerCase()))) {
-                                pass = true;
                                 return false;
                             }
                             else {
-                                pass = false;
                                 return true;
                             }
-                        })
-                        if (pass === true) { return true; }
-                        if (pass === false) { return false; }
-                    })
+                        });
+                    });
+                    console.log("findTools", findTools)
                 }
 
             }
@@ -246,7 +279,80 @@ export function searchByTag2(filter) {
                 initArray.initArrayRecipe();
             }
 
-        })
+        })*/
+
+        arraysFilter.forEach((recipe) => {
+            let findIngredient = selectedIngredients.every(el => {
+                // if((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el))) {
+                //     return true;
+                // }
+                return recipe.ingredients.some((ingredient) => {
+                    return ((el) == ((ingredient.ingredient).toLowerCase()));
+                    // if ((el) == ((ingredient.ingredient).toLowerCase())) {
+                    //     return false;
+                    // }
+                    // else {
+                    //     return true;
+                    // }
+                });
+            });
+            console.log("findIngredient : " + findIngredient)
+
+            let findAppliance = selectedAppliances.some(el => {
+                return ((el) == ((recipe.appliance).toLowerCase()));
+            });
+            console.log("findAppliance : " + findAppliance)
+
+            let findTools = selectedTools.every(el => {
+                return recipe.ustensils.some((ustensil) => {
+                    return ((el) == ((ustensil).toLowerCase()));
+                    // if ((el) == ((ustensil).toLowerCase())){
+                    //     return false;
+                    // }
+                    // else {
+                    //     return true;
+                    // }
+                });
+            });
+
+            // let findTools = selectedTools.every(el => {
+            //     return recipe.ustensils.some((ustensil) => {
+            //         if (((el) == ((ustensil).toLowerCase()))) {
+            //             return false;
+            //         }
+            //         else {
+            //             return true;
+            //         }
+            //     });
+            // });
+            console.log("findTools : " + findTools + recipe.name)
+                        
+            // let pass = true;
+            //                     findTools = selectedTools.every(el => {
+            //             recipe.ustensils.every((ustensil) => {
+            //                 if (((el) == ((ustensil).toLowerCase()))) {
+            //                     pass = true;
+            //                     return false;
+            //                 }
+            //                 else {
+            //                     pass = false;
+            //                     return true;
+            //                 }
+            //             })
+            //             if (pass === true) { return true; }
+            //             if (pass === false) { return false; }
+            //         })
+            
+            // appliance marche avec tous, ustensiles, amrche tout seul, avec ces if de merde ustensiles et ingrédient fonctionne
+            if (selectedIngredients == "") { findIngredient = true}
+            if (selectedAppliances == "") { findAppliance = true}
+            if (selectedTools == "") { findTools = true}
+            console.log(findIngredient, findAppliance, findTools)
+            if(findIngredient && findAppliance && findTools) {
+                let initArray = initArrays(recipe);
+                initArray.initArrayRecipe();
+            }
+        });
 
         createRecipe(arraysFilter);
         updateFilterByTag(type)

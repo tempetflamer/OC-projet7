@@ -7,6 +7,7 @@ let arrayAppliancesReset = [];
 let arrayTools = [];
 let arrayToolsReset = [];
 
+// Factories
 export function initArrays(data) {
     const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
     let value;
