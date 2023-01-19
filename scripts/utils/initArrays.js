@@ -103,6 +103,11 @@ export function removeElement(type, name) {
 
 }
 
+export function resetRecipe() {
+    arrayrecipes = arrayrecipesReset;
+    console.log(arrayrecipesReset)
+}
+
 
 // exports arrays
 export { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset };

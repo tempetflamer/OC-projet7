@@ -1,5 +1,5 @@
 import { arrayrecipes, clearArrays, arrayrecipesReset } from "../utils/initArrays.js";
-import { searchByTag, searchByTag2, searchByWord } from "../utils/search.js";
+import { searchByTag, searchByTag2, searchByWord, initSearch } from "../utils/search.js";
 
 const qsFiltersSelected = document.querySelector('.filterselected');
 const qsIngredientInput = document.querySelector(".listbox__container__ingredients__input");
@@ -132,18 +132,28 @@ export function getListIngredients(qsIngredientList, data) {
 
             qsIngredientInput.value = "";
 
-            searchByTag2();
+            // initSearch();
+            // searchByTag2(arrayrecipesReset);
+            let search = searchInput.value;
+            if (searchInput.textLength > 2) {
+                initSearch();
+                searchByWord(search)
+            }
+            else {
+                initSearch();
+                searchByTag2(arrayrecipesReset);
+            }
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
                 let search = searchInput.value;
-                console.log("test0")
                 if (searchInput.textLength > 2) {
-                    console.log("test")
+                    initSearch();
                     searchByWord(search)
                 }
                 else {
-                    searchByTag2();
+                    initSearch();
+                    searchByTag2(arrayrecipesReset);
                 }
 
             }, { once: true });
@@ -176,10 +186,27 @@ export function getListAppliances(qsApplianceList, data) {
             item.remove();
 
             qsApplianceInput.value = "";
-            searchByTag(arrayrecipesReset);
+            let search = searchInput.value;
+            if (searchInput.textLength > 2) {
+                initSearch();
+                searchByWord(search)
+            }
+            else {
+                initSearch();
+                searchByTag2(arrayrecipesReset);
+            }
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
+                let search = searchInput.value;
+                if (searchInput.textLength > 2) {
+                    initSearch();
+                    searchByWord(search)
+                }
+                else {
+                    initSearch();
+                    searchByTag2(arrayrecipesReset);
+                }
 
             }, { once: true });
 
@@ -211,10 +238,28 @@ export function getListTools(qstoolList, data) {
             item.remove();
 
             qsToolInput.value = "";
-            searchByTag();
+            let search = searchInput.value;
+            if (searchInput.textLength > 2) {
+                initSearch();
+                searchByWord(search)
+            }
+            else {
+                initSearch();
+                searchByTag2(arrayrecipesReset);
+            }
 
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
+                let search = searchInput.value;
+                if (searchInput.textLength > 2) {
+                    initSearch();
+                    searchByWord(search)
+                }
+                else {
+                    initSearch();
+                    searchByTag2(arrayrecipesReset);
+                }
+
             }, { once: true });
 
         });

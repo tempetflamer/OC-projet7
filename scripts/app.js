@@ -3,7 +3,7 @@ import { recipesFactories, getListIngredients, getListAppliances, getListTools }
 import { initArrays, initResetArrays, sortArrays } from "./utils/initArrays.js";
 import { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset } from "./utils/initArrays.js";
 import { setlistboxSize } from "./utils/resize-listbox.js";
-import { searchByTag, searchByWord } from "./utils/search.js";
+import { searchByTag, searchByWord, initSearch, resetSearch } from "./utils/search.js";
 
 const searchInput = document.querySelector(".recherche__container input");
 const qsBody = document.querySelector("body");
@@ -312,7 +312,12 @@ searchInput.addEventListener("keyup", () => {
   let search = searchInput.value;
   console.log(search)
   console.log(searchInput, searchInput.textLength)
+  console.info(arrayrecipes, " == ", arrayrecipesReset)
   if (searchInput.textLength > 2) {
+    initSearch();
     searchByWord(search)
+  }
+  else if (searchInput.textLength < 3 && arrayrecipes != arrayrecipesReset) {
+    resetSearch();
   }
 })
