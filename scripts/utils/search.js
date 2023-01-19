@@ -137,55 +137,6 @@ function updateFilterByTag() {
         }
     }
 
-    // Contrairement à la fonction juste au dessus, celle-ci, elle supprime les élément selectionné dans le html, celle du dessus le fait directement dans le tableau
-    /*     let filtersSelected = qsIngredientSelected.childNodes;
-        let filterSelected;
-        let filters = qsIngredientList.childNodes;
-        let filter;
-        let type;
-        for (let i = 0; i < filtersSelected.length; i++) {
-            filterSelected = filtersSelected[i].children[0].textContent
-            if (filtersSelected[i].classList.contains("type--ingredient")) {
-                filters = qsIngredientList.childNodes;
-                for (let j = 0; i < filters.length; j++) {
-                    filter = filters[i].textContent
-                    if (filter.toLowerCase() == filterSelected.toLowerCase()) {
-                        filters[i].remove()
-                    }
-                }
-            }
-            if (filtersSelected[i].classList.contains("type--appliance")) {
-                filters = qsApplianceList.childNodes;
-                for (let j = 0; i < filters.length; j++) {
-                    filter = filters[i].textContent
-                    if (filter.toLowerCase() == filterSelected.toLowerCase()) {
-                        filters[i].remove()
-                    }
-                }
-            }
-            if (filtersSelected[i].classList.contains("type--tool")) {
-                filters = qsToolList.childNodes;
-                for (let j = 0; i < filters.length; j++) {
-                    filter = filters[i].textContent
-                    if (filter.toLowerCase() == filterSelected.toLowerCase()) {
-                        filters[i].remove()
-                    }
-                }
-            }
-        } */
-
-
-    console.log("arrayIngredients 2 : " + arrayIngredients.length);
-
-
-    //sortArrays();
-
-
-
-    // qsIngredientBox.classList.add("box--off");
-    // qsApplianceBox.classList.add("box--off");
-    // qsToolBox.classList.add("box--off");
-
     //renomer ce get ou les autres éléments qui n'en nont pas avec set, create etc
     getListIngredients(qsIngredientList, arrayIngredients);
     getListAppliances(qsApplianceList, arrayAppliances);
@@ -233,30 +184,6 @@ export function searchByTag2() {
             let success = true;
             let i = 0;
 
-            // La boucle repart toujours à 0 // make a every value, it's also an array element // else i can make an incrementation i et quand i == lenght je push dans le tableau
-            // selectedIngredients.forEach(el => {
-            //     console.log("nouvelle entrée selected ingrédient")
-            //     if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool === true) {
-            //         i++;
-            //         pass = true;
-            //         oldValue = newValue;
-            //         newValue = recipe;
-            //         console.log("oldValue : ", oldValue, "newvalue : ", newValue)
-            //         console.log("i : " + i)
-            //         if ((oldValue === newValue || (oldValue === "" && newValue === ""))) {
-            //             bool = true;
-            //         }
-            //         else {
-            //             console.log("value false")
-            //             bool = false;
-            //         }
-
-            //     }
-
-            // });
-
-            // console.log(bool)
-
             //test every
             let x = 1;
             success = false;
@@ -277,7 +204,7 @@ export function searchByTag2() {
                         return true;
                     }
                 }
-                else { return false; }
+                else { success = false; return false; }
             });
 
             console.warn("success : " + success)
@@ -309,120 +236,6 @@ export function searchByTag2() {
 
 
             console.log ("value pass : " + pass)
-
-            // mix beetween every and foreach to try
-            //  if (success === false) {
-            //     let y = 1;
-            //     recipe.ingredients.forEach((ingredient) => {
-            //         selectedIngredients.every(el => {
-            //             if (((el) == ((ingredient.ingredient).toLowerCase()))) {
-            //                 pass = true;
-            //                 oldValue = newValue;
-            //                 newValue = recipe;
-            //                 if (oldValue === newValue || (oldValue === "" && newValue !== "")) {
-            //                     bool = true;
-            //                 }
-            //                 else {
-            //                     bool = false;
-            //                 }
-
-            //             }
-
-            //         });
-            //     })
-            //  }
-
-            // console.log("true")
-
-            // just add success to old try
-            // if (success === false) {
-            //     oldValue = "";
-            //     newValue = "";
-            //     bool = true;
-            //     pass = false;
-            //     recipe.ingredients.forEach((ingredient) => {
-            //         selectedIngredients.forEach(el => {
-            //             if (((el) == ((ingredient.ingredient).toLowerCase())) && bool === true) {
-            //                 pass = true;
-            //                 oldValue = newValue;
-            //                 newValue = recipe;
-            //                 if (oldValue === newValue || (oldValue === "" && newValue !== "")) {
-            //                     bool = true;
-            //                 }
-            //                 else {
-            //                     bool = false;
-            //                 }
-
-            //             }
-
-            //         });
-            //     })
-
-            //     console.log("état de bool pour chaque ingrédient", bool)
-
-            //     if (bool == true && pass == true) {
-            //         let initArray = initArrays(recipe);
-            //         initArray.initArrayRecipe();
-            //     }
-
-            // }
-
-            // third try // le problème c'est include ne permet pas de rentrer dans false mdr et le false dans le 1er else ne permettra pas de faire toutes les vérifications
-            /*  selectedIngredients.forEach(el => {
-                 if ((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el)) && bool == true) {
-                     pass = true;
-                     oldValue = newValue;
-                     newValue = recipe;
-                     if ((oldValue == newValue || (oldValue == "" && newValue != ""))) {
-                         bool = true;
-                     }
-                     else {
-                         bool = false;
-                         console.log(bool)
-                         success = false;
-                         return success; // peu être que si je créer une fonction de cette pute
-                     }
- 
-                 }
-                 else {
-                     console.log("ceci est un test, esque al valeur de olvalue est conservé" + oldValue)
-                     bool = false;
-                 }
- 
-             });
- 
-             console.log("bool value : " + bool)
-             console.log(success, oldValue)
-             if (success == false) {
-                 oldValue = "";
-                 newValue = "";
-                 bool = true;
-                 pass = false;
-                 recipe.ingredients.forEach((ingredient) => {
-                     console.log("un ingredient des ingredients de la recette : " + (ingredient.ingredient).toLowerCase() + " == ingredient selectionné : " )
-                     selectedIngredients.forEach(el => {
-                         if (((el) == ((ingredient.ingredient).toLowerCase())) && bool == true) {
-                             pass = true;
-                             oldValue = newValue;
-                             newValue = recipe;
-                             if (oldValue == newValue || (oldValue == "" && newValue != "")) {
-                                 bool = true;
-                             }
-                             else {
-                                 bool = false;
-                                 return;
-                             }
-         
-                         }
-         
-                     });
-                 })
-             }
- 
-                 if (bool == true && pass == true) {
-                     let initArray = initArrays(recipe);
-                     initArray.initArrayRecipe();
-                 } */
 
             oldValue = "";
             newValue = "";
@@ -469,20 +282,7 @@ export function searchByTag2() {
                 initArray.initArrayRecipe();
             }
 
-            //j'ai besoin de le remettre a 0 en resortant, du coup faire qu'un seul tableau
-
-            //}
-            //arraysFilter = arrayrecipes;
-
         })
-        //arraysFilter = arrayrecipes;
-        //return arraysFilter;
-
-        // clearArrays();
-        // arraysFilter = updateRecipesByTag(children, type, arraysFilter)
-
-        // console.log("arrayFilter : " + JSON.stringify(arraysFilter))
-        // console.log("arrayRecipes : " + JSON.stringify(arrayrecipes))
 
         createRecipe(arraysFilter);
         updateFilterByTag(type)
