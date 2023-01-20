@@ -47,8 +47,6 @@
                 }
             }
 
-            //comme un con j'ai mis le time et titre normalement dans content et pas dans content top
-
             &__content {
                 gap: 0 1.5rem;
                 display: grid;
@@ -60,7 +58,6 @@
                 }
 
                 &__desc {
-                    max-height: 12rem;
                     display: -webkit-box;
                     max-width: 200px;
                     -webkit-line-clamp: 10;

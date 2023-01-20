@@ -1,12 +1,6 @@
 @media screen and (max-width: 1530px) {
     .recipes__card__data {
         font-size: 95%;
-        &__content {
-            &__desc {
-                max-height: 11.5rem;
-            }
-        }
-
         &__content-top {
             &__time, &__title {
                 font-size: 1.1rem;

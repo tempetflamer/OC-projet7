@@ -403,7 +403,6 @@ header h1 {
   padding: 0;
 }
 .recipes__card__data__content__desc {
-  max-height: 12rem;
   display: -webkit-box;
   max-width: 200px;
   -webkit-line-clamp: 10;
@@ -415,9 +414,6 @@ header h1 {
 @media screen and (max-width: 1530px) {
   .recipes__card__data {
     font-size: 95%;
-  }
-  .recipes__card__data__content__desc {
-    max-height: 11.5rem;
   }
   .recipes__card__data__content-top__time, .recipes__card__data__content-top__title {
     font-size: 1.1rem;
