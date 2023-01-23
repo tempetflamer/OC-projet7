@@ -28,9 +28,8 @@ function createRecipe(arraysFilter) {
     }
     else {
         const error = document.createElement('p');
-        //error.textContent = "Aucune recette ne correspond à votre critère... <br> vous pouvez chercher « tarte aux pommes », « poisson », etc"
-        error.textContent = "Aucune recette ne correspond à votre critère... \r\n...";
-        error.textContent += "vous pouvez chercher « tarte aux pommes », « poisson », etc. \r\n...";
+        error.textContent = "Aucune recette ne correspond à votre critère... \r\n";
+        error.textContent += "Vous pouvez chercher « tarte aux pommes », « poisson », etc. \r\n";
         error.classList.add('recipes__norecipes')
         qsSectionRecipe.appendChild(error);
     }
