@@ -1,5 +1,5 @@
 import { arrayrecipes, clearArrays, arrayrecipesReset } from "../utils/initArrays.js";
-import { searchByTag, searchByTag2, searchByWord, initSearch } from "../utils/search.js";
+import { searchByTag, searchByWord, initSearch } from "../utils/search.js";
 
 const qsFiltersSelected = document.querySelector('.filterselected');
 const qsIngredientInput = document.querySelector(".listbox__container__ingredients__input");
@@ -138,7 +138,7 @@ export function getListIngredients(qsIngredientList, data) {
             }
             else {
                 initSearch();
-                searchByTag2(arrayrecipesReset);
+                searchByTag(arrayrecipesReset);
             }
 
             filterIcon.addEventListener("click", (e) => {
@@ -150,7 +150,7 @@ export function getListIngredients(qsIngredientList, data) {
                 }
                 else {
                     initSearch();
-                    searchByTag2(arrayrecipesReset);
+                    searchByTag(arrayrecipesReset);
                 }
 
             }, { once: true });
@@ -190,7 +190,7 @@ export function getListAppliances(qsApplianceList, data) {
             }
             else {
                 initSearch();
-                searchByTag2(arrayrecipesReset);
+                searchByTag(arrayrecipesReset);
             }
 
             filterIcon.addEventListener("click", (e) => {
@@ -202,7 +202,7 @@ export function getListAppliances(qsApplianceList, data) {
                 }
                 else {
                     initSearch();
-                    searchByTag2(arrayrecipesReset);
+                    searchByTag(arrayrecipesReset);
                 }
 
             }, { once: true });
@@ -242,7 +242,7 @@ export function getListTools(qstoolList, data) {
             }
             else {
                 initSearch();
-                searchByTag2(arrayrecipesReset);
+                searchByTag(arrayrecipesReset);
             }
 
             filterIcon.addEventListener("click", (e) => {
@@ -254,7 +254,7 @@ export function getListTools(qstoolList, data) {
                 }
                 else {
                     initSearch();
-                    searchByTag2(arrayrecipesReset);
+                    searchByTag(arrayrecipesReset);
                 }
 
             }, { once: true });
