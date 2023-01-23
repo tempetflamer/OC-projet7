@@ -71,8 +71,12 @@
     }
 
     &__norecipes {
-        white-space: pre;
+        width: 84vw;
+        text-align: center;
+        white-space: pre-wrap;
         font-weight: bold;
         color: #292929;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
     }
 }

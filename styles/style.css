@@ -410,6 +410,15 @@ header h1 {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.recipes__norecipes {
+  width: 84vw;
+  text-align: center;
+  white-space: pre-wrap;
+  font-weight: bold;
+  color: #292929;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
 
 @media screen and (max-width: 1530px) {
   .recipes__card__data {
