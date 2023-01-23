@@ -2,6 +2,7 @@ import { arrayrecipes, arrayIngredients, arrayAppliances, arrayTools, arrayrecip
 import { initArrays, clearArrays, removeElement, resetRecipe } from "../utils/initArrays.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "../factories/recipe.js";
 import { setlistboxSize } from "../utils/resize-listbox.js";
+import { normalize } from "../utils/remove_accent.js";
 
 // DOM Elements
 const qsFilterSelected = document.querySelector(".filterselected");
@@ -160,12 +161,10 @@ export function searchByTag(filter) {
 
 export function searchByWord(el) {
 
-    let arraysFilter;
-    arraysFilter = arrayrecipesReset;
+    let arraysFilter = arrayrecipesReset;
     arraysFilter = updateRecipesByWord(el, arraysFilter)
 
     if (qsFilterSelected.hasChildNodes()) {
-        console.log("arrayFilter apres seachWord : " + arraysFilter)
         clearArrays();
         searchByTag(arraysFilter)
     }
@@ -177,15 +176,16 @@ export function searchByWord(el) {
 }
 
 export function updateRecipesByWord(el, arraysFilter) {
+    el = normalize(el)
 
     arraysFilter.forEach((recipe) => {
-        if (((recipe.name).toLowerCase()).includes(el.toLowerCase()) || ((recipe.description).toLowerCase()).includes(el.toLowerCase())) {
+        if ((normalize(recipe.name)).includes(el) || (normalize(recipe.description)).includes(el)) {
             let initArray = initArrays(recipe);
             initArray.initArrayRecipe();
         }
         else {
             recipe.ingredients.forEach((ingredient) => {
-                if (((ingredient.ingredient).toLowerCase()).includes(el.toLowerCase())) {
+                if ((normalize(ingredient.ingredient)).includes(el)) {
                     let initArray = initArrays(recipe);
                     initArray.initArrayRecipe();
                 }

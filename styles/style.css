@@ -34,6 +34,7 @@ body {
   width: 84%;
   margin-right: 8%;
   margin-left: 8%;
+  margin-bottom: 2.5rem;
   font-size: 1rem;
 }
 
@@ -49,9 +50,6 @@ body {
   font-weight: 700;
 }
 
-/* .hidden {
-    display: none;
-} */
 .box {
   display: flex;
   flex-direction: column;
