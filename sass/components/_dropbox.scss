@@ -1,19 +1,13 @@
-/* .hidden {
-    display: none;
-} */
-
 .box {
     display: flex;
     flex-direction: column;
-    //align-items: center;
     justify-content: space-around;
     padding: 1rem;
     gap: 1.5rem;
     border-radius: 5px;
     color: white;
     width: 12rem;
-    max-height: 3.5rem; // height transformer in max height
-
+    max-height: 3.5rem;
     cursor: pointer;
 
     p {
@@ -22,7 +16,6 @@
         font-size: 1.2rem;
     }
 
-    //.fa-chevron-up {display: none;} // ajouter le display none de manière js comme ça le css charge avant a cause du display flex je suppose
 }
 
 .box--on {
@@ -42,7 +35,7 @@
     width: 40rem;
 }
 .box4 {
-    width: 53rem; //54
+    width: 53rem;
 }
 .box5 {
     width: 66rem;
