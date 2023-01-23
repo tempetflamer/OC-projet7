@@ -9,11 +9,10 @@
 
 
     &__card {
-        min-width: 300px; // normalement on devrais j'amais l'atteindre
+        min-width: 300px;
         background: #E7E7E7;
 
         &__img {
-            //overflow: hidden;
             max-width: 100%;
             height: auto;
             object-fit: cover;
@@ -34,7 +33,7 @@
                     justify-content: flex-end;
                     gap: 0 0.5rem;
                     font-size: 1.2rem;
-                    width: 10rem; // 10 rem allows to go up to 4 digits, 8 rem is enough for 3 digits, let us leave a little margin, ex: (8 hours * 60 = 480h), 16h20 are necessary to reach 1000
+                    width: 10rem;
                     overflow: auto;
                 }
 
