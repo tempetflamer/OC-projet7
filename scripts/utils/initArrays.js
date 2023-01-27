@@ -1,20 +1,22 @@
-let arrayrecipes = [];
-let arrayrecipesReset = [];
-let arrayIngredients = [];
-let arrayIngredientsReset = [];
-let arrayAppliances = [];
-let arrayAppliancesReset = [];
-let arrayTools = [];
-let arrayToolsReset = [];
+// Arrays
+let recipes = [];
+let recipesReset = [];
+let ingredientsRecipes = [];
+let appliancesRecipes = [];
+let toolsRecipes = [];
 
-// Factories
+/**
+ * Factories, init each arrays for the given recipe
+ * @param {*} data - recipe
+ * @returns { initArrayRecipe, initArrayIngredient, initArrayAppliance, initArrayTool } - function to init each arrays
+ */
 export function initArrays(data) {
     const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
     let value;
     let values;
 
     function initArrayRecipe() {
-        arrayrecipes.push(data);
+        recipes.push(data);
     }
 
     function initArrayIngredient() {
@@ -24,12 +26,11 @@ export function initArrays(data) {
             value = value.charAt(0).toUpperCase() + value.slice(1)
             values = value + "s";
 
-            // Quand on cherche pomme, on doit chercher à la fois pomme et pommes (value & value + "s"), puis, pour pommes chercher pommes et pomme (value, et value.slice(-last character))
-            if (!(arrayIngredients.indexOf(value) === -1) || !(arrayIngredients.indexOf((values)) === -1) || !(arrayIngredients.indexOf((value.slice(0, -1))) === -1)) {
+            if (!(ingredientsRecipes.indexOf(value) === -1) || !(ingredientsRecipes.indexOf((values)) === -1) || !(ingredientsRecipes.indexOf((value.slice(0, -1))) === -1)) {
                 return
             }
             else {
-                arrayIngredients.push(value);
+                ingredientsRecipes.push(value);
             }
         });
     }
@@ -38,12 +39,11 @@ export function initArrays(data) {
         value = appliance
         value = value.toLowerCase();
         value = value.charAt(0).toUpperCase() + value.slice(1)
-        // Quand on cherche pomme, on doit chercher à la fois pomme et pommes (value & value + "s"), puis, pour pommes chercher pommes et pomme (value, et value.slice(-last character))
-        if (!(arrayAppliances.indexOf(value) === -1) || !(arrayAppliances.indexOf((value + "s")) === -1) || !(arrayAppliances.indexOf((value.slice(0, -1))) === -1)) {
+        if (!(appliancesRecipes.indexOf(value) === -1) || !(appliancesRecipes.indexOf((value + "s")) === -1) || !(appliancesRecipes.indexOf((value.slice(0, -1))) === -1)) {
             return
         }
         else {
-            arrayAppliances.push(appliance);
+            appliancesRecipes.push(appliance);
         }
     }
 
@@ -52,12 +52,11 @@ export function initArrays(data) {
             value = el;
             value = value.toLowerCase();
             value = value.charAt(0).toUpperCase() + value.slice(1);
-            // Quand on cherche pomme, on doit chercher à la fois pomme et pommes (value & value + "s"), puis, pour pommes chercher pommes et pomme (value, et value.slice(-last character))
-            if (!(arrayTools.indexOf(value) === -1) || !(arrayTools.indexOf((value + "s")) === -1) || !(arrayTools.indexOf((value.slice(0, -1))) === -1)) {
+            if (!(toolsRecipes.indexOf(value) === -1) || !(toolsRecipes.indexOf((value + "s")) === -1) || !(toolsRecipes.indexOf((value.slice(0, -1))) === -1)) {
                 return
             }
             else {
-                arrayTools.push(value);
+                toolsRecipes.push(value);
             }
         })
     }
@@ -65,8 +64,9 @@ export function initArrays(data) {
     return { initArrayRecipe, initArrayIngredient, initArrayAppliance, initArrayTool }
 }
 
+// sort arrays by name
 export function sortArrays() {
-    arrayIngredients = arrayIngredients.sort(function (a, b) {
+    ingredientsRecipes = ingredientsRecipes.sort(function (a, b) {
         if (a < b) {
             return -1;
         }
@@ -78,36 +78,38 @@ export function sortArrays() {
 }
 
 export function initResetArrays() {
-    arrayrecipesReset = arrayrecipes;
-    arrayIngredientsReset = arrayIngredients;
-    arrayAppliancesReset = arrayAppliances;
-    arrayToolsReset = arrayTools;
+    recipesReset = recipes;
 }
 
 export function clearArrays() {
-    arrayrecipes = []
-    arrayIngredients = [];
-    arrayTools = [];
-    arrayAppliances = [];
+    recipes = []
+    ingredientsRecipes = [];
+    toolsRecipes = [];
+    appliancesRecipes = [];
 }
-
+/**
+ * When an element is selected in the ingredient, appliance or tool list, he is removred from the list
+ * @param {string} type - which list
+ * @param {string} name - name of selected element
+ */
 export function removeElement(type, name) {
     if (type == "ingredient") {
-        arrayIngredients = arrayIngredients.filter((ingredient) => ingredient !== name)
+        ingredientsRecipes = ingredientsRecipes.filter((ingredient) => ingredient !== name)
     }
     else if (type == "appliance") {
-        arrayAppliances = arrayAppliances.filter((appliance) => appliance !== name)
+        appliancesRecipes = appliancesRecipes.filter((appliance) => appliance !== name)
     }
     else if (type == "tool") {
-        arrayTools = arrayTools.filter((tool) => tool !== name)
+        toolsRecipes = toolsRecipes.filter((tool) => tool !== name)
     }
 
 }
 
+// reset the recipe array to start a new search
 export function resetRecipe() {
-    arrayrecipes = arrayrecipesReset;
+    recipes = recipesReset;
 }
 
 
 // exports arrays
-export { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset };
+export { recipes, recipesReset, ingredientsRecipes, appliancesRecipes, toolsRecipes };

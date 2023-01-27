@@ -1,4 +1,4 @@
-// Fetch Data from data.json
+// Fetch data from data.json
 export async function dataFetch() {
     let data = await (await fetch('../assets/data/data.json')).json();
 
