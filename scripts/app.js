@@ -1,10 +1,11 @@
 import { dataFetch } from "./utils/dataReader.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "./factories/recipe.js";
 import { initArrays, initResetArrays, sortArrays } from "./utils/initArrays.js";
-import { arrayrecipes, arrayrecipesReset, arrayIngredients, arrayIngredientsReset, arrayAppliances, arrayAppliancesReset, arrayTools, arrayToolsReset } from "./utils/initArrays.js";
+import { recipes, recipesReset, ingredientsRecipes, appliancesRecipes, toolsRecipes } from "./utils/initArrays.js";
 import { setlistboxSize } from "./utils/resize-listbox.js";
-import { searchByTag, searchByWord, initSearch, resetSearch } from "./utils/search.js";
+import { searchByWord, initSearch, resetSearch } from "./utils/search.js";
 
+// DOM Elements
 const searchInput = document.querySelector(".recherche__container input");
 const qsBody = document.querySelector("body");
 
@@ -32,29 +33,12 @@ const qsToolInput = document.querySelector(".listbox__container__tools__input");
 const qsToolSwap = document.querySelector(".listbox__container__tools--swap");
 const qsToolList = document.querySelector(".listbox__container__tools__list");
 
-const qsCloseList = document.querySelectorAll(".fa-chevron-up");
-const qsOpenList = document.querySelectorAll(".fa-chevron-down");
-
 const qsCloseListIngredient = document.querySelector(".listbox__container__ingredients--swap > div >.fa-chevron-up");
 const qsOpenListIngredient = document.querySelector(".listbox__container__ingredients--swap > div > .fa-chevron-down");
 const qsCloseListTool = document.querySelector(".listbox__container__tools--swap > div > .fa-chevron-up");
 const qsOpenListTool = document.querySelector(".listbox__container__tools--swap > div > .fa-chevron-down");
 const qsCloseListAppliance = document.querySelector(".listbox__container__appliances--swap > div > .fa-chevron-up");
 const qsOpenListAppliance = document.querySelector(".listbox__container__appliances--swap > div > .fa-chevron-down");
-
-const searchHiddenElements = document.querySelectorAll("body");
-
-// Animation Input
-searchInput.addEventListener("input", function (e) {
-  if (e.target.value !== "") {
-    e.target.parentNode.classList.add("active-input");
-  } else if (e.target.value === "") {
-    e.target.parentNode.classList.remove("active-input");
-  }
-});
-
-let hiddenElement = document.querySelectorAll(".fa-chevron-up");
-hiddenElement.forEach((element) => element.classList.add("hidden"));
 
 async function init() {
   const data = await dataFetch();
@@ -79,18 +63,20 @@ async function init() {
     //faire un js de trie
     sortArrays();
 
-    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput)
-    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsToolInput)
-    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsApplianceInput)
+  // Set the size of each listbox 
+  setlistboxSize(ingredientsRecipes, qsIngredientList, qsIngredientBox, qsIngredientInput)
+  setlistboxSize(toolsRecipes, qsToolList, qsToolBox, qsToolInput)
+  setlistboxSize(appliancesRecipes, qsApplianceList, qsApplianceBox, qsApplianceInput)
 
+  // At init the box at closed
   qsIngredientBox.classList.add("box--off");
   qsApplianceBox.classList.add("box--off");
   qsToolBox.classList.add("box--off");
 
-  //renomer ce get ou les autres éléments qui n'en nont pas avec set, create etc
-  const createIngredientList = getListIngredients(qsIngredientList, arrayIngredients);
-  const createAppliancetList = getListAppliances(qsApplianceList, arrayAppliances);
-  const createTooltList = getListTools(qsToolList, arrayTools);
+  // Create the ingredients, appliances and tools list
+  getListIngredients(qsIngredientList, ingredientsRecipes);
+  getListAppliances(qsApplianceList, appliancesRecipes);
+  getListTools(qsToolList, toolsRecipes);
 }
 
 init();
@@ -156,7 +142,7 @@ document.addEventListener("click", (e) => {
       e.target.classList.contains("listbox__container__appliances--swap") || e.target.classList.contains("listbox__container__appliances__title") ||
       e.target.classList.contains("fa-chevron-down") || e.target.classList.contains("listbox__container__appliances__input") ||
       e.target.classList.contains("listbox__container__appliances__list") || e.target.nodeName == "LI") {
-      // be sure que les deux autres avant se ferme dans ce cas
+
       qsIngredientTitle.classList.remove("hidden");
       qsIngredientInput.classList.add("hidden");
       qsIngredientList.classList.add("hidden");
@@ -195,8 +181,6 @@ document.addEventListener("click", (e) => {
       e.target.classList.contains("listbox__container__tools--swap") || e.target.classList.contains("listbox__container__tools__title") ||
       e.target.classList.contains("fa-chevron-down") || e.target.classList.contains("listbox__container__tools__input") ||
       e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") {
-      // pas besoin de fermer pour la technière techniquement
-
     } else {
       qsToolTitle.classList.remove("hidden");
       qsToolInput.classList.add("hidden");
@@ -212,7 +196,6 @@ document.addEventListener("click", (e) => {
 
 qsIngredientBoxOff.addEventListener("click", function (e) {
   if (qsIngredientInput.classList.contains("hidden")) {
-    //retrait des toggle par des add et remove pour une meilleur compréhension
     qsIngredientTitle.classList.add("hidden");
     qsIngredientInput.classList.remove("hidden");
     qsIngredientList.classList.remove("hidden");
@@ -242,7 +225,6 @@ qsIngredientBox.addEventListener("keydown", (e) => {
 
 qsToolBox.addEventListener("click", function (e) {
   if (qsToolInput.classList.contains("hidden")) {
-    //retrait des toggle par des add et remove pour une meilleur compréhension
     qsToolTitle.classList.add("hidden");
     qsToolInput.classList.remove("hidden");
     qsToolList.classList.remove("hidden");
@@ -268,7 +250,6 @@ qsToolBox.addEventListener("keydown", (e) => {
 
 qsApplianceBox.addEventListener("click", function (e) {
   if (qsApplianceInput.classList.contains("hidden")) {
-    //retrait des toggle par des add et remove pour une meilleur compréhension
     qsApplianceTitle.classList.add("hidden");
     qsApplianceInput.classList.remove("hidden");
     qsApplianceList.classList.remove("hidden");
@@ -294,9 +275,9 @@ qsApplianceBox.addEventListener("keydown", (e) => {
 
 window.addEventListener("resize", (e) => {
 
-  setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput)
-  setlistboxSize(arrayTools, qsToolList, qsToolBox, qsToolInput)
-  setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsApplianceInput)
+  setlistboxSize(ingredientsRecipes, qsIngredientList, qsIngredientBox, qsIngredientInput)
+  setlistboxSize(toolsRecipes, qsToolList, qsToolBox, qsToolInput)
+  setlistboxSize(appliancesRecipes, qsApplianceList, qsApplianceBox, qsApplianceInput)
 
 });
 
@@ -304,12 +285,12 @@ searchInput.addEventListener("keyup", () => {
   let search = searchInput.value;
   console.log(search)
   console.log(searchInput, searchInput.textLength)
-  console.info(arrayrecipes, " == ", arrayrecipesReset)
+  console.info(recipes, " == ", recipesReset)
   if (searchInput.textLength > 2) {
     initSearch();
     searchByWord(search)
   }
-  else if (searchInput.textLength < 3 && arrayrecipes != arrayrecipesReset) {
+  else if (searchInput.textLength < 3 && recipes != recipesReset) {
     resetSearch();
   }
 })

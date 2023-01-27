@@ -1,3 +1,13 @@
+/**
+ * This function adjust the size of a listbox based on the width of the current browser window.
+ * For that, it remove all "box" classes from the listbox and the container element that holds the listbox 
+ * (qsList and qsBox, respectively), then adding a new "box" class based on the width of the browser window.
+ * Finally, the function also sets the placeholder text of an input element (qsInput) based on the current class of the container element.
+ * @param {*} array - ingredients, applainces or tools array 
+ * @param {HTML Element} qsList - listbox
+ * @param {HTML Element} qsBox - container of listbox
+ * @param {HTML Element} qsInput - input 
+ */
 export function setlistboxSize(array, qsList, qsBox, qsInput) {
 
    let j = 1;
