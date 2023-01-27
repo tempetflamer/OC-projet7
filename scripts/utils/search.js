@@ -1,8 +1,8 @@
-import { arrayrecipes, arrayIngredients, arrayAppliances, arrayTools, arrayrecipesReset } from "../utils/initArrays.js";
+import { recipes, ingredientsRecipes, appliancesRecipes, toolsRecipes, recipesReset } from "../utils/initArrays.js";
 import { initArrays, clearArrays, removeElement, resetRecipe } from "../utils/initArrays.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "../factories/recipe.js";
 import { setlistboxSize } from "../utils/resize-listbox.js";
-import { normalize } from "../utils/remove_accent.js";
+import { normalize } from "../utils/normalize.js";
 
 // DOM Elements
 const qsFilterSelected = document.querySelector(".filterselected");
@@ -18,10 +18,10 @@ const qsApplianceInput = document.querySelector(".listbox__container__appliances
 const qsToolInput = document.querySelector(".listbox__container__tools__input");
 
 
-function createRecipe(arraysFilter) {
+function displayRecipes() {
     const qsSectionRecipe = document.querySelector(".recipes");
-    if (arrayrecipes.length !== 0) {
-        arrayrecipes.forEach((recipe) => {
+    if (recipes.length !== 0) {
+        recipes.forEach((recipe) => {
             const recipesModel = recipesFactories(recipe);
             const recipeCardDOM = recipesModel.getRecipeCard();
             qsSectionRecipe.appendChild(recipeCardDOM);
@@ -42,39 +42,39 @@ function updateFilterByTag() {
     qsApplianceList.innerHTML = "";
     qsToolList.innerHTML = "";
 
-    arrayrecipes.forEach((recipe) => {
+    // Update each arrays with the recipes array
+    recipes.forEach((recipe) => {
         const initArray = initArrays(recipe);
         initArray.initArrayIngredient();
         initArray.initArrayAppliance();
         initArray.initArrayTool();
     });
 
+    // remove selected element from list of ingredient, tool or appliance
     let filtersSelected = qsFilterSelected.childNodes;
     let filterSelected;
-    let filters = qsIngredientList.childNodes;
-    for (let i = 0; i < filtersSelected.length; i++) {
-        filterSelected = filtersSelected[i].children[0].textContent
-        if (filtersSelected[i].classList.contains("type--ingredient")) {
+    filtersSelected.forEach(el => {
+        filterSelected = el.children[0].textContent
+        if (el.classList.contains("type--ingredient")) {
             removeElement("ingredient", filterSelected)
         }
-        if (filtersSelected[i].classList.contains("type--appliance")) {
-            filters = qsApplianceList.childNodes;
+        if (el.classList.contains("type--appliance")) {
             removeElement("appliance", filterSelected)
         }
-        if (filtersSelected[i].classList.contains("type--tool")) {
-            filters = qsToolList.childNodes;
+        if (el.classList.contains("type--tool")) {
             removeElement("tool", filterSelected)
         }
-    }
+    });
 
-    //renomer ce get ou les autres éléments qui n'en nont pas avec set, create etc
-    getListIngredients(qsIngredientList, arrayIngredients);
-    getListAppliances(qsApplianceList, arrayAppliances);
-    getListTools(qsToolList, arrayTools);
+    // Create the ingredients, appliances and tools list
+    getListIngredients(qsIngredientList, ingredientsRecipes);
+    getListAppliances(qsApplianceList, appliancesRecipes);
+    getListTools(qsToolList, toolsRecipes);
 
-    setlistboxSize(arrayIngredients, qsIngredientList, qsIngredientBox, qsIngredientInput)
-    setlistboxSize(arrayTools, qsToolList, qsToolBox, qsToolInput)
-    setlistboxSize(arrayAppliances, qsApplianceList, qsApplianceBox, qsApplianceInput)
+    // Set the size of each listbox 
+    setlistboxSize(ingredientsRecipes, qsIngredientList, qsIngredientBox, qsIngredientInput)
+    setlistboxSize(toolsRecipes, qsToolList, qsToolBox, qsToolInput)
+    setlistboxSize(appliancesRecipes, qsApplianceList, qsApplianceBox, qsApplianceInput)
 
 }
 
@@ -84,7 +84,7 @@ export function initSearch() {
 
     clearArrays();
 }
-export function searchByTag(filter) {
+export function searchByTag(recipesFilter) {
 
     if (qsFilterSelected.hasChildNodes()) {
 
@@ -93,7 +93,6 @@ export function searchByTag(filter) {
         let selectedAppliances = [];
 
         //forEach
-        let arraysFilter = filter;
         let childrens = qsFilterSelected.childNodes;
         let children;
         let i = 0;
@@ -106,39 +105,33 @@ export function searchByTag(filter) {
             i++;
         });
 
-        arraysFilter.forEach((recipe) => {
-            let findIngredient = selectedIngredients.every(el => {
-                // if((((recipe.name).toLowerCase()).includes((el)) || ((recipe.description).toLowerCase()).includes(el))) {
-                //     return true;
-                // }
+        recipesFilter.forEach((recipe) => {
+            let hasIngredients = selectedIngredients.every(el => {
+
                 return recipe.ingredients.some((ingredient) => {
                     return ((el) == ((ingredient.ingredient).toLowerCase()));
                 });
             });
-            console.log("findIngredient : " + findIngredient)
 
             // If the selectedIngredients are found in the recipe or selectedIngredients is empty
-            if (findIngredient === true) {
+            if (hasIngredients === true) {
 
-                let findAppliance = selectedAppliances.every(el => {
+                let hasAppliances = selectedAppliances.every(el => {
                     return ((el) == ((recipe.appliance).toLowerCase()));
                 });
-                console.log("findAppliance : " + findAppliance)
 
                 // If the selectedAppliances are found in the recipe or selectedAppliances is empty
-                if (findAppliance === true) {
+                if (hasAppliances === true) {
 
-                    let findTools = selectedTools.every(el => {
+                    let hasTools = selectedTools.every(el => {
                         return recipe.ustensils.some((ustensil) => {
                             return ((el) == ((ustensil).toLowerCase()));
                         });
                     });
 
-                    console.log("findTools : " + findTools + recipe.name)
 
-                    if (findTools === true) {
-                        console.log(findIngredient, findAppliance, findTools)
-                        if (findIngredient && findAppliance && findTools) {
+                    if (hasTools === true) {
+                        if (hasIngredients && hasAppliances && hasTools) {
                             let initArray = initArrays(recipe);
                             initArray.initArrayRecipe();
                         }
@@ -151,7 +144,7 @@ export function searchByTag(filter) {
 
         });
 
-        createRecipe(arraysFilter);
+        displayRecipes();
         updateFilterByTag()
     }
     else {
@@ -161,24 +154,24 @@ export function searchByTag(filter) {
 
 export function searchByWord(el) {
 
-    let arraysFilter = arrayrecipesReset;
-    arraysFilter = updateRecipesByWord(el, arraysFilter)
+    let recipesFilter = recipesReset;
+    recipesFilter = updateRecipesByWord(el, recipesFilter)
 
     if (qsFilterSelected.hasChildNodes()) {
         clearArrays();
-        searchByTag(arraysFilter)
+        searchByTag(recipesFilter)
     }
     else {
-        createRecipe(arraysFilter);
+        displayRecipes();
         updateFilterByTag()
 
     }
 }
 
-export function updateRecipesByWord(el, arraysFilter) {
+export function updateRecipesByWord(el, recipesFilter) {
     el = normalize(el)
 
-    arraysFilter.forEach((recipe) => {
+    recipesFilter.forEach((recipe) => {
         if ((normalize(recipe.name)).includes(el) || (normalize(recipe.description)).includes(el)) {
             let initArray = initArrays(recipe);
             initArray.initArrayRecipe();
@@ -192,14 +185,14 @@ export function updateRecipesByWord(el, arraysFilter) {
             })
         }
     })
-    arraysFilter = arrayrecipes;
-    return arraysFilter;
+    recipesFilter = recipes;
+    return recipesFilter;
 }
 
 export function resetSearch() {
     initSearch();
     resetRecipe();
-    createRecipe(arrayrecipes);
+    displayRecipes();
     updateFilterByTag()
 
 }

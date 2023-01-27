@@ -1,4 +1,4 @@
-import { arrayrecipes, clearArrays, arrayrecipesReset } from "../utils/initArrays.js";
+import { recipesReset } from "../utils/initArrays.js";
 import { searchByTag, searchByWord, initSearch } from "../utils/search.js";
 
 const qsFiltersSelected = document.querySelector('.filterselected');
@@ -7,7 +7,12 @@ const qsApplianceInput = document.querySelector(".listbox__container__appliances
 const qsToolInput = document.querySelector(".listbox__container__tools__input");
 const searchInput = document.querySelector(".recherche__container input");
 
-
+/**
+ * Recipe creation factory
+ * Create recipe card
+ * @param {*} data  - recipe
+ * @return { getRecipeCard }
+ */
 export function recipesFactories(data) {
 
     function getRecipeCard() {
@@ -16,7 +21,6 @@ export function recipesFactories(data) {
 
         const img = document.createElement('img');
         img.setAttribute("src", "../../assets/img/placeholder.jpg")
-        //img.setAttribute("alt", data.name)
         img.classList.add('recipes__card__img');
         article.appendChild(img);
 
@@ -58,7 +62,6 @@ export function recipesFactories(data) {
             let name;
             if (ingredient.quantity) { quantity = ingredient.quantity; name = ingredient.ingredient + ": "; } else { quantity = ""; name = ingredient.ingredient; }
             if (ingredient.unit) { unit = ingredient.unit; if (ingredient.unit.length > 2) { unit = " " + unit } } else { unit = "" }
-            // If unit > 2, we add a blank else it's m, l unit // possibility to add a variable for juste add an espace if >2 // for more visibilyu i didn't // finally i did it
             listItem.innerHTML = "<li><b>" + name + "</b>" + quantity + unit; + "</li>"
 
             list.appendChild(listItem);
@@ -74,41 +77,17 @@ export function recipesFactories(data) {
         return (article);
     }
 
-    function getUserCardDOM() {
-        const article = document.createElement('article');
-        article.classList.add('photographer__data');
-        const imageLink = document.createElement('a');
-        imageLink.href = './photographer.html?search&id=' + id;
-        imageLink.tabIndex = "0";
-        const img = document.createElement('img');
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", name)
-        img.classList.add('photographer__data__img');
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
-        h2.classList.add("photographer__data__name");
-        const pCity = document.createElement('p');
-        pCity.textContent = city + ', ' + country;
-        pCity.classList.add("photographer__data__location");
-        const pTagline = document.createElement('p');
-        pTagline.textContent = tagline;
-        pTagline.classList.add('photographer__data__tagline');
-        const pPrice = document.createElement('p');
-        pPrice.textContent = price + '€/jour';
-        pPrice.classList.add('photographer__data__price');
-        article.appendChild(imageLink);
-        imageLink.appendChild(img);
-        imageLink.appendChild(h2);
-        article.appendChild(pCity);
-        article.appendChild(pTagline);
-        article.appendChild(pPrice);
-        return (article);
-    }
-
-
     return { getRecipeCard }
 }
 
+/**
+ * Create each ingredient of the ingredients list
+ * Also moves the selected ingredient in filterselected at click, 
+ * before updating the list of recipes and then the list of available ingredients, appliances and tools
+ * add a remove event at click from the elements selected (then same update)
+ * @param {HTML Element} qsIngredientList 
+ * @param {*} data - List of ingredients
+ */
 export function getListIngredients(qsIngredientList, data) {
     data.forEach((el) => {
         const item = document.createElement('li');
@@ -138,7 +117,7 @@ export function getListIngredients(qsIngredientList, data) {
             }
             else {
                 initSearch();
-                searchByTag(arrayrecipesReset);
+                searchByTag(recipesReset);
             }
 
             filterIcon.addEventListener("click", (e) => {
@@ -150,7 +129,7 @@ export function getListIngredients(qsIngredientList, data) {
                 }
                 else {
                     initSearch();
-                    searchByTag(arrayrecipesReset);
+                    searchByTag(recipesReset);
                 }
 
             }, { once: true });
@@ -190,7 +169,7 @@ export function getListAppliances(qsApplianceList, data) {
             }
             else {
                 initSearch();
-                searchByTag(arrayrecipesReset);
+                searchByTag(recipesReset);
             }
 
             filterIcon.addEventListener("click", (e) => {
@@ -202,7 +181,7 @@ export function getListAppliances(qsApplianceList, data) {
                 }
                 else {
                     initSearch();
-                    searchByTag(arrayrecipesReset);
+                    searchByTag(recipesReset);
                 }
 
             }, { once: true });
@@ -242,7 +221,7 @@ export function getListTools(qstoolList, data) {
             }
             else {
                 initSearch();
-                searchByTag(arrayrecipesReset);
+                searchByTag(recipesReset);
             }
 
             filterIcon.addEventListener("click", (e) => {
@@ -254,7 +233,7 @@ export function getListTools(qstoolList, data) {
                 }
                 else {
                     initSearch();
-                    searchByTag(arrayrecipesReset);
+                    searchByTag(recipesReset);
                 }
 
             }, { once: true });
