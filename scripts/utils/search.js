@@ -113,33 +113,25 @@ export function searchByTag(recipesFilter) {
                 });
             });
 
-            // If the selectedIngredients are found in the recipe or selectedIngredients is empty
-            if (hasIngredients === true) {
+            if (!hasIngredients) { return }
 
-                let hasAppliances = selectedAppliances.every(el => {
-                    return ((el) == ((recipe.appliance).toLowerCase()));
+            let hasAppliances = selectedAppliances.every(el => {
+                return ((el) == ((recipe.appliance).toLowerCase()));
+            });
+
+            if (!hasAppliances) { return }
+
+            let hasTools = selectedTools.every(el => {
+                return recipe.ustensils.some((ustensil) => {
+                    return ((el) == ((ustensil).toLowerCase()));
                 });
+            });
 
-                // If the selectedAppliances are found in the recipe or selectedAppliances is empty
-                if (hasAppliances === true) {
-
-                    let hasTools = selectedTools.every(el => {
-                        return recipe.ustensils.some((ustensil) => {
-                            return ((el) == ((ustensil).toLowerCase()));
-                        });
-                    });
-
-
-                    if (hasTools === true) {
-                        if (hasIngredients && hasAppliances && hasTools) {
-                            let initArray = initArrays(recipe);
-                            initArray.initArrayRecipe();
-                        }
-
-                    }
-
-                }
-
+            if (!hasTools) { return }
+            
+            if (hasIngredients && hasAppliances && hasTools) {
+                let initArray = initArrays(recipe);
+                initArray.initArrayRecipe();
             }
 
         });
