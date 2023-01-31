@@ -96,9 +96,9 @@ Bootstrap) devra passer avec succès le validateur W3C.
 
 ### Architecture des algorithmes
 
-[Schéma Boucles natives](https://drive.google.com/file/d/1AfhlPQ0qGpEGRrxv19iqNVLti6AYSjU4/view?usp=share_link)
+[Schéma Boucles natives](https://drive.google.com/file/d/10OAiRaebJZEJ2aboTiibwdcgUnZARiHv/view?usp=share_link)
 
-[Schéma Programmation fonctionnelle](https://drive.google.com/file/d/1E9wd8fqhBuvQW-DeCFePg2vLkZ9SIcbZ/view?usp=share_link)
+[Schéma Programmation fonctionnelle](https://drive.google.com/file/d/1pUD0Gr1wmrXY20XQNHt7wF1kKwrZkhKP/view?usp=share_link)
 
 
 ### Benchmark des algorithmes
@@ -123,7 +123,7 @@ Dans quelques cas l'algo des méthodes de l'objet array est légèrement plus ra
 ### Documents
 [Description de la fonctionnalité de recherche à implémenter](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P6+Algorithms/Cas+d%E2%80%99utilisation+%2303+Filtrer+les+recettes+dans+l%E2%80%99interface+utilisateur.pdf)
 
-[Fiche d’investigation de fonctionnalité](https://drive.google.com/file/d/1ur00wGInwViQRgmz7jgYtdPNRRnELyP8/view?usp=sharing)
+[Fiche d’investigation de fonctionnalité](https://drive.google.com/file/d/14IJ3UMAzAHrZeDfY3RlD_jPvCWcykm2r/view?usp=share_link)
 
 [Modèle de fiche d’investigation de fonctionnalité](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P6+Algorithms/Fiche+d%E2%80%99investigation+fonctionnalite%CC%81.pdf)
 
