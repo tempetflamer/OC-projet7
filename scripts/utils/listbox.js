@@ -96,3 +96,69 @@ export function setlistboxSize(array, qsList, qsBox, qsInput) {
 
 
 }
+
+/**
+ * Function that hides the open listbox
+ * HTML Element can be from Ingredient, Appliance or Tool list
+ * @param {HTML Element} qsTitle 
+ * @param {HTML Element} qsInput 
+ * @param {HTML Element} qsList 
+ * @param {HTML Element} qsBox 
+ * @param {HTML Element} qsSwap 
+ * @param {HTML Element} qsOpenList 
+ * @param {HTML Element} qsCloseList 
+ */
+export function hideListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenList, qsCloseList) {
+  qsTitle.classList.remove("hidden");
+  qsInput.classList.add("hidden");
+  qsList.classList.add("hidden");
+  qsBox.classList.remove("box--on");
+  qsBox.classList.add("box--off");
+  qsSwap.classList.remove("swap--on");
+  qsOpenList.classList.remove("hidden");
+  qsCloseList.classList.add("hidden");
+  return
+}
+
+/**
+ * Function that display the listbox
+ * HTML Element can be from Ingredient, Appliance or Tool list
+ * @param {HTML Element} qsTitle 
+ * @param {HTML Element} qsInput 
+ * @param {HTML Element} qsList 
+ * @param {HTML Element} qsBox 
+ * @param {HTML Element} qsSwap 
+ * @param {HTML Element} qsOpenList 
+ * @param {HTML Element} qsCloseList 
+ */
+export function displayListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenList, qsCloseList) {
+  qsTitle.classList.add("hidden");
+  qsInput.classList.remove("hidden");
+  qsList.classList.remove("hidden");
+  qsInput.focus();
+  qsBox.classList.add("box--on");
+  qsBox.classList.remove("box--off");
+  qsSwap.classList.add("swap--on");
+  qsOpenList.classList.add("hidden");
+  qsCloseList.classList.remove("hidden");
+}
+
+/**
+ * Search in current list, the input word(s)
+ * @param {HTML Element} qsInput - event
+ * @param {String} type 
+ */
+export function searchListbox(qsInput, type) {
+  let filter = qsInput.target.value.toUpperCase();
+  let allElements = document.querySelectorAll(`.listbox__container__${type}__list > li`);
+  let value, i;
+
+  for (i = 0; i < allElements.length; i++) {
+    value = allElements[i].innerText;
+    if (value.toUpperCase().indexOf(filter) > -1) {
+      allElements[i].classList.remove("hidden");
+    } else {
+      allElements[i].classList.add("hidden");
+    }
+  }
+}
