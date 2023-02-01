@@ -1,7 +1,7 @@
 import { recipes, ingredientsRecipes, appliancesRecipes, toolsRecipes, recipesReset } from "../utils/initArrays.js";
 import { initArrays, clearArrays, removeElement, resetRecipe } from "../utils/initArrays.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "../factories/recipe.js";
-import { setlistboxSize } from "../utils/resize-listbox.js";
+import { setlistboxSize } from "../utils/listbox.js";
 import { normalize } from "../utils/normalize.js";
 
 // DOM Elements
@@ -17,7 +17,9 @@ const qsIngredientInput = document.querySelector(".listbox__container__ingredien
 const qsApplianceInput = document.querySelector(".listbox__container__appliances__input");
 const qsToolInput = document.querySelector(".listbox__container__tools__input");
 
-
+/**
+ * Display recipes or display a error message when no recipe
+ */ 
 function displayRecipes() {
     const qsSectionRecipe = document.querySelector(".recipes");
     if (recipes.length !== 0) {
@@ -36,6 +38,9 @@ function displayRecipes() {
     }
 }
 
+/**
+ * Update the available filters
+ */
 function updateFilterByTag() {
     // Delete Lists Filters
     qsIngredientList.innerHTML = "";
@@ -78,12 +83,16 @@ function updateFilterByTag() {
 
 }
 
+// Cleay Arrays and displayed recipes
 export function initSearch() {
-    // Delete all childrens of Recipe Section
     qsSectionRecipe.innerHTML = "";
-
     clearArrays();
 }
+
+/**
+ * Search for tag matching selected tags and update the recipes array.
+ * @param {Array} recipesFilter 
+ */
 export function searchByTag(recipesFilter) {
 
     if (qsFilterSelected.hasChildNodes()) {
@@ -92,7 +101,6 @@ export function searchByTag(recipesFilter) {
         let selectedTools = [];
         let selectedAppliances = [];
 
-        //forEach
         let childrens = qsFilterSelected.childNodes;
         let children;
         let i = 0;
@@ -143,7 +151,13 @@ export function searchByTag(recipesFilter) {
         resetSearch();
     }
 }
-
+/**
+ * Entry function
+ * Start to update recipes array with updateRecipesByWord function
+ * If filters selected, continue on serachByTag function
+ * Else, directly update the displayed recipes and the available filters
+ * @param {*} el - searchbar input value
+ */
 export function searchByWord(el) {
 
     let recipesFilter = recipesReset;
@@ -160,6 +174,12 @@ export function searchByWord(el) {
     }
 }
 
+/**
+ * Search for recipes matching the input value update the recipe array with the results
+ * @param {String} el - searchbar input value
+ * @param {Array} recipesFilter - tableau des recettes
+ * @returns {Array} filtered recipes array
+ */
 export function updateRecipesByWord(el, recipesFilter) {
     el = normalize(el)
 
@@ -181,6 +201,11 @@ export function updateRecipesByWord(el, recipesFilter) {
     return recipesFilter;
 }
 
+/**
+ * Reset arrays and displayed recipes
+ * Display all recipes
+ * Update available tags
+ */
 export function resetSearch() {
     initSearch();
     resetRecipe();

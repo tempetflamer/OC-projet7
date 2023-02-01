@@ -81,10 +81,10 @@ export function recipesFactories(data) {
 }
 
 /**
- * Create each ingredient of the ingredients list
+ * Create each ingredient of the ingredients list.
  * Also moves the selected ingredient in filterselected at click, 
- * before updating the list of recipes and then the list of available ingredients, appliances and tools
- * add a remove event at click from the elements selected (then same update)
+ * before updating the list of recipes and then the list of available ingredients, appliances and tools.
+ * add a remove event at click from the elements selected.
  * @param {HTML Element} qsIngredientList 
  * @param {*} data - List of ingredients
  */
@@ -140,6 +140,14 @@ export function getListIngredients(qsIngredientList, data) {
 
 }
 
+/**
+ * Create each appliance of the appliances list.
+ * Also moves the selected appliance in filterselected at click, 
+ * before updating the list of recipes and then the list of available ingredients, appliances and tools.
+ * Add a remove event at click from the elements selected.
+ * @param {HTML Element} qsApplianceList 
+ * @param {*} data - List of appliance
+ */
 export function getListAppliances(qsApplianceList, data) {
     data.forEach((el) => {
         const item = document.createElement('li');
@@ -192,6 +200,14 @@ export function getListAppliances(qsApplianceList, data) {
 
 }
 
+/**
+ * Create each tool of the tools list.
+ * Also moves the selected tool in filterselected at click, 
+ * before updating the list of recipes and then the list of available ingredients, appliances and tools.
+ * Add a remove event at click from the elements selected.
+ * @param {HTML Element} qstoolList 
+ * @param {*} data - List of tool
+ */
 export function getListTools(qstoolList, data) {
     data.forEach((el) => {
         const item = document.createElement('li');

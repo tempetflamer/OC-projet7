@@ -64,7 +64,9 @@ export function initArrays(data) {
     return { initArrayRecipe, initArrayIngredient, initArrayAppliance, initArrayTool }
 }
 
-// sort arrays by name
+/**
+ * sort arrays by name  
+ */
 export function sortArrays() {
     ingredientsRecipes = ingredientsRecipes.sort(function (a, b) {
         if (a < b) {
