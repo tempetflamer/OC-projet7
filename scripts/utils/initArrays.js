@@ -68,15 +68,9 @@ export function initArrays(data) {
  * sort arrays by name  
  */
 export function sortArrays() {
-    ingredientsRecipes = ingredientsRecipes.sort(function (a, b) {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    });
+    ingredientsRecipes = ingredientsRecipes.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+    appliancesRecipes = appliancesRecipes.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+    toolsRecipes = toolsRecipes.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
 }
 
 export function initResetArrays() {
