@@ -1,5 +1,5 @@
 import { recipes, ingredientsRecipes, appliancesRecipes, toolsRecipes, recipesReset } from "../utils/initArrays.js";
-import { initArrays, clearArrays, removeElement, resetRecipe } from "../utils/initArrays.js";
+import { initArrays, clearArrays, removeElement, resetRecipe, sortArrays } from "../utils/initArrays.js";
 import { recipesFactories, getListIngredients, getListAppliances, getListTools } from "../factories/recipe.js";
 import { setlistboxSize } from "../utils/listbox.js";
 import { normalize } from "../utils/normalize.js";
@@ -70,6 +70,8 @@ function updateFilterByTag() {
             removeElement("tool", filterSelected)
         }
     });
+
+    sortArrays();
 
     // Create the ingredients, appliances and tools list
     getListIngredients(qsIngredientList, ingredientsRecipes);
