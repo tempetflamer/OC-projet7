@@ -117,7 +117,7 @@ export function hideListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenList,
   qsSwap.classList.remove("swap--on");
   qsOpenList.classList.remove("hidden");
   qsCloseList.classList.add("hidden");
-  return
+  qsInput.value ="";
 }
 
 /**
