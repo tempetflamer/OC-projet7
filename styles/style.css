@@ -19,14 +19,8 @@ li {
   list-style-type: none;
 }
 
-h1,
-h2 {
+h1 {
   margin: 0;
-}
-
-h2 {
-  font-weight: 500;
-  font-size: 1.2rem;
 }
 
 body {
@@ -40,14 +34,6 @@ body {
 
 .hidden {
   display: none !important;
-}
-
-.visibility {
-  visibility: hidden;
-}
-
-.font-bold {
-  font-weight: 700;
 }
 
 .box {
@@ -330,10 +316,6 @@ header h1 {
 
 .swap--on {
   gap: 0;
-}
-
-.column-list1 {
-  grid-template-columns: 1fr;
 }
 
 .listbox-container-start {
