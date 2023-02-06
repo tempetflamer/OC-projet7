@@ -155,42 +155,6 @@ qsApplianceBox.addEventListener("click", function (e) {
   }
 });
 
-
-qsIngredientBox.addEventListener("keydown", (e) => {
-  if (e.code === "Escape") {
-    qsIngredientTitle.classList.toggle("hidden");
-    qsIngredientInput.classList.toggle("hidden");
-    qsIngredientList.classList.toggle("hidden");
-    qsIngredientBox.classList.toggle("box--on");
-    qsIngredientBox.classList.remove("box--off");
-    qsIngredientSwap.classList.toggle("swap--on");
-  }
-});
-
-
-qsToolBox.addEventListener("keydown", (e) => {
-  if (e.code === "Escape") {
-    qsToolTitle.classList.toggle("hidden");
-    qsToolInput.classList.toggle("hidden");
-    qsToolList.classList.toggle("hidden");
-    qsToolBox.classList.toggle("box--on");
-    qsToolBox.classList.remove("box--off");
-    qsToolSwap.classList.toggle("swap--on");
-  }
-});
-
-
-qsApplianceBox.addEventListener("keydown", (e) => {
-  if (e.code === "Escape") {
-    qsApplianceTitle.classList.toggle("hidden");
-    qsApplianceInput.classList.toggle("hidden");
-    qsApplianceList.classList.toggle("hidden");
-    qsApplianceBox.classList.toggle("box--on");
-    qsApplianceBox.classList.remove("box--off");
-    qsApplianceSwap.classList.toggle("swap--on");
-  }
-});
-
 // Event that resizes the listboxes according to the change of the window size
 window.addEventListener("resize", (e) => {
 
