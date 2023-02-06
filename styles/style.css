@@ -341,6 +341,9 @@ header h1 {
   display: flex;
   justify-content: flex-start;
 }
+.listbox-container-start p {
+  margin: 1px 0;
+}
 
 .listbox-container-end {
   width: 20%;
