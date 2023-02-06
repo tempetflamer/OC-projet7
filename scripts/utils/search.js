@@ -158,7 +158,7 @@ export function searchByTag(recipesFilter) {
  * Start to update recipes array with updateRecipesByWord function
  * If filters selected, continue on serachByTag function
  * Else, directly update the displayed recipes and the available filters
- * @param {*} el - searchbar input value
+ * @param {String} el - searchbar input value
  */
 export function searchByWord(el) {
 
