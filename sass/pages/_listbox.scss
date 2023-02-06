@@ -18,7 +18,7 @@
                 font-weight: 500;
                 font-size: 1.2rem;
                 outline: none;
-                caret-color: white; // vertical bar input written
+                caret-color: white;
                 color: #fff;
             }
 
@@ -39,7 +39,7 @@
                 font-weight: 500;
                 font-size: 1.2rem;
                 outline: none;
-                caret-color: white; // vertical bar input written
+                caret-color: white;
                 color: #fff;
             }
 
@@ -60,7 +60,7 @@
                 font-weight: 500;
                 font-size: 1.2rem;
                 outline: none;
-                caret-color: white; // vertical bar input written
+                caret-color: white;
                 color: #fff;
             }
 
@@ -165,7 +165,6 @@
     gap: 0;
 }
 
-//ptetre aps besoin
 .column-list1 {
     grid-template-columns: 1fr;
 }
@@ -174,6 +173,10 @@
     width: 80%;
     display: flex;
     justify-content: flex-start;
+
+    p {
+        margin: 1px 0;
+    }
 }
 
 .listbox-container-end {
