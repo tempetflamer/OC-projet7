@@ -7,6 +7,7 @@ import { searchByWord, initSearch, resetSearch, searchByTag } from "./utils/sear
 
 // DOM Elements
 const searchInput = document.querySelector(".recherche__container input");
+const qsFilterSelected = document.querySelector(".filterselected");
 
 const qsIngredientBox = document.querySelector(".listbox__container__ingredients");
 const qsIngredientTitle = document.querySelector(".listbox__container__ingredients__title");
@@ -170,6 +171,10 @@ searchInput.addEventListener("keyup", () => {
   if (searchInput.textLength > 2) {
     initSearch();
     searchByWord(search)
+  }
+  else if (searchInput.textLength < 3 && qsFilterSelected.hasChildNodes()) {
+    initSearch();
+    searchByTag(recipesReset);
   }
   else if (searchInput.textLength < 3 && recipes != recipesReset) {
     resetSearch();
