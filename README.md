@@ -111,6 +111,9 @@ Moyenne des résultats sur 50 tests.
 
 Dans quelques cas l'algo des méthodes de l'objet array est légèrement plus rapide
 
+Jsben.ch ne voulant pas générer de lien pour le benchmark de 500 recettes car trop de ligne, voici le benchmark pour 50 recettes :
+[Jsben.ch](https://jsben.ch/LG4fF)
+
 
 ## Ressources du projets :
 
