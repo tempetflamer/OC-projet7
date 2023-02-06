@@ -4,9 +4,9 @@
  * (qsList and qsBox, respectively), then adding a new "box" class based on the width of the browser window.
  * Finally, the function also sets the placeholder text of an input element (qsInput) based on the current class of the container element.
  * @param {*} array - ingredients, applainces or tools array 
- * @param {HTML Element} qsList - listbox
- * @param {HTML Element} qsBox - container of listbox
- * @param {HTML Element} qsInput - input 
+ * @param {HTMLElement} qsList - listbox
+ * @param {HTMLElement} qsBox - container of listbox
+ * @param {HTMLElement} qsInput - input 
  */
 export function setlistboxSize(array, qsList, qsBox, qsInput) {
 
@@ -99,14 +99,14 @@ export function setlistboxSize(array, qsList, qsBox, qsInput) {
 
 /**
  * Function that hides the open listbox
- * HTML Element can be from Ingredient, Appliance or Tool list
- * @param {HTML Element} qsTitle 
- * @param {HTML Element} qsInput 
- * @param {HTML Element} qsList 
- * @param {HTML Element} qsBox 
- * @param {HTML Element} qsSwap 
- * @param {HTML Element} qsOpenList 
- * @param {HTML Element} qsCloseList 
+ * HTMLElement can be from Ingredient, Appliance or Tool list
+ * @param {HTMLElement} qsTitle 
+ * @param {HTMLElement} qsInput 
+ * @param {HTMLElement} qsList 
+ * @param {HTMLElement} qsBox 
+ * @param {HTMLElement} qsSwap 
+ * @param {HTMLElement} qsOpenList 
+ * @param {HTMLElement} qsCloseList 
  */
 export function hideListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenList, qsCloseList) {
   qsTitle.classList.remove("hidden");
@@ -122,14 +122,14 @@ export function hideListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenList,
 
 /**
  * Function that display the listbox
- * HTML Element can be from Ingredient, Appliance or Tool list
- * @param {HTML Element} qsTitle 
- * @param {HTML Element} qsInput 
- * @param {HTML Element} qsList 
- * @param {HTML Element} qsBox 
- * @param {HTML Element} qsSwap 
- * @param {HTML Element} qsOpenList 
- * @param {HTML Element} qsCloseList 
+ * HTMLElement can be from Ingredient, Appliance or Tool list
+ * @param {HTMLElement} qsTitle 
+ * @param {HTMLElement} qsInput 
+ * @param {HTMLElement} qsList 
+ * @param {HTMLElement} qsBox 
+ * @param {HTMLElement} qsSwap 
+ * @param {HTMLElement} qsOpenList 
+ * @param {HTMLElement} qsCloseList 
  */
 export function displayListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenList, qsCloseList) {
   qsTitle.classList.add("hidden");
@@ -145,7 +145,7 @@ export function displayListbox(qsTitle, qsInput, qsList, qsBox, qsSwap, qsOpenLi
 
 /**
  * Search in current list, the input word(s)
- * @param {HTML Element} qsInput - event
+ * @param {HTMLElement} qsInput - event
  * @param {String} type 
  */
 export function searchListbox(qsInput, type) {

@@ -85,7 +85,7 @@ export function recipesFactories(data) {
  * Also moves the selected ingredient in filterselected at click, 
  * before updating the list of recipes and then the list of available ingredients, appliances and tools.
  * add a remove event at click from the elements selected.
- * @param {HTML Element} qsIngredientList 
+ * @param {HTMLElement} qsIngredientList 
  * @param {*} data - List of ingredients
  */
 export function getListIngredients(qsIngredientList, data) {
@@ -145,7 +145,7 @@ export function getListIngredients(qsIngredientList, data) {
  * Also moves the selected appliance in filterselected at click, 
  * before updating the list of recipes and then the list of available ingredients, appliances and tools.
  * Add a remove event at click from the elements selected.
- * @param {HTML Element} qsApplianceList 
+ * @param {HTMLElement} qsApplianceList 
  * @param {*} data - List of appliance
  */
 export function getListAppliances(qsApplianceList, data) {
@@ -205,7 +205,7 @@ export function getListAppliances(qsApplianceList, data) {
  * Also moves the selected tool in filterselected at click, 
  * before updating the list of recipes and then the list of available ingredients, appliances and tools.
  * Add a remove event at click from the elements selected.
- * @param {HTML Element} qstoolList 
+ * @param {HTMLElement} qstoolList 
  * @param {*} data - List of tool
  */
 export function getListTools(qstoolList, data) {
