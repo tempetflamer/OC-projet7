@@ -3,7 +3,7 @@ import { recipesFactories, getListIngredients, getListAppliances, getListTools }
 import { initArrays, initResetArrays, sortArrays } from "./utils/initArrays.js";
 import { recipes, recipesReset, ingredientsRecipes, appliancesRecipes, toolsRecipes } from "./utils/initArrays.js";
 import { setlistboxSize, hideListbox, displayListbox, searchListbox } from "./utils/listbox.js";
-import { searchByWord, initSearch, resetSearch } from "./utils/search.js";
+import { searchByWord, initSearch, resetSearch, searchByTag } from "./utils/search.js";
 
 // DOM Elements
 const searchInput = document.querySelector(".recherche__container input");
@@ -98,6 +98,7 @@ document.addEventListener("click", (e) => {
       hideListbox(qsToolTitle, qsToolInput, qsToolList, qsToolBox, qsToolSwap, qsOpenListTool, qsCloseListTool)
     } else {
       hideListbox(qsIngredientTitle, qsIngredientInput, qsIngredientList, qsIngredientBox, qsIngredientSwap, qsOpenListIngredient, qsCloseListIngredient)
+      searchInput.textLength > 2 ? (initSearch(), searchByWord(searchInput.value)) : (initSearch(), searchByTag(recipesReset));
     }
   }
 
@@ -111,6 +112,7 @@ document.addEventListener("click", (e) => {
       hideListbox(qsToolTitle, qsToolInput, qsToolList, qsToolBox, qsToolSwap, qsOpenListTool, qsCloseListTool)
     } else {
       hideListbox(qsApplianceTitle, qsApplianceInput, qsApplianceList, qsApplianceBox, qsApplianceSwap, qsOpenListAppliance, qsCloseListAppliance)
+      searchInput.textLength > 2 ? (initSearch(), searchByWord(searchInput.value)) : (initSearch(), searchByTag(recipesReset));
     }
   }
 
@@ -123,6 +125,7 @@ document.addEventListener("click", (e) => {
       e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") {
     } else {
       hideListbox(qsToolTitle, qsToolInput, qsToolList, qsToolBox, qsToolSwap, qsOpenListTool, qsCloseListTool)
+      searchInput.textLength > 2 ? (initSearch(), searchByWord(searchInput.value)) : (initSearch(), searchByTag(recipesReset));
     }
   }
 });
