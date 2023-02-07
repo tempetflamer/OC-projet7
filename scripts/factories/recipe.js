@@ -20,7 +20,7 @@ export function recipesFactories(data) {
         article.classList.add('recipes__card');
 
         const img = document.createElement('img');
-        img.setAttribute("src", "../../assets/img/placeholder.jpg")
+        img.setAttribute("src", "./assets/img/placeholder.jpg")
         img.classList.add('recipes__card__img');
         article.appendChild(img);
 
