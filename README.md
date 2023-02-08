@@ -139,8 +139,9 @@ Jsben.ch ne voulant pas générer de lien pour le benchmark de 500 recettes car 
 `assets/`, contient toutes les images utilisées
 - `data/`, contient les données en JSON pour l'application
 - `images/`, contient le placeholder remplaçant les images utilisées dans l'application
-- `logo.png`, logo "Les petits plats"
-- `favicon`, icon du logo "Les petits plats"
+- `logo.png`, image du logo "Les petits plats"
+- `icon.png`, image de l'icône de "Les petits plats"
+- `favicon32.ico`, favicon de l'icône de "Les petits plats"
 
 `css/`, contient le fichier `style.css` où sont définit les styles de l'application
 
