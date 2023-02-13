@@ -38,7 +38,7 @@ export function setlistboxSize(array, qsList, qsBox, qsInput) {
           qsBox.classList.add("box" + j);
         }
       }
-      else if (window.matchMedia("(min-width:1525px) and (max-width: 1799px)").matches) /*1760 */ {
+      else if (window.matchMedia("(min-width:1525px) and (max-width: 1799px)").matches) {
         if (j > 6) {
           qsList.classList.add("box" + 6);
           qsBox.classList.add("box" + 6);

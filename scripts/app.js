@@ -169,15 +169,15 @@ window.addEventListener("resize", (e) => {
 // When input in searchbar, search for input keywords in recipes
 searchInput.addEventListener("keyup", () => {
   let search = searchInput.value;
-  if (searchInput.textLength > 2) {
+  if (searchInput.selectionEnd > 2) {
     initSearch();
     searchByWord(search)
   }
-  else if (searchInput.textLength < 3 && qsFilterSelected.hasChildNodes()) {
+  else if (searchInput.selectionEnd < 3 && qsFilterSelected.hasChildNodes()) {
     initSearch();
     searchByTag(recipesReset);
   }
-  else if (searchInput.textLength < 3 && recipes != recipesReset) {
+  else if (searchInput.selectionEnd < 3 && recipes != recipesReset) {
     resetSearch();
   }
 })
