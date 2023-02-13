@@ -84,7 +84,7 @@ export function clearArrays() {
     appliancesRecipes = [];
 }
 /**
- * When an element is selected in the ingredient, appliance or tool list, he is removred from the list
+ * When an element is selected in the ingredient, appliance or tool list, he is removed from the list
  * @param {string} type - which list
  * @param {string} name - name of selected element
  */

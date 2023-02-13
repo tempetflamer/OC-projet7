@@ -105,14 +105,12 @@ export function searchByTag(recipesFilter) {
 
         let childrens = qsFilterSelected.childNodes;
         let children;
-        let i = 0;
         childrens.forEach(el => {
-            children = childrens[i].children[0].textContent
+            children = el.children[0].textContent
             children = children.toLowerCase()
-            if (childrens[i].classList.contains("type--ingredient")) { selectedIngredients.push(children); }
-            if (childrens[i].classList.contains("type--appliance")) { selectedAppliances.push(children); }
-            if (childrens[i].classList.contains("type--tool")) { selectedTools.push(children); }
-            i++;
+            if (el.classList.contains("type--ingredient")) { selectedIngredients.push(children); }
+            if (el.classList.contains("type--appliance")) { selectedAppliances.push(children); }
+            if (el.classList.contains("type--tool")) { selectedTools.push(children); }
         });
 
         recipesFilter.forEach((recipe) => {

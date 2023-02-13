@@ -111,7 +111,7 @@ export function getListIngredients(qsIngredientList, data) {
 
             qsIngredientInput.value = "";
             let search = searchInput.value;
-            if (searchInput.textLength > 2) {
+            if (searchInput.selectionEnd > 2) {
                 initSearch();
                 searchByWord(search)
             }
@@ -123,7 +123,7 @@ export function getListIngredients(qsIngredientList, data) {
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
                 let search = searchInput.value;
-                if (searchInput.textLength > 2) {
+                if (searchInput.selectionEnd > 2) {
                     initSearch();
                     searchByWord(search)
                 }
@@ -171,7 +171,7 @@ export function getListAppliances(qsApplianceList, data) {
 
             qsApplianceInput.value = "";
             let search = searchInput.value;
-            if (searchInput.textLength > 2) {
+            if (searchInput.selectionEnd > 2) {
                 initSearch();
                 searchByWord(search)
             }
@@ -183,7 +183,7 @@ export function getListAppliances(qsApplianceList, data) {
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
                 let search = searchInput.value;
-                if (searchInput.textLength > 2) {
+                if (searchInput.selectionEnd > 2) {
                     initSearch();
                     searchByWord(search)
                 }
@@ -231,7 +231,7 @@ export function getListTools(qstoolList, data) {
 
             qsToolInput.value = "";
             let search = searchInput.value;
-            if (searchInput.textLength > 2) {
+            if (searchInput.selectionEnd > 2) {
                 initSearch();
                 searchByWord(search)
             }
@@ -243,7 +243,7 @@ export function getListTools(qstoolList, data) {
             filterIcon.addEventListener("click", (e) => {
                 filterDiv.remove()
                 let search = searchInput.value;
-                if (searchInput.textLength > 2) {
+                if (searchInput.selectionEnd > 2) {
                     initSearch();
                     searchByWord(search)
                 }
