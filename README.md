@@ -96,9 +96,11 @@ Bootstrap) devra passer avec succès le validateur W3C.
 
 ### Architecture des algorithmes
 
-[Schéma Boucles natives](https://drive.google.com/file/d/10OAiRaebJZEJ2aboTiibwdcgUnZARiHv/view?usp=share_link)
+[Schéma Boucles natives](https://drive.google.com/file/d/1cqAgMbhb7ujMONnf36-UYgFWidzux3em/view?usp=share_link)
 
-[Schéma Programmation fonctionnelle](https://drive.google.com/file/d/1pUD0Gr1wmrXY20XQNHt7wF1kKwrZkhKP/view?usp=share_link)
+[Schéma Programmation fonctionnelle](https://drive.google.com/file/d/1LIFUNrdwc8HXrP-EQ9dwoPPLz3PbdsUa/view?usp=share_link)
+
+[Legends](https://drive.google.com/file/d/1KaJrI8VvlE341WvseneSe8myMLj5dy7M/view?usp=share_link
 
 
 ### Benchmark des algorithmes
@@ -136,6 +138,19 @@ Jsben.ch ne voulant pas générer de lien pour le benchmark de 500 recettes car 
 
 ## Organisation du projet
 
+### Les branches
+
+La branche `main` est la branche principale du prototype qui utilise la branche de l'algorithme choisi.<br>
+[Branche main](https://github.com/tempetflamer/OC-projet7/tree/main)
+
+**La branche `search#1` correspond à la version de l'algorithme en programmation fonctionnelle avec les méthodes de l'objet array.**<br>
+[Branche search#1](https://github.com/tempetflamer/OC-projet7/tree/search%231)
+
+La branche `search#2` correspond à la version de l'algorithme avec des boucles natives.<br>
+[Branche search#2](https://github.com/tempetflamer/OC-projet7/tree/search%232)
+
+### Structure du projet
+
 `assets/`, contient toutes les images utilisées
 - `data/`, contient les données en JSON pour l'application
 - `images/`, contient le placeholder remplaçant les images utilisées dans l'application
@@ -156,6 +171,7 @@ Jsben.ch ne voulant pas générer de lien pour le benchmark de 500 recettes car 
 `scripts/`, contient les fichiers JavaScript 
 - `factories/`, contient les fichiers JS nécessaire à l'usinage de création des données JSON 
 - `utils/`, contient les différents composants JS utilisés dans l'applications 
+- `app.js`, fichier JavaScript d'entrée appelant les factories et les composants JS nécessaires au bon fonctionnement de l'application
 
 `index.html`, page d'index du site
 
