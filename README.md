@@ -140,10 +140,10 @@ Jsben.ch ne voulant pas générer de lien pour le benchmark de 500 recettes car 
 
 ### Les branches
 
-La branche `main` est la branche principale du prototype qui utilise la branche de l'algorithme choisi.<br>
+**La branche `main` est la branche principale du prototype qui utilise la branche de l'algorithme choisi.**<br>
 [Branche main](https://github.com/tempetflamer/OC-projet7/tree/main)
 
-**La branche `search#1` correspond à la version de l'algorithme en programmation fonctionnelle avec les méthodes de l'objet array.**<br>
+La branche `search#1` correspond à la version de l'algorithme en programmation fonctionnelle avec les méthodes de l'objet array.<br>
 [Branche search#1](https://github.com/tempetflamer/OC-projet7/tree/search%231)
 
 La branche `search#2` correspond à la version de l'algorithme avec des boucles natives.<br>
