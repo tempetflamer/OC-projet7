@@ -99,7 +99,6 @@ document.addEventListener("click", (e) => {
       hideListbox(qsToolTitle, qsToolInput, qsToolList, qsToolBox, qsToolSwap, qsOpenListTool, qsCloseListTool)
     } else {
       hideListbox(qsIngredientTitle, qsIngredientInput, qsIngredientList, qsIngredientBox, qsIngredientSwap, qsOpenListIngredient, qsCloseListIngredient)
-      searchInput.textLength > 2 ? (initSearch(), searchByWord(searchInput.value)) : (initSearch(), searchByTag(recipesReset));
     }
   }
 
@@ -113,7 +112,6 @@ document.addEventListener("click", (e) => {
       hideListbox(qsToolTitle, qsToolInput, qsToolList, qsToolBox, qsToolSwap, qsOpenListTool, qsCloseListTool)
     } else {
       hideListbox(qsApplianceTitle, qsApplianceInput, qsApplianceList, qsApplianceBox, qsApplianceSwap, qsOpenListAppliance, qsCloseListAppliance)
-      searchInput.textLength > 2 ? (initSearch(), searchByWord(searchInput.value)) : (initSearch(), searchByTag(recipesReset));
     }
   }
 
@@ -126,7 +124,6 @@ document.addEventListener("click", (e) => {
       e.target.classList.contains("listbox__container__tools__list") || e.target.nodeName == "LI") {
     } else {
       hideListbox(qsToolTitle, qsToolInput, qsToolList, qsToolBox, qsToolSwap, qsOpenListTool, qsCloseListTool)
-      searchInput.textLength > 2 ? (initSearch(), searchByWord(searchInput.value)) : (initSearch(), searchByTag(recipesReset));
     }
   }
 });
@@ -168,15 +165,15 @@ window.addEventListener("resize", (e) => {
 // When input in searchbar, search for input keywords in recipes
 searchInput.addEventListener("keyup", () => {
   let search = searchInput.value;
-  if (searchInput.selectionEnd > 2) {
+  if (search.length > 2) {
     initSearch();
     searchByWord(search)
   }
-  else if (searchInput.selectionEnd < 3 && qsFilterSelected.hasChildNodes()) {
+  else if (search.length < 3 && qsFilterSelected.hasChildNodes()) {
     initSearch();
     searchByTag(recipesReset);
   }
-  else if (searchInput.selectionEnd < 3 && recipes != recipesReset) {
+  else if (search.length < 3 && recipes != recipesReset) {
     resetSearch();
   }
 })
