@@ -100,7 +100,7 @@ Bootstrap) devra passer avec succès le validateur W3C.
 
 [Schéma Programmation fonctionnelle](https://drive.google.com/file/d/1LIFUNrdwc8HXrP-EQ9dwoPPLz3PbdsUa/view?usp=share_link)
 
-[Legends](https://drive.google.com/file/d/1KaJrI8VvlE341WvseneSe8myMLj5dy7M/view?usp=share_link
+[Legends](https://drive.google.com/file/d/1KaJrI8VvlE341WvseneSe8myMLj5dy7M/view?usp=share_link)
 
 
 ### Benchmark des algorithmes
